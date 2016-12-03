@@ -1,0 +1,117 @@
+ {{>header}}
+
+<div class="container">
+
+  <div class="page-header text-left">
+
+    <h1>Edit Posting!</h1>
+
+
+  </div>
+
+
+
+  <div class="panelEdit row">
+
+    <div class="well bs-component col-md-8 col-md-offset-1">
+
+      <form method="post"  id="isiPosting">
+
+
+        <div class="form-group">
+
+          <label for="">Judul Posting</label>
+          <br>
+          <div>
+            <input class="form-control" type="" name="judul" value="">
+
+          </div>
+
+        </div>
+
+
+
+        <div  id="editor">
+
+            <textarea name="coba" id="tiny"></textarea>
+
+        </div>
+
+       
+
+
+
+
+        <div class="form-group text-right">
+         <button id="masuk" class="btn btn-raised btn-info" type="submit">Masukan Artikel</button>
+        </div>
+
+      </form>
+ 
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+{{>footer}}
+
+
+
+
+<script>
+
+
+
+$(document).on("click","#masuk",function(e) {
+    // alert("click bound to document listening for #test-element");
+
+     
+                    e.preventDefault();
+                    console.log('select_link clicked');
+                    
+                     /*$.ajax({
+                        dataType: 'jsonp',
+                        data: "data=yeah",						
+                        jsonp: 'callback',
+                        url: 'http://localhost:3000/endpoint?callback=?',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });*/
+					// var data = {};
+					// data.title = "title";
+					// data.message = "message";
+
+                      var coba = tinyMCE.activeEditor.getContent({format : 'raw'});
+
+                      var formData = {
+                        'judul'              : $('input[name=judul]').val(),       
+                        'posting'           : coba
+                        };		
+                                
+                       $.ajax({
+						            type: 'POST',
+					              data: JSON.stringify(formData),
+				                contentType: 'application/json',
+                        url: 'http://127.0.0.1:3000/admin/posting',				
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+			
+                });			
+
+
+
+
+
+</script>

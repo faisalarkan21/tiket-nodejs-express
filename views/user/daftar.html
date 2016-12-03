@@ -1,0 +1,353 @@
+<!DOCTYPE html ng-app>
+
+
+<html>
+
+<head>
+	<title>makan dilaut</title>
+
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+
+	<link rel="stylesheet" href="/font-material/material-icons.css">
+	<link rel="stylesheet" href="/material/css/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="/material/css/ripples.min.css">
+
+
+
+
+</head>
+
+
+<body>
+
+
+	<div class="container ">
+
+		<div class="daftar col-md-5 col-md-offset-4 well ">
+
+
+
+			<div class="form-group text-center">
+				<h1 class="judul"> Beli Tiket</h1>
+
+
+			</div>
+
+			<div class="col-md-11">
+				<form class="daftar text-center" action="/mendaftar" method="post">
+
+
+
+
+					<div>
+
+						<div id="ketikEmail" class="form-group {{error}}">
+
+							<div class="input-group ">
+								<span class="input-group-addon">
+               
+               <i class="material-icons">assignment_ind</i>
+             </span>
+								<input class="form-control " name="nama" placeholder="Nama Anda" type="name" value="">
+								</span>
+							</div>
+
+
+
+						</div>
+
+
+						<div id="ketikEmail" class="form-group {{error}}">
+
+							<div class="input-group ">
+								<span class="input-group-addon">
+               
+               <i class="material-icons">phone_iphone</i>
+             </span>
+								<input class="form-control " name="hp" placeholder="No Handphone" type="text" value="">
+								
+							</div>
+
+
+
+						</div>
+
+
+						<div class="form-group">
+							<label for="select111" class="col-md-3 control-label">Pilih Gender</label>
+
+							<div class="col-md-9 input-group">
+								<select id="select111" name="gd" class="form-control">
+                    <option>Pilih Gender</option>
+                    <option>Laki - Laki</option>
+                    <option>Perempuan</option>
+                    
+                  </select>
+							</div>
+						</div>
+
+
+
+						<div id="ketikPass" class="form-group  {{error}}">
+
+							<div class="input-group">
+								<span class="input-group-addon">
+            <i class="material-icons">account_circle</i>
+             </span>
+								<input class="form-control" name="email" placeholder="Email Anda" type="email" value="">
+							</div>
+
+						</div>
+
+						<div id="ketikPass" class="form-group  {{error}}">
+
+							<div class="input-group">
+								<span class="input-group-addon">
+             <i class="material-icons">lock_outline</i>
+             </span>
+								<input class="form-control" name="password" placeholder="Masukan Password" type="password" value="">
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label for="select111" class="col-md-3 control-label">Jenis Tiket</label>
+
+							<div class="col-md-9 input-group">
+								<select id="selectHarga" name="namaJenis" class="form-control">
+                    
+                    <option value="1">Premium</option>
+                    <option value="2">Gold</option>
+                    <option value="3">Silver</option>
+                    
+                  </select>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+
+							<label class="control-label col-md-3" for="">Harga Tiket</label>
+
+							<div class="col-md-9 input-group">
+
+								<input class="form-control" type="text" id="hargaSatuan" name="satuan" readonly value="-">
+
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							<label for="select111" class="col-md-3 control-label">Jumlah Tiket</label>
+
+							<div class="col-md-9 input-group">
+								<select id="jumlahTiket" name="jmlTiket" class="form-control">
+                    <option value="1">1 </option>
+                    <option value="2">2 </option>
+                    <option value="3">3 </option>
+                    <option value="4">4 </option>
+					 <option value="5">5 </option>
+                    
+                  </select>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+
+							<label class="control-label col-md-3" for="totalHarga">Total Harga</label>
+
+							<div class="col-md-9 input-group">
+
+								<input class="form-control" type="text" id="total" name="totalHarga" readonly value="-">
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+						<div id="pesan" class="form-group {{error}}">
+							<a class=" btn btn-raised btn-info btn-md" href="/login">Kembali</a>
+							<button id="login" class="btn btn-raised btn-primary" type="submit">Submit</button>
+
+
+						</div>
+
+
+
+
+
+
+					</div>
+
+				</form>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+</body>
+
+
+
+{{>footer}}
+
+<script>
+
+
+//var nomor = $("#selectHarga").val();
+ // alert(nomor);
+
+  // buat input change klik id login
+
+  // $(document).on("click", "#login", function(e) {
+
+
+  //   e.preventDefault();
+  //   console.log('select_link clicked');
+
+  //   dataEmail = $('input[name=email]').val();
+  //   dataPass = $('input[name=password]').val();
+
+
+  //   if (($.trim(dataEmail) == '') && ($.trim(dataPass) == '')) {
+
+  //     $('#ketikEmail').addClass('has-error is-empty');
+
+  //     $('#ketikPass').addClass('has-error is-empty');
+
+  //     $('#pesan').addClass('has-error is-empty');
+
+  //     $('label').show();
+
+
+  //   } else if (($.trim(dataPass) == '')) {
+  //     $('#ketikPass').addClass('has-error is-empty');
+
+  //     $('#pesan').addClass('has-error is-empty');
+
+  //     $('label').show();
+
+
+  //   } else if (($.trim(dataEmail) == '')) {
+
+
+  //     $('#ketikEmail').addClass('has-error is-empty');
+  //     $('#pesan').addClass('has-error is-empty');
+  // $('label').show();
+
+
+  //   }else{
+
+  //   $.ajax({
+  //     //disini
+        
+  //     type: 'POST',     
+  //     data: $("form").serialize(),
+  //     dataType: 'html',
+  //     url: 'http://127.0.0.1:3000/login'
+  //     // success: function(res) {
+       
+  //     //   if (res == true){
+
+  //     //         alert('bener');
+
+  //     //   }else{
+
+  //     //        console.log(res)
+  //     //        alert('salah');
+
+  //     //   }
+           
+  //     //   },
+
+  //     // error: function(res){
+    
+  //     //     alert('failure');
+      
+  //     // }
+
+
+
+  //   });
+  // });
+
+  // buat input change keyboard
+
+  
+
+$("select").on('click', function (e) {
+
+    hargaJenis = $('#selectHarga').val();
+    jumlahTiket = $('#jumlahTiket').val();
+
+
+    console.log("ini Harga Jenis : " + hargaJenis);
+    console.log("ini jumlahTiket  : " + jumlahTiket);
+
+    var hasilJenis;
+
+
+    if (hargaJenis == 1) {
+
+	hasilJenis = 5000000;
+
+    } else if (hargaJenis == 2) {
+
+        hasilJenis = 3000000;
+
+    } else if (hargaJenis == 3) {
+
+        hasilJenis = 1000000;
+
+    } else {
+
+        hasilJenis = 0;
+    }
+
+	
+
+    var hasilTotal = hasilJenis * jumlahTiket;
+
+    function toRp(angka) {
+        var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+        var rev2 = '';
+        for (var i = 0; i < rev.length; i++) {
+            rev2 += rev[i];
+            if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
+                rev2 += '.';
+            }
+        }
+        return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+    }
+
+	var rpSatuan = toRp(hasilJenis)
+    var rpTotal = toRp(hasilTotal);
+
+	$('#hargaSatuan').val(rpSatuan)
+
+    $('#total').val(rpTotal);
+
+});
+
+  
+
+</script>

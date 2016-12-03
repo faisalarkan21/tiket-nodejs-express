@@ -1,0 +1,80 @@
+<!DOCTYPE html ng-app>
+<html>
+
+<head>
+	<title>makan dilaut</title>
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="/material/css/bootstrap-material-design.min.css">
+	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/material/css/ripples.min.css">
+	<link rel="stylesheet" href="/font-material/material-icons.css">
+	
+</head>
+
+<body>
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        
+        </button>
+				<a class="navbar-brand" href="/">Dashboard Tiket          
+        <div class="ripple-container">            
+          </div>         
+          </a>
+			</div>
+			<div class="navbar-collapse navbar-inverse-collapse collapse">
+				<form class="navbar-form navbar-left ">
+					<!--<div class="form-group">
+                <button class="btn btn-raised" type="sumbit">Cari</button>              
+              </div>-->
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" data-target="dropdown" class="dropdown-toggle" data-toggle="dropdown"> Login Sebagai : {{nama}} <b class="caret"></b> </a>
+						<ul class="dropdown-menu">
+							<li><a href="/keluar">Log Out  <i class="material-icons">keyboard_arrow_right</i> </a></li>
+							<li class="divider"></li>
+							<li><a href="#">Bantuan  </a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<div class="panel panel-info" id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand">
+					<a href="#">
+                       Menu Navigasi
+                    </a>
+				</li>
+				<li>
+					<a id="halUtama" class="" href="/profile">Halaman Utama</a>
+				</li>
+				<li>
+					<a id="data" data-toggle="collapse" class="" href="#collapseOne"> <span id="tulisanData"> Data Pembeli </span> </a>
+					<div id="collapseOne" class="collapse ">
+						<ul id="sub1">
+							<li type><a id="Validasi" class="" href="/user/data/">Data Pemesan</a>
+							</li>
+							<li><a class="" id="hukum" href="layout-horizontal-menu.htm">Ketentuan</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a id="Ketentuan" href="/user/validasi">Validasi Tiket</a>
+				</li>
+			</ul>
+		</div>

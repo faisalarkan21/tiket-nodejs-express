@@ -1,0 +1,99 @@
+{{>header}}
+
+
+{{>sidebar}}
+
+<div class="container konten">
+    
+        <div class="col-md-10 col-md-offset-2">
+
+            <div class="page-header text-center">
+
+                <h1 id="titleDaftar">Panel Control Daftar User</h1>
+                <br>
+
+
+                <div class="bs-component">
+
+
+                    <table class="table table-striped table-hover jadi-vertical">
+
+                        <thead>
+
+
+                            <tr class="headerTengah" id="warnaTr">
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th colspan="3">Tindakan</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+
+                            {{#each data}}
+                            <tr class="<%=trUser%>">
+
+
+
+                                <td class="text-center pagination-centered">
+                                    {{tambahSatu @index}}
+                                </td>
+
+                                <td class="text-center pagination-centered">
+                                    {{this.name}}
+                                </td>
+
+                                <td class="text-center pagination-centered">
+                                    {{this.email}}
+                                </td>
+
+
+
+
+
+
+
+                                <td class="text-center pagination-centered">
+
+                                    {{#if this.admin}}
+
+                                    <span class="<%= btnAdmin %>  bigStat"> Status Admin</span> {{else}}
+
+
+                                    <span class="<%= btnUser %> bigStat"> Bukan Admin</span> {{/if}}
+                                </td>
+
+
+                                <td id="btn-edit" class="text-center"> <a class="btn btn-raised btn-info" href="/admin/user/{{this.userId}}">Edit</a></td>
+                                <td class="text-center"> <a class="btn btn-raised btn-danger" href="/admin/dashboard/detele/{{this.userId}}">Hapus</a></td>
+                                {{/each}}
+
+
+                            </tr>
+
+                        </tbody>
+
+
+
+                    </table>
+   
+
+            </div>
+        </div>
+
+    </div>
+
+   
+
+    </div>
+
+</div>
+</body>
+
+</html>
+
+{{>footer}}

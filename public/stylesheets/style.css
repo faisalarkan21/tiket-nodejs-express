@@ -1,0 +1,520 @@
+body {
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  background-color: white;
+  padding-top: 60px;
+}
+
+@font-face {
+  font-family: Cabin;
+  src: url('/font/Cabin/Cabin-Regular.ttf');
+}
+
+form.daftar,
+h1.judul,
+#titleDaftar,
+li,
+ul,
+a,
+tr,
+th,
+input,
+div,
+
+h3.panel-title,
+#judul {
+  font-family: 'Cabin', sans-serif;
+}
+
+#error {
+  font-size: 15px;
+  align-content: left;
+}
+
+form.text-center {}
+
+form.daftar {
+  margin: 0 auto;
+  width: 100% value of your choice which suits your alignment
+}
+
+.login {
+  height: 450px;
+}
+
+.daftar {
+  height: 1000px;
+}
+
+#editor {
+  height: 690px;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.editor {}
+
+.posting {
+  padding-top: 20px;
+}
+
+#tiny {
+  height: 300px;
+}
+
+html {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* Change the white to any color ;) */
+
+#kembali {
+  margin-right: 11px;
+}
+
+#titleDaftar {}
+
+.page-header h1 {
+  font-size: 3em
+}
+
+table th {
+  text-align: center;
+}
+
+table.jadi-vertical>tbody>tr>td {
+  vertical-align: middle;
+}
+
+span.bigStat {
+  border-radius: 1px;
+  padding: .7em .8em;
+}
+
+#warnaTr {
+  background-color: #90A4AE;
+}
+
+.coba1 {
+  background-color: black;
+}
+
+.coba2 {
+  background-color: yellow;
+}
+
+.bs-component {
+  position: relative;
+}
+
+.panelEdit {
+  height: 400px;
+}
+
+
+/*
+.headerTable{
+
+  text-align: center;
+
+}*/
+
+
+/*
+
+Dev Area */
+
+.wrapper {
+  padding: 10px;
+  z-index: 1000;
+  position: fixed;
+  width: 200px;
+  left: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.sidebar-nav li {
+  line-height: 50px;
+  text-decoration: none;
+}
+
+
+/*.sidebar-nav li:hover {
+
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}*/
+
+
+/*
+
+  nav
+
+*/
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* Toggle Styles */
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+  
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  /*color: #999999;*/
+}
+
+
+/*.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}*/
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+  /*color: #999999;*/
+}
+
+
+
+
+
+.sidebar-nav>li:hover {
+    /*color: #fff;
+    background: none;*/
+    
+    /*background-color: #F5F5F5;*/
+
+}
+
+#sub1>li:hover {
+
+    /*background-color: #CFD8DC;*/
+
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}
+
+li {
+  padding-left: 1.3em;
+}
+
+#data::before {
+  font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 20px;
+  display: inline-block;
+  margin-left: -1.6em;
+  
+  /* same as padding-left set on li */
+  width: 2em;
+  /* same as padding-left set on li */
+  content: "\e893";
+  vertical-align: top;
+  
+}
+
+#data::before {
+  font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 20px;
+  display: inline-block;
+  margin-left: -1.6em;
+  
+  /* same as padding-left set on li */
+  width: 2em;
+  /* same as padding-left set on li */
+  content: "\e8d3";
+  vertical-align: top;
+  
+}
+
+#halUtama::before{
+
+font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 20px;
+  display: inline-block;
+  margin-left: -1.6em;
+  
+  /* same as padding-left set on li */
+  width: 2.1em;
+  /* same as padding-left set on li */
+  content: "\e88a";
+  vertical-align: top;
+  
+}
+
+
+
+
+
+#Validasi::before{
+
+font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: -1.6em;
+  
+  /* same as padding-left set on li */
+  width: 2.3em;
+  /* same as padding-left set on li */
+  content: "\e85d";
+  vertical-align: top;
+  
+}
+
+
+#ketentuan::before{
+
+font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: -1.7em;
+  
+  /* same as padding-left set on li */
+  width: 2.3em;
+  /* same as padding-left set on li */
+  content: "\e8e8";
+  vertical-align: top;
+  
+}
+
+
+
+
+
+#sub1 {
+
+  margin-left: -35px;
+
+}
+
+
+li > a::hover{
+
+  background-color: blue;
+
+}
+
+
+/*
+
+ Orang1
+
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+
+dev 
+
+*/
+
+
+.menu {
+  margin: 4em auto;
+  padding: 0;
+  width: 28em;
+  list-style: none;
+}
+.menu li { display: inline-block; }
+.menu a {
+  font: 400 1.25em sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .5s;
+}
+.menu li:first-child a { color: orange; }
+.menu li:nth-child(2) a { color: lime; }
+.menu li:nth-child(3) a { color: magenta; }
+.menu li:nth-child(4) a { color: yellow; }
+.menu li:nth-child(5) a {
+  color: blue; font-size: 1.75em; 
+}
+.menu li:nth-child(6) a {
+  color: red; font-size: 1.75em; 
+}
+.menu:hover li a { color: black; }
+.menu li a:hover { color: white; }
+.bg {
+  position: fixed;
+  z-index: -1;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: dimgrey;
+  transition: .5s;
+  pointer-events: none;
+}
+.menu li:first-child:hover ~ .bg {
+  background: orange;
+}
+.menu li:nth-child(2):hover ~ .bg {
+  background: lime;
+}
+.menu li:nth-child(3):hover ~ .bg {
+  background: magenta;
+}
+.menu li:nth-child(4):hover ~ .bg {
+  background: yellow;
+}
+.menu li:nth-child(5):hover ~ .bg {
+  background: blue;
+}
+.menu li:nth-child(6):hover ~ .bg {
+  background: red;
+}
+
+#hukum::before{
+
+font-family: "Material Icons";
+  direction: ltr;
+  display: inline-block;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: -1.6em;
+  
+  /* same as padding-left set on li */
+  width: 2.3em;
+  /* same as padding-left set on li */
+  content: "\e8e8";
+  vertical-align: top;
+  
+}
+
+
+
+/* DEV */
+
+/*.sidebar-nav  a, a:focus, a:hover {
+    color: #009688 !important;
+}*/
+
+
+a.sidebar-nav {
+    color: #337ab7 !important;
+    text-decoration: none;
+}
