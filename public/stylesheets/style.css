@@ -2,6 +2,7 @@ body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   background-color: white;
   padding-top: 60px;
+  margin: 0;
 }
 
 @font-face {
@@ -19,7 +20,6 @@ tr,
 th,
 input,
 div,
-
 h3.panel-title,
 #judul {
   font-family: 'Cabin', sans-serif;
@@ -232,7 +232,6 @@ body {
 .sidebar-nav li {
   text-indent: 20px;
   line-height: 40px;
-  
 }
 
 .sidebar-nav li a {
@@ -263,22 +262,14 @@ body {
   /*color: #999999;*/
 }
 
-
-
-
-
 .sidebar-nav>li:hover {
-    /*color: #fff;
+  /*color: #fff;
     background: none;*/
-    
-    /*background-color: #F5F5F5;*/
-
+  background-color: #F5F5F5;
 }
 
 #sub1>li:hover {
-
-    /*background-color: #CFD8DC;*/
-
+  /*background-color: #CFD8DC;*/
 }
 
 @media(min-width:768px) {
@@ -304,115 +295,6 @@ body {
   }
 }
 
-li {
-  padding-left: 1.3em;
-}
-
-#data::before {
-  font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 20px;
-  display: inline-block;
-  margin-left: -1.6em;
-  
-  /* same as padding-left set on li */
-  width: 2em;
-  /* same as padding-left set on li */
-  content: "\e893";
-  vertical-align: top;
-  
-}
-
-#data::before {
-  font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 20px;
-  display: inline-block;
-  margin-left: -1.6em;
-  
-  /* same as padding-left set on li */
-  width: 2em;
-  /* same as padding-left set on li */
-  content: "\e8d3";
-  vertical-align: top;
-  
-}
-
-#halUtama::before{
-
-font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 20px;
-  display: inline-block;
-  margin-left: -1.6em;
-  
-  /* same as padding-left set on li */
-  width: 2.1em;
-  /* same as padding-left set on li */
-  content: "\e88a";
-  vertical-align: top;
-  
-}
-
-
-
-
-
-#Validasi::before{
-
-font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 18px;
-  display: inline-block;
-  margin-left: -1.6em;
-  
-  /* same as padding-left set on li */
-  width: 2.3em;
-  /* same as padding-left set on li */
-  content: "\e85d";
-  vertical-align: top;
-  
-}
-
-
-#ketentuan::before{
-
-font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 18px;
-  display: inline-block;
-  margin-left: -1.7em;
-  
-  /* same as padding-left set on li */
-  width: 2.3em;
-  /* same as padding-left set on li */
-  content: "\e8e8";
-  vertical-align: top;
-  
-}
-
-
-
-
-
-#sub1 {
-
-  margin-left: -35px;
-
-}
-
-
-li > a::hover{
-
-  background-color: blue;
-
-}
-
 
 /*
 
@@ -421,20 +303,11 @@ li > a::hover{
 */
 
 
-
-
-
-
-
-
-
-
 /*
 
 dev 
 
 */
-
 
 .menu {
   margin: 4em auto;
@@ -442,79 +315,274 @@ dev
   width: 28em;
   list-style: none;
 }
-.menu li { display: inline-block; }
+
+.menu li {
+  display: inline-block;
+}
+
 .menu a {
   font: 400 1.25em sans-serif;
   text-decoration: none;
   text-transform: uppercase;
   transition: .5s;
 }
-.menu li:first-child a { color: orange; }
-.menu li:nth-child(2) a { color: lime; }
-.menu li:nth-child(3) a { color: magenta; }
-.menu li:nth-child(4) a { color: yellow; }
+
+.menu li:first-child a {
+  color: orange;
+}
+
+.menu li:nth-child(2) a {
+  color: lime;
+}
+
+.menu li:nth-child(3) a {
+  color: magenta;
+}
+
+.menu li:nth-child(4) a {
+  color: yellow;
+}
+
 .menu li:nth-child(5) a {
-  color: blue; font-size: 1.75em; 
+  color: blue;
+  font-size: 1.75em;
 }
+
 .menu li:nth-child(6) a {
-  color: red; font-size: 1.75em; 
+  color: red;
+  font-size: 1.75em;
 }
-.menu:hover li a { color: black; }
-.menu li a:hover { color: white; }
+
+.menu:hover li a {
+  color: black;
+}
+
+.menu li a:hover {
+  color: white;
+}
+
 .bg {
   position: fixed;
   z-index: -1;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: dimgrey;
   transition: .5s;
   pointer-events: none;
 }
-.menu li:first-child:hover ~ .bg {
+
+.menu li:first-child:hover~.bg {
   background: orange;
 }
-.menu li:nth-child(2):hover ~ .bg {
+
+.menu li:nth-child(2):hover~.bg {
   background: lime;
 }
-.menu li:nth-child(3):hover ~ .bg {
+
+.menu li:nth-child(3):hover~.bg {
   background: magenta;
 }
-.menu li:nth-child(4):hover ~ .bg {
+
+.menu li:nth-child(4):hover~.bg {
   background: yellow;
 }
-.menu li:nth-child(5):hover ~ .bg {
+
+.menu li:nth-child(5):hover~.bg {
   background: blue;
 }
-.menu li:nth-child(6):hover ~ .bg {
+
+.menu li:nth-child(6):hover~.bg {
   background: red;
 }
 
-#hukum::before{
-
-font-family: "Material Icons";
-  direction: ltr;
-  display: inline-block;
-  font-size: 18px;
-  display: inline-block;
-  margin-left: -1.6em;
-  
-  /* same as padding-left set on li */
-  width: 2.3em;
-  /* same as padding-left set on li */
-  content: "\e8e8";
-  vertical-align: top;
-  
-}
-
-
 
 /* DEV */
+
 
 /*.sidebar-nav  a, a:focus, a:hover {
     color: #009688 !important;
 }*/
 
-
 a.sidebar-nav {
-    color: #337ab7 !important;
-    text-decoration: none;
+  color: #337ab7 !important;
+  text-decoration: none;
+}
+
+
+/* dev level 2 */
+
+ul.nav li.dropdown:hover>ul.dropdown-menu {
+  display: block;
+  margin: 0;
+}
+
+
+/* new */
+
+.nav-side-menu {
+  z-index: 2;
+  overflow: auto;
+  font-family: verdana;
+  font-size: 12px;
+  font-weight: 200;
+  background-color: #2e353d;
+  position: fixed;
+  top: 60px;
+  width: 300px;
+  height: 100%;
+  color: #e1ffff;
+}
+
+.nav-side-menu .brand {
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.nav-side-menu .toggle-btn {
+  display: none;
+}
+
+.nav-side-menu ul,
+.nav-side-menu li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 35px;
+  cursor: pointer;
+  /*    
+    .collapsed{
+       .arrow:before{
+                 font-family: FontAwesome;
+                 content: "\f053";
+                 display: inline-block;
+                 padding-left:10px;
+                 padding-right: 10px;
+                 vertical-align: middle;
+                 float:right;
+            }
+     }
+*/
+}
+
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+  font-family: FontAwesome;
+  content: "\f078";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
+}
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+}
+
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+  color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+  color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+  background-color: #181c20;
+  border: none;
+  line-height: 28px;
+  border-bottom: 1px solid #23282e;
+  margin-left: 0px;
+}
+
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+  background-color: #020203;
+}
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+  font-family: FontAwesome;
+  content: "\f105";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.nav-side-menu li {
+  padding-left: 0px;
+  border-left: 3px solid #2e353d;
+  border-bottom: 1px solid #23282e;
+}
+
+.nav-side-menu li a {
+  text-decoration: none;
+  color: #e1ffff;
+}
+
+.nav-side-menu li a i {
+  padding-left: 10px;
+  width: 20px;
+  padding-right: 20px;
+}
+
+.nav-side-menu li:hover {
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+@media (max-width: 767px) {
+  .nav-side-menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .nav-side-menu .toggle-btn {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    background-color: #ffffff;
+    color: #000;
+    width: 40px;
+    text-align: center;
+  }
+  .brand {
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+}
+
+@media (min-width: 767px) {
+  .nav-side-menu .menu-list .menu-content {
+    display: block;
+  }
+}
+
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding-left: 350px;
 }

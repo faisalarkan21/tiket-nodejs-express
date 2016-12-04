@@ -6,14 +6,11 @@
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/stylesheets/style.css">
-	
 	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-
 	<link rel="stylesheet" href="/material/css/bootstrap-material-design.min.css">
 	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/material/css/ripples.min.css">
 	<link rel="stylesheet" href="/font-material/material-icons.css">
-	
 </head>
 
 <body>
@@ -50,31 +47,34 @@
 			</div>
 		</div>
 	</div>
-	<div id="wrapper">
-		<!-- Sidebar -->
-		<div class="panel panel-info" id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand">
+	<div class="nav-side-menu">
+		<div class="brand">Brand Logo</div>
+		<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+		<div class="menu-list">
+			<ul id="menu-content" class="menu-content collapse out">
+				<li>
 					<a href="#">
-                       Menu Navigasi
-                    </a>
+						<i class="fa fa-dashboard fa-lg"></i> Dashboard
+					</a>
 				</li>
-				<li>
-					<a id="halUtama" class="" href="/profile">Halaman Utama</a>
+				
+				<li data-toggle="collapse" data-target="#data" >
+					<a href="#"><i class="fa fa-gift fa-lg"></i>Data Pembeli <span class="arrow"></span></a>
 				</li>
+
+
+             
+
+				<ul class="sub-menu collapse" id="data">
+					<li class="active"><a href="#">Data Pemesan</a></li>
+					<li class="active"><a href="#">Ketentuan</a></li>
+				</ul>
 				<li>
-					<a id="data" data-toggle="collapse" class="" href="#collapseOne"> <span id="tulisanData"> Data Pembeli </span> </a>
-					<div id="collapseOne" class="collapse ">
-						<ul id="sub1">
-							<li type><a id="Validasi" class="" href="/user/data/">Data Pemesan</a>
-							</li>
-							<li><a class="" id="hukum" href="layout-horizontal-menu.htm">Ketentuan</a>
-							</li>
-						</ul>
-					</div>
-				</li>
-				<li>
-					<a id="Ketentuan" href="/user/validasi">Validasi Tiket</a>
+					<a href="#">
+						<i class="fa fa-dashboard fa-lg"></i>Validasi Tiket
+					</a>
 				</li>
 			</ul>
 		</div>
+	</div>
+	</div>
