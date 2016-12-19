@@ -3,12 +3,16 @@ body {
   background-color: white;
   padding-top: 60px;
   margin: 0;
+  /*background-color: #B0BEC5 !important;*/
 }
 
 @font-face {
   font-family: Cabin;
   src: url('/font/Cabin/Cabin-Regular.ttf');
 }
+
+
+
 
 form.daftar,
 h1.judul,
@@ -34,7 +38,7 @@ form.text-center {}
 
 form.daftar {
   margin: 0 auto;
-  width: 100% value of your choice which suits your alignment
+  width: 100% ;
 }
 
 .login {
@@ -130,31 +134,6 @@ span.bigStat {
 
 Dev Area */
 
-.wrapper {
-  padding: 10px;
-  z-index: 1000;
-  position: fixed;
-  width: 200px;
-  left: 250px;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  background: #000;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.sidebar-nav li {
-  line-height: 50px;
-  text-decoration: none;
-}
-
 
 /*.sidebar-nav li:hover {
 
@@ -169,53 +148,12 @@ ul {
 
 */
 
-body {
-  overflow-x: hidden;
-}
 
 
 /* Toggle Styles */
 
-#wrapper {
-  padding-left: 0;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
 
-#wrapper.toggled {
-  padding-left: 250px;
-}
 
-#sidebar-wrapper {
-  z-index: 1000;
-  position: fixed;
-  left: 250px;
-  width: 0;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-  width: 250px;
-}
-
-#page-content-wrapper {
-  width: 100%;
-  position: absolute;
-  padding: 15px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-  position: absolute;
-  margin-right: -250px;
-}
 
 
 /* Sidebar Styles */
@@ -357,9 +295,6 @@ dev
   color: black;
 }
 
-.menu li a:hover {
-  color: white;
-}
 
 .bg {
   position: fixed;
@@ -405,17 +340,33 @@ dev
     color: #009688 !important;
 }*/
 
-a.sidebar-nav {
-  color: #337ab7 !important;
-  text-decoration: none;
+
+
+.navbar.navbar-inverse {
+
+  background-color: #121A1F  !important;
+  color: #CFD8DC !important;
+
 }
 
+.navbar.navbar-inverse .dropdown-menu li>a:focus, .navbar.navbar-inverse .dropdown-menu li>a:hover {
+
+  color:  #263238 !important;
+
+}
 
 /* dev level 2 */
 
 ul.nav li.dropdown:hover>ul.dropdown-menu {
   display: block;
   margin: 0;
+  
+}
+
+#menu-content ul {
+  
+  color: #CFD8DC;
+  
 }
 
 
@@ -424,23 +375,24 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 .nav-side-menu {
   z-index: 2;
   overflow: auto;
-  font-family: verdana;
-  font-size: 12px;
+
+  font-size: 13.3px;
   font-weight: 200;
-  background-color: #2e353d;
+  background-color: #151E23;
   position: fixed;
   top: 60px;
-  width: 300px;
+  width: 280px;
   height: 100%;
-  color: #e1ffff;
+  color: #CFD8DC;
+  
 }
 
 .nav-side-menu .brand {
-  background-color: #23282e;
+  background-color: #151E23;
   line-height: 50px;
   display: block;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .nav-side-menu .toggle-btn {
@@ -454,6 +406,9 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
+ 
+
+
   /*    
     .collapsed{
        .arrow:before{
@@ -472,80 +427,80 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
   font-family: FontAwesome;
-  content: "\f078";
+  content: "\f103";
   display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
   float: right;
+  
 }
 
-.nav-side-menu ul .active,
-.nav-side-menu li .active {
-  border-left: 3px solid #d19b3d;
-  background-color: #4f5b69;
-}
+
 
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
-  color: #d19b3d;
+  color: #CFD8DC;
 }
 
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
-  color: #d19b3d;
+  
+  color: #CFD8DC;
 }
 
 .nav-side-menu ul .sub-menu li,
 .nav-side-menu li .sub-menu li {
-  background-color: #181c20;
+
+  background-color: #1B272D;      /* anak menu */
   border: none;
   line-height: 28px;
   border-bottom: 1px solid #23282e;
   margin-left: 0px;
+     
 }
 
 .nav-side-menu ul .sub-menu li:hover,
 .nav-side-menu li .sub-menu li:hover {
-  background-color: #020203;
+  background-color: #37474F;
 }
 
-.nav-side-menu ul .sub-menu li:before,
-.nav-side-menu li .sub-menu li:before {
-  font-family: FontAwesome;
-  content: "\f105";
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
-  vertical-align: middle;
-}
+
 
 .nav-side-menu li {
   padding-left: 0px;
-  border-left: 3px solid #2e353d;
+ 
+  border-left: 3px solid #37474F;
   border-bottom: 1px solid #23282e;
+
 }
 
 .nav-side-menu li a {
   text-decoration: none;
-  color: #e1ffff;
+  color: #CFD8DC;    /* Warna Icons */
 }
 
 .nav-side-menu li a i {
   padding-left: 10px;
   width: 20px;
-  padding-right: 20px;
+  padding-right: 28px;
+  
 }
 
 .nav-side-menu li:hover {
-  border-left: 3px solid #d19b3d;
-  background-color: #4f5b69;
-  -webkit-transition: all 1s ease;
+  border-left: 3px solid #455A64;    /* Border Kanan */
+  background-color: #263238;       /* Hover */
+  -webkit-transition: all 1s ease; 
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
+  
 }
+
+
+
+
 
 @media (max-width: 767px) {
   .nav-side-menu {
@@ -559,7 +514,7 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
     position: absolute;
     right: 10px;
     top: 10px;
-    z-index: 10 !important;
+    z-index: 1 !important;
     padding: 3px;
     background-color: #ffffff;
     color: #000;
@@ -585,4 +540,43 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   width: 100%;
   position: absolute;
   padding-left: 350px;
+}
+
+
+.panel-heading {
+
+  background-color: #151E23  !important;
+
+}
+
+
+.btn {
+
+  background-color: #151E23 !important;
+
+}
+
+
+.menu-list i ul li a {
+
+
+
+}
+
+/*
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li:after {
+    
+  font-family: FontAwesome;
+  content: "\f054";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+}*/
+
+
+.nav-side-menu .sub-menu>li>a {
+    position:relative;
+   display: block;
 }
