@@ -1,7 +1,4 @@
-
-{{>headerProfile}}
-
-
+ {{>headerProfile}}
 <style>
 	.form-group {
 		margin: 0 0 0 0 !important;
@@ -19,17 +16,17 @@
 					<fieldset>
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h3 class="panel-title">Form Validasi  </h3>
+								<h3 class="panel-title">Form Validasi </h3>
 							</div>
 							<div class="panel-body">
 								<div class="col-md-12">
-									<legend class="control-label">* Data Pemesan</legend>
+									<legend class="control-label">* Data Email Utama</legend>
 								</div>
 								<div class="col-md-4 ">
 									<div class="form-group ">
 										<label class="control-label" for="">Nama </label>
 										<div class="form-input">
-											<input class="form-control" type="text" name="namaUtama" value="{{emailUtama.nm_pembeli}}">
+											<input class="form-control" type="text" name="namaUtama" value="{{emailUtama.nm_pembeli}}" readonly>
 										</div>
 									</div>
 								</div>
@@ -37,19 +34,11 @@
 									<div class="form-group ">
 										<label class="control-label" for="">Email</label>
 										<div class="form-input">
-											<input class="form-control" type="text" name="emailUtama" value="{{emailUtama.email_pembeli}}">
+											<input class="form-control" type="text" name="emailUtama" value="{{emailUtama.email_pembeli}}" readonly>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-4">
-									<div class="form-group ">
-										<label class="control-label" for="">No Handphone</label>
-										<div class="form-input">
-											<input class="form-control" type="text" name="hpUtama" value="{{emailUtama.hp_pembeli}}">
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 col-md-offset-1">
+								<div class="col-md-4 ">
 									<div class="form-group has-warning ">
 										<label class="control-label" for="inputWarning">Jenis Tiket</label>
 										<div class="form-input">
@@ -57,12 +46,24 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-md-10 ">
+									<div class="form-group ">
+										<label class="control-label" for="">Pilih Bank </label>
+										<div class="col-md-8 input-group">
+											<select id="selectHarga" name="namaJenis" class="form-control">
+                    
+                    <option value="1">BCA - NO REKENING 98080986643 - Faisal Arkan</option>
+                    <option value="2">BNI - NO REKENING 98080647381 - Zio Zeng </option>
+                    <option value="3">BRI - NO REKENING 78787878741 - Sativa Ken</option>
+                    
+                  </select>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- orang 2 -->
 						<!-- Orang Sekunder -->
-					
-					
 						<div class="col-md-offset-9">
 							<button type="submit" class="btn btn-raised btn-info">Kirim Tiket Validasi</button>
 							<!-- Orang Ke 3 -->
@@ -70,7 +71,6 @@
 						<br>
 						<br>
 						<br>
-						
 					</fieldset>
 				</form>
 			</div>
@@ -82,8 +82,4 @@
 </body>
 
 </html>
-
-
-
-
 {{>footer}}

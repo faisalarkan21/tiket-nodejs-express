@@ -730,39 +730,77 @@ exports.validasiPost = function (req, res) {
 
 
 
-exports.tiket = function (req,res){
+exports.tiket = function (req, res) {
+
+
+        var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
+
+                    if (err) {
+                        console.log(err);
+                        return next("Error Query Level 1, Pembeli ");
+                    }
+                
+
+        var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
+
+
+                if (err) {
+                    console.log(err);
+                    return next("Error Query Level 2, Detail");
+                }
+
+                var tiketKeterangan;
+
+                    if (detail[0].jenis_tk == "TK01") {
+
+                        tiketKeterangan = "TK01 - TIKET PREMIUM";
+
+                    } else if (detail[0].jenis_tk == "TK02") {
+
+                        tiketKeterangan = "TK02 - TIKET GOLD";
+
+                    } else {
+
+                        tiketKeterangan = "TK03 - TIKET SILVER";
+
+                    }
+
+
+                    res.render("user/halamanUser/validasitiket", {
+                        nama: req.session.namaSession,
+                        emailUtama: pembeli[0],
+                        tiket: tiketKeterangan
+                    });
+
+        });
+        });
+
+
+    }
 
 
 
-        res.render("user/halamanUser/validasitiket", {nama:req.session.namaSession});
+
+                exports.keluar = function (req, res) {
+
+
+                    req.session.destroy();
+
+
+                    res.redirect('/');
+
+
+                };
+
+
+                exports.cobaGet = function (req, res) {
+
+
+                    res.render("dev");
+
+
+                }
 
 
 
-}
-
-
-
-
-exports.keluar = function (req, res) {
-
-
-    req.session.destroy();
-
-
-    res.redirect('/');
-
-
-};
-
-
-exports.cobaGet = function (req, res) {
-
-
-    res.render("dev");
-
-
-}
-
-
-
-// dev
+                // dev
