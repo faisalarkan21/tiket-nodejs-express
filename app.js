@@ -203,6 +203,8 @@ app.post('/mendaftar', users.mendaftar);
 app.get('/user/data',pengamananUser, users.validasi);
 app.post('/user/data',pengamananUser , users.validasiPost);
 
+app.get('/user/ketentuan', pengamananUser,users.ketentuan);
+
 // validasi tiket
 app.get('/user/validasi',pengamananUser, users.tiket);
 

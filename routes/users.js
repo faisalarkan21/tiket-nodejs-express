@@ -179,6 +179,7 @@ exports.membuktikan = function (req, res, next) {
 
             req.session.namaSession = data[0].email_pembeli;
             req.session.nomor_pembeli = data[0].id_pembeli;
+            req.session.namaPembeli = data[0].nm_pembeli;
             res.redirect('profile');
 
 
@@ -232,11 +233,21 @@ exports.membuktikan = function (req, res, next) {
 exports.profile = function (req, res) {
 
 
+   var query = connection.query("select * from pembeli where email_pembeli = ? ", req.session.namaSession, function (err, data) {
+
+
+
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+
     res.render("user/halamanUser/profile", {
-        nama: req.session.namaSession
+        nama: req.session.namaSession,
+        namaPembeli : data[0].nm_pembeli
     });
 
-
+   });
 }
 
 exports.validasi = function (req, res) {
@@ -727,6 +738,15 @@ exports.validasiPost = function (req, res) {
 
 }
 
+
+exports.ketentuan = function (req,res){
+
+
+        res.render('user/halamanUser/ketentuan');
+
+
+
+};
 
 
 

@@ -1,7 +1,7 @@
 body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   background-color: white;
-  padding-top: 60px;
+  padding-top: 50px;
   margin: 0;
   /*background-color: #B0BEC5 !important;*/
 }
@@ -381,7 +381,7 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   background-color: #151E23;
   position: fixed;
   top: 60px;
-  width: 280px;
+  width: 250px;
   height: 100%;
   color: #CFD8DC;
   
@@ -539,7 +539,7 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding-left: 350px;
+  padding-left: 290px;
 }
 
 
@@ -579,4 +579,24 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 .nav-side-menu .sub-menu>li>a {
     position:relative;
    display: block;
+}
+
+label {
+  color: #151E23 !important;
+}
+
+#panduan {
+  font-size: 16px;
+}
+
+#bank {
+  font-size: 14px;
+}
+
+
+code {
+
+  background-color: #ECEFF1 !important;
+  color: #01579B !important;
+
 }
