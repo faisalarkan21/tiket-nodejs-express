@@ -1,71 +1,103 @@
 <footer>
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript" src="/material/js/ripples.min.js"></script>
+    <script type="text/javascript" src="/material/js/material.min.js"></script>
+    <script type="text/javascript" src="/full-page/jquery.fullpage.extensions.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
 
 
 
 
-  <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+            //    $('#preload2').fadeIn(7000);
 
-  <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"> </script>
+            $('#coba').click(function () {
 
+                alert("asasaas");
 
-  <script type="text/javascript" src="/material/js/ripples.min.js"></script>
+            })
 
-  <script type="text/javascript" src="/material/js/material.min.js"></script>
-
-  
-
+        });
 
 
-  <script>
-	
-
-  
-	$( document ).ready(function(){
-    $(function() 
-    {
-        $.material.init();
-    });
-});
+        $(document).ready(function () {
+            $(function () {
+                $.material.init();
+            });
+        });
 
 
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                navigation: true,
+                navigationPosition: 'right',
+                // navigationTooltips: ['slide1', 'slide2'],
+                showActiveTooltip: false,
+                slidesNavigation: true,
+                slidesNavPosition: 'bottom',
+                lazyLoading: true,
+                loopBottom: true,
+                fadingEffect: true,
+                dragAndMove: true,
+                afterRender: function () {
+                    setInterval(function () {
 
+                        $.fn.fullpage.moveSlideRight();
 
+                    }, 4000);
 
+                  
+                },
 
+                afterLoad: function (anchorLink, index) {
+                    $('.preload').fadeIn(1000);
+                    $('.hilang').fadeIn(1000);
 
+                },
+                afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
 
-</script>
+                    // alert("masuk");
+                    $('.preload').fadeIn(600);
+                    
 
+                },
+                onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) {
 
-  <script>
-
-
-// $(document).on("click","#masuk",function() {
-
-// var coba = tinyMCE.activeEditor.getContent({format : 'text'});
- 
-// alert(coba);
-
-
-// $("#isiPosting").submit( function () {    
-//     $.ajax({   
-//         type: "POST",
-//         data :,
-//         cache: false,  
-//         url: "addpost.html",   
-//         success: function(data){
-//             $("# ").html(data);                       
-//         }   
-//     });   
-//     return false;   
-// });
-
-// });
-
-
-
-</script>
+                    $('.preload').hide();
+                   
+                    // alert("keluar")
+                     
+                }
 
 
 
+            });
+        });
+    </script>
+    <script>
+        // $(document).on("click","#masuk",function() {
+
+        // var coba = tinyMCE.activeEditor.getContent({format : 'text'});
+
+        // alert(coba);
+
+
+        // $("#isiPosting").submit( function () {    
+        //     $.ajax({   
+        //         type: "POST",
+        //         data :,
+        //         cache: false,  
+        //         url: "addpost.html",   
+        //         success: function(data){
+        //             $("# ").html(data);                       
+        //         }   
+        //     });   
+        //     return false;   
+        // });
+
+        // });
+    </script>
 </footer>

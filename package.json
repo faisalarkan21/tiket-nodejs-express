@@ -14,6 +14,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.1",
     "font-awesome": "^4.7.0",
+    "fullpage.js": "^2.9.2",
     "handlebars": "^4.0.5",
     "hbs": "~3.1.0",
     "jquery": "^3.1.0",

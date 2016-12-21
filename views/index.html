@@ -1,38 +1,40 @@
  {{> header }}
-
-
-
-<div class="posting col-md-8 col-md-offset-1">
-    {{#each data}}
-    <div id="jarak">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-
-
-                <h3 id="judul" class="panel-title">{{this.judul}}</h3>
-
+<div id="fullpage">
+    <div class="section">
+        <div id="pic1" class="slide hilang" data-anchor="slide1">
+            <div id="judul1" class="preload col-md-8 col-md-offset-1">
+                <h1 class="judulSlider">E-Tiket Online</h1>
+                <label for="">Dapatkan Tiket Konser yang ada inginkanl, dengan memesan secara online !.</label> <br>
+                <label for="">Pesan Sekarang !</label> <br>
+                <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
             </div>
-
-            <div id="artikel" class="panel-body">
-
-                {{{this.artikel}}}
-                
-            </div>
-
         </div>
-
-        {{/each}}
-
+        <div id="pic2" class="slide hilang" data-anchor="slide2">
+            <div id="judul2" class="preload col-md-8 col-md-offset-1 judul3">
+                <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
+                <label class="judul3" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
+                <label class="judul3" for="">Liburan Bersama Keluarga Anda</label> <br>
+                <a class="btn btn-raised btn-info" href="">Daftar</a>
+            </div>
+        </div>
+        <div id="pic3" class="slide hilang" data-anchor="slide3">
+            <div id="judul3" class="preload judul3 col-md-8 col-md-offset-1">
+                <h1 class="judulSlider judul3">Percayakan Kepada Kami.</h1>
+                <label class="judul3" for="">Untuk Kenyamanan Liburan Keluarga Anda.</label> <br>
+                <label class="judul3" for="">Dengan Jasa Kami.</label> <br>
+                <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
+            </div>
+        </div>
     </div>
+    <div class="section">
+        <h1> Makan Pete</h1>
+        <a class="btn btn-default" id="coba" href="#">Makan Uhuy</a>
+    </div>
+    {{>footer}}
+    <script>
+        $(document).ready(function () {
 
+            // $("#artikel").html("Hello <b>world!</b>");
 
-
-
-{{>footer}}
-<script>
-$(document).ready(function(){
-   
-        // $("#artikel").html("Hello <b>world!</b>");
-    
-});
-</script>
+        });
+    </script>

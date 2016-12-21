@@ -11,11 +11,9 @@ body {
   src: url('/font/Cabin/Cabin-Regular.ttf');
 }
 
-
-
-
 form.daftar,
 h1.judul,
+h1.judulSlider,
 #titleDaftar,
 li,
 ul,
@@ -38,7 +36,7 @@ form.text-center {}
 
 form.daftar {
   margin: 0 auto;
-  width: 100% ;
+  width: 100%;
 }
 
 .login {
@@ -149,11 +147,7 @@ Dev Area */
 */
 
 
-
 /* Toggle Styles */
-
-
-
 
 
 /* Sidebar Styles */
@@ -295,7 +289,6 @@ dev
   color: black;
 }
 
-
 .bg {
   position: fixed;
   z-index: -1;
@@ -340,33 +333,26 @@ dev
     color: #009688 !important;
 }*/
 
-
-
 .navbar.navbar-inverse {
-
-  background-color: #121A1F  !important;
+  background-color: #121A1F !important;
   color: #CFD8DC !important;
-
 }
 
-.navbar.navbar-inverse .dropdown-menu li>a:focus, .navbar.navbar-inverse .dropdown-menu li>a:hover {
-
-  color:  #263238 !important;
-
+.navbar.navbar-inverse .dropdown-menu li>a:focus,
+.navbar.navbar-inverse .dropdown-menu li>a:hover {
+  color: #263238 !important;
 }
+
 
 /* dev level 2 */
 
 ul.nav li.dropdown:hover>ul.dropdown-menu {
   display: block;
   margin: 0;
-  
 }
 
 #menu-content ul {
-  
   color: #CFD8DC;
-  
 }
 
 
@@ -375,7 +361,6 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 .nav-side-menu {
   z-index: 2;
   overflow: auto;
-
   font-size: 13.3px;
   font-weight: 200;
   background-color: #151E23;
@@ -384,7 +369,6 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   width: 250px;
   height: 100%;
   color: #CFD8DC;
-  
 }
 
 .nav-side-menu .brand {
@@ -406,9 +390,6 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
- 
-
-
   /*    
     .collapsed{
        .arrow:before{
@@ -433,10 +414,7 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   padding-right: 10px;
   vertical-align: middle;
   float: right;
-  
 }
-
-
 
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
@@ -445,19 +423,17 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
 
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
-  
   color: #CFD8DC;
 }
 
 .nav-side-menu ul .sub-menu li,
 .nav-side-menu li .sub-menu li {
-
-  background-color: #1B272D;      /* anak menu */
+  background-color: #1B272D;
+  /* anak menu */
   border: none;
   line-height: 28px;
   border-bottom: 1px solid #23282e;
   margin-left: 0px;
-     
 }
 
 .nav-side-menu ul .sub-menu li:hover,
@@ -465,42 +441,35 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   background-color: #37474F;
 }
 
-
-
 .nav-side-menu li {
   padding-left: 0px;
- 
   border-left: 3px solid #37474F;
   border-bottom: 1px solid #23282e;
-
 }
 
 .nav-side-menu li a {
   text-decoration: none;
-  color: #CFD8DC;    /* Warna Icons */
+  color: #CFD8DC;
+  /* Warna Icons */
 }
 
 .nav-side-menu li a i {
   padding-left: 10px;
   width: 20px;
   padding-right: 28px;
-  
 }
 
 .nav-side-menu li:hover {
-  border-left: 3px solid #455A64;    /* Border Kanan */
-  background-color: #263238;       /* Hover */
-  -webkit-transition: all 1s ease; 
+  border-left: 3px solid #455A64;
+  /* Border Kanan */
+  background-color: #263238;
+  /* Hover */
+  -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
-  
 }
-
-
-
-
 
 @media (max-width: 767px) {
   .nav-side-menu {
@@ -535,33 +504,22 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   }
 }
 
-
 #page-content-wrapper {
   width: 100%;
   position: absolute;
   padding-left: 290px;
 }
 
-
 .panel-heading {
-
-  background-color: #151E23  !important;
-
+  background-color: #151E23 !important;
 }
-
 
 .btn {
-
   background-color: #151E23 !important;
-
 }
 
+.menu-list i ul li a {}
 
-.menu-list i ul li a {
-
-
-
-}
 
 /*
 .nav-side-menu ul .sub-menu li,
@@ -575,10 +533,9 @@ ul.nav li.dropdown:hover>ul.dropdown-menu {
   vertical-align: middle;
 }*/
 
-
 .nav-side-menu .sub-menu>li>a {
-    position:relative;
-   display: block;
+  position: relative;
+  display: block;
 }
 
 label {
@@ -593,10 +550,102 @@ label {
   font-size: 14px;
 }
 
-
 code {
-
   background-color: #ECEFF1 !important;
   color: #01579B !important;
-
 }
+
+
+/*
+ 
+ Slider broh
+
+ */
+
+#pic1 {
+  background-image: url("../images/tiket4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 40px;
+  display: none;
+}
+
+#pic2 {
+  background-image: url("../images/tiket7.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -40px;
+  display: none;
+}
+
+#pic3 {
+  background-image: url("../images/tiket8.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 40px;
+  display: none;
+}
+
+
+/*
+ 
+ Slider Panah
+
+ */
+
+.fp-controlArrow.fp-prev {
+  width: 100px !important;
+  height: 100px;
+  background: url("../images/left-arrow.png") no-repeat !important;
+  border-color: transparent !important;
+  vertical-align: middle;
+}
+
+.fp-controlArrow.fp-next {
+  width: 100px !important;
+  height: 100px;
+  background: url("../images/right-arrow.png") no-repeat !important;
+  border-color: transparent !important;
+  vertical-align: middle;
+}
+
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span {
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  background: black;
+  box-sizing: border-box;
+  border: 1px solid #24221F;
+}
+
+
+/*Buat ngilangin Tulisan*/
+
+.preload {
+  display: none;
+}
+
+#judul1 {
+  padding-bottom: 230px;
+}
+
+#judul2 {
+  padding-bottom: 220px;
+}
+
+#judul3 {
+  padding-bottom: 220px;
+}
+
+.judul3 {
+  color: #ffffff !important;
+}
+
+h1.judulSlider {
+  color: #121A1F;
+}
+
+.hilang {}

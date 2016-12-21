@@ -94,6 +94,7 @@ app.use('/jquery', express.static(__dirname+'/node_modules/jquery/dist/'));
 app.use('/handlebars', express.static(__dirname+'/node_modules/handlebars/dist/'));
 app.use('/font-material', express.static(__dirname+'/node_modules/material-design-icons/iconfont/'));
 app.use('/font-awesome', express.static(__dirname+'/node_modules/font-awesome/'));
+app.use('/full-page', express.static(__dirname+'/node_modules/fullpage.js/dist/'));
 
 
 
