@@ -7,75 +7,7 @@
     <script type="text/javascript" src="/full-page/jquery.fullpage.extensions.min.js">
     </script>
     <script>
-        $(document).ready(function () {
-
-
-
-
-            //    $('#preload2').fadeIn(7000);
-
-            $('#coba').click(function () {
-
-                alert("asasaas");
-
-            })
-
-        });
-
-
-        $(document).ready(function () {
-            $(function () {
-                $.material.init();
-            });
-        });
-
-
-        $(document).ready(function () {
-            $('#fullpage').fullpage({
-                navigation: true,
-                navigationPosition: 'right',
-                // navigationTooltips: ['slide1', 'slide2'],
-                showActiveTooltip: false,
-                slidesNavigation: true,
-                slidesNavPosition: 'bottom',
-                lazyLoading: true,
-                loopBottom: true,
-                fadingEffect: true,
-                dragAndMove: true,
-                afterRender: function () {
-                    setInterval(function () {
-
-                        $.fn.fullpage.moveSlideRight();
-
-                    }, 4000);
-
-                  
-                },
-
-                afterLoad: function (anchorLink, index) {
-                    $('.preload').fadeIn(1000);
-                    $('.hilang').fadeIn(1000);
-
-                },
-                afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
-
-                    // alert("masuk");
-                    $('.preload').fadeIn(600);
-                    
-
-                },
-                onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) {
-
-                    $('.preload').hide();
-                   
-                    // alert("keluar")
-                     
-                }
-
-
-
-            });
-        });
+      
     </script>
     <script>
         // $(document).on("click","#masuk",function() {

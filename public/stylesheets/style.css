@@ -15,6 +15,7 @@ form.daftar,
 h1.judul,
 h1.judulSlider,
 #titleDaftar,
+h1.dipercaya,
 li,
 ul,
 a,
@@ -69,8 +70,8 @@ textarea {
 html {
   margin: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  /*display: block;*/
 }
 
 
@@ -586,6 +587,14 @@ code {
   display: none;
 }
 
+#picScroll2 {
+  background-image: url("../images/tiket10.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 40px;
+  background-position-x: 160px;
+}
+
 
 /*
  
@@ -648,4 +657,24 @@ h1.judulSlider {
   color: #121A1F;
 }
 
-.hilang {}
+.section {
+
+  background-color: #000000;
+ 
+
+}
+
+.dipercaya {
+
+  color: white !important;
+  align-content: top;
+  padding-left: 30px;
+
+
+}
+
+.hitungPercaya{
+
+  
+
+}

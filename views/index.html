@@ -1,10 +1,10 @@
  {{> header }}
 <div id="fullpage">
-    <div class="section">
+    <div data-anchor="scroll1" class="section">
         <div id="pic1" class="slide hilang" data-anchor="slide1">
             <div id="judul1" class="preload col-md-12 col-md-offset-1">
                 <h1 class="judulSlider ">E-Tiket Online</h1>
-                <label for="">Dapatkan Tiket Konser yang ada inginkanl, dengan memesan secara online !.</label> <br>
+                <label for="">Dapatkan Tiket Konser yang ada inginkan, dengan memesan secara online !.</label> <br>
                 <label for="">Pesan Sekarang !</label> <br>
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
             </div>
@@ -26,15 +26,104 @@
             </div>
         </div>
     </div>
-    <div class="section">
-        <h1> Makan Pete</h1>
-        <a class="btn btn-default" id="coba" href="#">Makan Uhuy</a>
+    <div data-anchor="scroll2" id="picScroll2" class="section">
+        <div class="col-md-8">
+            <h1 class="dipercaya">Kami Telah Dipercaya Oleh </h1>
+            <label hidden class="hitungPercaya " for="">200</label>
+        </div>
     </div>
     {{>footer}}
     <script>
         $(document).ready(function () {
 
-            // $("#artikel").html("Hello <b>world!</b>");
 
+
+
+            //    $('#preload2').fadeIn(7000);
+
+            $('#coba').click(function () {
+
+                alert("asasaas");
+
+            })
+
+        });
+
+
+        $(document).ready(function () {
+            $(function () {
+                $.material.init();
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+
+                anchors: ['scroll1', 'scroll2'],
+
+                navigation: true,
+                navigationPosition: 'right',
+                // navigationTooltips: ['slide1', 'slide2'],
+                showActiveTooltip: false,
+                slidesNavigation: true,
+                slidesNavPosition: 'bottom',
+                lazyLoading: true,
+                loopBottom: true,
+                fadingEffect: true,
+                dragAndMove: true,
+                afterRender: function () {
+                    setInterval(function () {
+
+                        $.fn.fullpage.moveSlideRight();
+
+                    }, 4000);
+
+
+
+                },
+
+                afterLoad: function (anchorLink, index) {
+                    $('.preload').fadeIn(1000);
+                    $('.hilang').fadeIn(1000);
+
+                    if (index == 2) {
+                        $('.hitungPercaya').fadeIn(300);
+                        $(".hitungPercaya").each(function () {
+                            $(this).prop('Counter', 0).animate({
+                                Counter: $(this).text()
+                            }, {
+
+                                duration: 4000,
+                                easing: 'swing',
+                                step: function (now) {
+                                    $(this).text(Math.ceil(now));
+                                }
+
+                            })
+                        });
+
+
+                    }
+
+                },
+                afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+
+                    // alert("masuk");
+                    $('.preload').fadeIn(600);
+
+
+                },
+                onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) {
+
+                    $('.preload').hide();
+
+                    // alert("keluar")
+
+                }
+
+
+
+            });
         });
     </script>
