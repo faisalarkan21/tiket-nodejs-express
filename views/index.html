@@ -4,40 +4,56 @@
         <div id="pic2" class="slide hilang" data-anchor="slide1">
             <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
                 <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
-                <label class="judul3" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
-                <label class="judul3" for="">Liburan Bersama Keluarga Anda</label> <br>
+                <label class="judul3 size" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
+                <label class="judul3 size" for="">Liburan Bersama Keluarga Anda</label> <br>
                 <a class="btn btn-raised btn-info" href="">Daftar</a>
+            </div>
+            <div class="gear">
+                <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw"></i>
             </div>
         </div>
         <div id="pic1" class="slide hilang" data-anchor="slide4">
             <div id="judul1" class="preload col-md-12 col-md-offset-1">
                 <h1 class="judulSlider ">E-Tiket Online</h1>
-                <label for="">Dapatkan Tiket Konser yang ada inginkan, dengan memesan secara online !.</label> <br>
-                <label for="">Pesan Sekarang !</label> <br>
+                <label class="size" for="">Dapatkan Tiket Konser yang ada inginkan, dengan memesan secara online !.</label>                <br>
+                <label class="size" for="">Pesan Sekarang !</label> <br>
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
+              
+            </div>
+             <div class="gear">
+                <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw"></i>
             </div>
         </div>
         <div id="pic3" class="slide hilang" data-anchor="slide3">
-            <div id="judul3" class="preload judul3 col-md-12 col-md-offset-1">
+            <div id="judul3" class="preload judul3 col-md-12 ">
                 <h1 class="judulSlider judul3">Percayakan Kepada Kami.</h1>
-                <label class="judul3" for="">Untuk Kenyamanan Liburan Keluarga Anda.</label> <br>
-                <label class="judul3" for="">Dengan Jasa Kami.</label> <br>
+                <label class="judul3 size" for="">Untuk Kenyamanan Liburan Keluarga Anda.</label> <br>
+                <label class="judul3 size" for="">Dengan Jasa Kami.</label> <br>
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
+                
+            </div>
+             <div class="gear">
+                <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw"></i>
             </div>
         </div>
     </div>
     <div data-anchor="scroll2" id="picScroll2" class="section">
         <div class="col-md-8 hitung">
-            <h1 hidden class="dipercaya">Total Jumlah Tiket Terjual </h1>
+            <h1 hidden class="dipercaya"> Total Jumlah Tiket Terjual </h1>
+             <i class="fa fa-ticket fa-4x  fa-pull-left fa-border" aria-hidden="true"></i>
             <label class="hitungPercaya" hidden for="">92342</label>
+            <br>
+            <br>
+           
             <h1 hidden class="dipercaya">Jumlah Tiket Tersisa </h1>
+            <i class="fa fa-rocket fa-4x  fa-pull-left fa-border" aria-hidden="true"></i>
+
             <label class="hitungPercaya" hidden for="">3239</label>
-            
         </div>
     </div>
     <div data-anchor="scroll3" id="picScroll3" class="section">
         <div class="col-md-8 pilihTiket">
-            <h1 hidden class="tiket">Pilih Jenis Tiket Untuk Anda </h1>
+            <h1 hidden class="tiket judul3 ">Pilih Jenis Tiket Untuk Anda </h1>
         </div>
     </div>
     {{>footer}}
@@ -81,7 +97,7 @@
 
                         $.fn.fullpage.moveSlideRight();
 
-                    }, 4000);
+                    }, 1999000);
 
 
 
@@ -94,7 +110,7 @@
                     if (index == 2) {
                         $(".hitungPercaya").show();
                         $(".dipercaya").fadeIn(400);
-                        
+
                         $(".hitungPercaya").each(function () {
                             $(this).prop('Counter', 0).animate({
 
@@ -110,9 +126,19 @@
                             })
 
                         });
+                    } // akhir index 2
 
+                    if (index == 3) {
 
+                        $(".tiket").fadeIn({
+                            queue: false,
+                            duration: "slow"
+                        });
 
+                        $(".tiket").animate({
+                            marginLeft: "100px",
+
+                        }, "slow");
 
                     }
 

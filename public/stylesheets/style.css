@@ -9,13 +9,16 @@ body {
 @font-face {
   font-family: Cabin;
   src: url('/font/Cabin/Cabin-Regular.ttf');
+  
 }
+/*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');*/
 
 form.daftar,
 h1.judul,
 h1.judulSlider,
 #titleDaftar,
 h1.dipercaya,
+h1.judul3,
 li,
 ul,
 a,
@@ -121,7 +124,7 @@ span.bigStat {
 }
 
 
-/*
+/*asas
 .headerTable{
 
   text-align: center;
@@ -646,24 +649,37 @@ code {
 }
 
 #judul1 {
-  padding-bottom: 230px;
+  padding-top: 53px;
 }
 
 #judul2 {
-  padding-bottom: 220px;
+ 
+  padding-top: 59px;
 }
 
 #judul3 {
-  padding-bottom: 220px;
+  padding-top: 55px;
+  padding-left: 70px !important;
+  
 }
 
 .judul3 {
   color: #ffffff !important;
+  
 }
 
 h1.judulSlider {
   color: #121A1F;
 }
+
+
+label.size {
+
+  font-size: 20px;
+
+}
+
+
 
 .section {
   background-color: #000000;
@@ -671,13 +687,15 @@ h1.judulSlider {
 
 .hitung {
   color: white !important;
-  padding-bottom: 90px;
+  padding-bottom: 120px;
   padding-left: 60px !important;
+  font-family: "Doppio One";
+
 }
 
 .hitungPercaya {
   color: white !important;
-  font-size: 60px;
+  font-size: 50px;
   padding-left: 30px;
 }
 
@@ -687,6 +705,26 @@ h1.judulSlider {
 
 .pilihTiket {
   padding-bottom: 280px;
-  padding-left: 90px !important;
+  /*padding-left: 90px !important;*/
   color: white !important;
+}
+
+.tiket{
+
+  padding-bottom: 30px;
+
+}
+
+
+.gear {
+  
+  padding-left:1100px; 
+  padding-top: 500px;
+
+}
+
+.dipercaya {
+
+  padding-bottom: 10px;
+
 }
