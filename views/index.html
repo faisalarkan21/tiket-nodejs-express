@@ -1,11 +1,10 @@
  {{> header }}
 <div id="fullpage">
     <div data-anchor="scroll1" class="section">
-          <div id="pic2" class="slide hilang" data-anchor="slide1">
+        <div id="pic2" class="slide hilang" data-anchor="slide1">
             <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
                 <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
                 <label class="judul3" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
-   
                 <label class="judul3" for="">Liburan Bersama Keluarga Anda</label> <br>
                 <a class="btn btn-raised btn-info" href="">Daftar</a>
             </div>
@@ -18,7 +17,6 @@
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
             </div>
         </div>
-      
         <div id="pic3" class="slide hilang" data-anchor="slide3">
             <div id="judul3" class="preload judul3 col-md-12 col-md-offset-1">
                 <h1 class="judulSlider judul3">Percayakan Kepada Kami.</h1>
@@ -30,9 +28,16 @@
     </div>
     <div data-anchor="scroll2" id="picScroll2" class="section">
         <div class="col-md-8 hitung">
-            <h1 class="dipercaya">Jumlah Tiket Terjual </h1>
-            <span  class="hitungPercaya" hidden for="">400</span>
+            <h1 hidden class="dipercaya">Total Jumlah Tiket Terjual </h1>
+            <label class="hitungPercaya" hidden for="">92342</label>
+            <h1 hidden class="dipercaya">Jumlah Tiket Tersisa </h1>
+            <label class="hitungPercaya" hidden for="">3239</label>
             
+        </div>
+    </div>
+    <div data-anchor="scroll3" id="picScroll3" class="section">
+        <div class="col-md-8 pilihTiket">
+            <h1 hidden class="tiket">Pilih Jenis Tiket Untuk Anda </h1>
         </div>
     </div>
     {{>footer}}
@@ -53,13 +58,13 @@
         });
 
 
-      
+
 
 
         $(document).ready(function () {
             $('#fullpage').fullpage({
 
-                anchors: ['scroll1', 'scroll2'],
+                anchors: ['scroll1', 'scroll2', 'scroll3'],
 
                 navigation: true,
                 navigationPosition: 'right',
@@ -88,9 +93,11 @@
 
                     if (index == 2) {
                         $(".hitungPercaya").show();
+                        $(".dipercaya").fadeIn(400);
+                        
                         $(".hitungPercaya").each(function () {
                             $(this).prop('Counter', 0).animate({
-                           
+
                                 Counter: $(this).text()
                             }, {
 
@@ -101,9 +108,10 @@
                                 }
 
                             })
+
                         });
 
-                        
+
 
 
                     }
