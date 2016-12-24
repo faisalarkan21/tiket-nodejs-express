@@ -664,17 +664,19 @@ h1.judulSlider {
 
 }
 
-.dipercaya {
+.hitung {
 
   color: white !important;
-  align-content: top;
-  padding-left: 30px;
+  padding-bottom: 190px;
+  padding-left: 60px  !important;
 
 
 }
 
 .hitungPercaya{
 
-  
+ 
+  color: white !important;
+  font-size: 40px;
 
 }

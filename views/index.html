@@ -1,7 +1,16 @@
  {{> header }}
 <div id="fullpage">
     <div data-anchor="scroll1" class="section">
-        <div id="pic1" class="slide hilang" data-anchor="slide1">
+          <div id="pic2" class="slide hilang" data-anchor="slide1">
+            <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
+                <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
+                <label class="judul3" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
+   
+                <label class="judul3" for="">Liburan Bersama Keluarga Anda</label> <br>
+                <a class="btn btn-raised btn-info" href="">Daftar</a>
+            </div>
+        </div>
+        <div id="pic1" class="slide hilang" data-anchor="slide4">
             <div id="judul1" class="preload col-md-12 col-md-offset-1">
                 <h1 class="judulSlider ">E-Tiket Online</h1>
                 <label for="">Dapatkan Tiket Konser yang ada inginkan, dengan memesan secara online !.</label> <br>
@@ -9,14 +18,7 @@
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
             </div>
         </div>
-        <div id="pic2" class="slide hilang" data-anchor="slide2">
-            <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
-                <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
-                <label class="judul3" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
-                <label class="judul3" for="">Liburan Bersama Keluarga Anda</label> <br>
-                <a class="btn btn-raised btn-info" href="">Daftar</a>
-            </div>
-        </div>
+      
         <div id="pic3" class="slide hilang" data-anchor="slide3">
             <div id="judul3" class="preload judul3 col-md-12 col-md-offset-1">
                 <h1 class="judulSlider judul3">Percayakan Kepada Kami.</h1>
@@ -27,9 +29,10 @@
         </div>
     </div>
     <div data-anchor="scroll2" id="picScroll2" class="section">
-        <div class="col-md-8">
-            <h1 class="dipercaya">Kami Telah Dipercaya Oleh </h1>
-            <label hidden class="hitungPercaya " for="">200</label>
+        <div class="col-md-8 hitung">
+            <h1 class="dipercaya">Jumlah Tiket Terjual </h1>
+            <span  class="hitungPercaya" hidden for="">400</span>
+            
         </div>
     </div>
     {{>footer}}
@@ -88,9 +91,10 @@
                     $('.hilang').fadeIn(1000);
 
                     if (index == 2) {
-                        $('.hitungPercaya').fadeIn(300);
+                        $(".hitungPercaya").show();
                         $(".hitungPercaya").each(function () {
                             $(this).prop('Counter', 0).animate({
+                           
                                 Counter: $(this).text()
                             }, {
 
@@ -102,6 +106,8 @@
 
                             })
                         });
+
+                        
 
 
                     }
