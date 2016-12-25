@@ -9,8 +9,9 @@ body {
 @font-face {
   font-family: Cabin;
   src: url('/font/Cabin/Cabin-Regular.ttf');
-  
 }
+
+
 /*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');*/
 
 form.daftar,
@@ -606,6 +607,16 @@ code {
   /*background-position-x: 160px;*/
 }
 
+#picScroll4  {
+
+  background-image: url("../images/footer.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -50px;
+  /*background-position-x: 160px;*/
+
+}
+
 
 /*
  
@@ -653,33 +664,25 @@ code {
 }
 
 #judul2 {
- 
   padding-top: 59px;
 }
 
 #judul3 {
   padding-top: 55px;
   padding-left: 70px !important;
-  
 }
 
 .judul3 {
   color: #ffffff !important;
-  
 }
 
 h1.judulSlider {
   color: #121A1F;
 }
 
-
 label.size {
-
   font-size: 20px;
-
 }
-
-
 
 .section {
   background-color: #000000;
@@ -690,7 +693,6 @@ label.size {
   padding-bottom: 120px;
   padding-left: 60px !important;
   font-family: "Doppio One";
-
 }
 
 .hitungPercaya {
@@ -704,27 +706,102 @@ label.size {
 }
 
 .pilihTiket {
-  padding-bottom: 280px;
+  padding-bottom: 60px;
   /*padding-left: 90px !important;*/
   color: white !important;
 }
 
-.tiket{
-
+.tiket {
   padding-bottom: 30px;
-
+  font-size: 45px;  
 }
 
-
 .gear {
-  
-  padding-left:1100px; 
+  padding-left: 1100px;
   padding-top: 500px;
-
 }
 
 .dipercaya {
-
   padding-bottom: 10px;
+}
+
+.tipeTiket {
+  font-size: 40px;
+  color: white !important;
+  display: block;
+  text-align: center !important;
+}
+
+.form-harga {
+  text-align: center !important;
+  padding-left: 100px;
+  display: none;
+}
+
+.garisTiket {
+  width: 90%;
+  color: white;
+}
+
+.lineSlider {
+  width: 90%;
+}
+
+.harga {
+  color: white !important;
+  font-size: 18px;
+
+}
+
+i.fa-ticket {
+  display: block;
+}
+
+.lokasi {
+  color: white !important;
+  text-align: center !important;
+}
+
+.duit {
+
+  font-size: 23px;
+
+}
+i.premium{
+
+  color: #6D4C41;
+
+}
+
+i.gold{
+
+  color: #FFC107;
+
+}
+
+i.silver {
+
+  color: #9E9E9E;
+
+}
+
+
+.lokasi {
+  color: white;
+  padding-bottom: 30px;
+
+
+
+}
+
+.namaJalan {
+
+  font-size: 20px;
+
+}
+
+#mapKonser {
+
+ 
 
 }

@@ -6,6 +6,7 @@
                 <h1 class="judulSlider judul3">Kenyamanan Dalam Memesan Tiket</h1>
                 <label class="judul3 size" for="">Pilih Jenis tiket yang anda inginkan dengan tiga jenis pilihan dengan harga yang sangat terjangkau.</label>                <br>
                 <label class="judul3 size" for="">Liburan Bersama Keluarga Anda</label> <br>
+                <br>
                 <a class="btn btn-raised btn-info" href="">Daftar</a>
             </div>
             <div class="gear">
@@ -17,10 +18,10 @@
                 <h1 class="judulSlider ">E-Tiket Online</h1>
                 <label class="size" for="">Dapatkan Tiket Konser yang ada inginkan, dengan memesan secara online !.</label>                <br>
                 <label class="size" for="">Pesan Sekarang !</label> <br>
+                <br>
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
-              
             </div>
-             <div class="gear">
+            <div class="gear">
                 <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw"></i>
             </div>
         </div>
@@ -28,138 +29,186 @@
             <div id="judul3" class="preload judul3 col-md-12 ">
                 <h1 class="judulSlider judul3">Percayakan Kepada Kami.</h1>
                 <label class="judul3 size" for="">Untuk Kenyamanan Liburan Keluarga Anda.</label> <br>
-                <label class="judul3 size" for="">Dengan Jasa Kami.</label> <br>
+                <label class="judul3 size" for="">Dengan Jasa Kami.</label> <br> <br>
                 <a class="btn btn-raised btn-info" href="">Lebih Lanjut</a>
-                
             </div>
-             <div class="gear">
+            <div class="gear">
                 <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw"></i>
             </div>
         </div>
     </div>
     <div data-anchor="scroll2" id="picScroll2" class="section">
         <div class="col-md-8 hitung">
-            <h1 hidden class="dipercaya"> Total Jumlah Tiket Terjual </h1>
-             <i class="fa fa-ticket fa-4x  fa-pull-left fa-border" aria-hidden="true"></i>
+            <h1 hidden class="dipercaya"> Tiket Yang Telah Terjual </h1>
+            <i style="display: none;" class="fa fa-ticket fa-4x  fa-pull-left fa-border dipercaya" aria-hidden="true"></i>
             <label class="hitungPercaya" hidden for="">92342</label>
             <br>
             <br>
-           
-            <h1 hidden class="dipercaya">Jumlah Tiket Tersisa </h1>
-            <i class="fa fa-rocket fa-4x  fa-pull-left fa-border" aria-hidden="true"></i>
-
+            <h1 hidden class="dipercaya">Total Tiket Tersisa </h1>
+            <i style="display: none;" class="fa fa-rocket fa-4x  fa-pull-left fa-border dipercaya" aria-hidden="true"></i>
             <label class="hitungPercaya" hidden for="">3239</label>
         </div>
     </div>
     <div data-anchor="scroll3" id="picScroll3" class="section">
-        <div class="col-md-8 pilihTiket">
-            <h1 hidden class="tiket judul3 ">Pilih Jenis Tiket Untuk Anda </h1>
+        <div class="col-md-12  pilihTiket">
+            <h1 hidden class="tiket judul3 col-md-offset-1">Pilih Jenis Tiket Untuk Anda </h1>
+            <!--<hr class=" garisTiket">-->
+            <form class="  form-horizontal form-harga  ">
+                <div class="col-md-3 ">
+                    <i class="fa fa-ticket fa-5x silver  fa-border " aria-hidden="true"></i>
+                    <label class="tipeTiket" for="">Silver</label>
+                    <label class="harga" for="">Rp.<span class="duit">1.000.000.000</span>/Tiket</label>
+                    <label class="lokasi"><code>Depan Podium Dekat Panggung</code> Berdiri Dengan Bebas </label>
+                    <a href="#" class="btn btn-raised btn-info">Daftar Sekarang</a>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <i class="fa fa-ticket premium fa-5x  fa-border " aria-hidden="true"></i>
+                    <label class="tipeTiket" for="">Premium</label>
+                    <label class="harga" for="">Rp.<span class="duit">3.000.000.000</span>/Tiket</label>
+                    <label class="lokasi"> <code> Kursi Duduk Standard Premium</code> Ditengah Panggung</label>
+                    <a href="#" class="btn btn-raised btn-info">Daftar Sekarang</a>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <i class="fa fa-ticket fa-5x gold  fa-border " aria-hidden="true"></i>
+                    <label class="tipeTiket" for="">Gold</label>
+                    <label class="harga" for="">Rp.<span class="duit">5.000.000.000</span>/Tiket</label>
+                    <label class="lokasi"> <code>Kursi Duduk Exskulusif</code> Ditengah Depan Panggung</label>
+                    <a href="#" class="btn btn-raised btn-info">Daftar Sekarang</a>
+                </div>
+        </div>
+        </form>
+    </div>
+    <div data-anchor="scroll4 " id="picScroll4" class="section">
+        <div class="col-md-4  ">
+            <h1 class="lokasi judul3"> Lokasi Konser </h1>
+            <div class="col-md-10 col-md-offset-1">
+
+                
+              
+                  <p class="namaJalan lokasi" >Indonesia, JL. Haji Usa Ciseeng Kabupaten Bogor Jawa Barat. <code> Glora Gunung Bunder.  </code></p>
+             <i class="fa fa-rocket fa-5x col-md-offset-3 judul3 fa-border" aria-hidden="true"></i>
+
+                
+
+            
+            </div>
+            
+        </div>
+        <div class="col-md-2 ">
+            <iframe id="mapKonser" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63431.87365358485!2d106.64782527219214!3d-6.459162803701716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e7849a168057%3A0x9aaa58ad730a1b7b!2sCiseeng%2C+Bogor%2C+West+Java!5e0!3m2!1sen!2sid!4v1482654121182"
+                width="750" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
-    {{>footer}}
-    <script>
-        $(document).ready(function () {
+</div>
+{{>footer}}
+<script>
+    $(document).ready(function () {
 
 
 
 
-            //    $('#preload2').fadeIn(7000);
+        //    $('#preload2').fadeIn(7000);
 
-            $('#coba').click(function () {
+        $('#coba').click(function () {
 
-                alert("asasaas");
+            alert("asasaas");
 
-            })
+        })
 
-        });
-
-
+    });
 
 
 
-        $(document).ready(function () {
-            $('#fullpage').fullpage({
-
-                anchors: ['scroll1', 'scroll2', 'scroll3'],
-
-                navigation: true,
-                navigationPosition: 'right',
-                // navigationTooltips: ['slide1', 'slide2'],
-                showActiveTooltip: false,
-                slidesNavigation: true,
-                slidesNavPosition: 'bottom',
-                lazyLoading: true,
-                loopBottom: true,
-                fadingEffect: true,
-                dragAndMove: true,
-                afterRender: function () {
-                    setInterval(function () {
-
-                        $.fn.fullpage.moveSlideRight();
-
-                    }, 1999000);
 
 
+    $(document).ready(function () {
+        $('#fullpage').fullpage({
 
-                },
+            anchors: ['scroll1', 'scroll2', 'scroll3', 'scroll4'],
 
-                afterLoad: function (anchorLink, index) {
-                    $('.preload').fadeIn(1000);
-                    $('.hilang').fadeIn(1000);
+            navigation: true,
+            navigationPosition: 'right',
+            // navigationTooltips: ['slide1', 'slide2'],
+            showActiveTooltip: false,
+            slidesNavigation: true,
+            slidesNavPosition: 'bottom',
+            lazyLoading: true,
+            loopBottom: true,
+            fadingEffect: true,
+            dragAndMove: true,
+            afterRender: function () {
+                setInterval(function () {
 
-                    if (index == 2) {
-                        $(".hitungPercaya").show();
-                        $(".dipercaya").fadeIn(400);
+                    $.fn.fullpage.moveSlideRight();
 
-                        $(".hitungPercaya").each(function () {
-                            $(this).prop('Counter', 0).animate({
-
-                                Counter: $(this).text()
-                            }, {
-
-                                duration: 4000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-
-                            })
-
-                        });
-                    } // akhir index 2
-
-                    if (index == 3) {
-
-                        $(".tiket").fadeIn({
-                            queue: false,
-                            duration: "slow"
-                        });
-
-                        $(".tiket").animate({
-                            marginLeft: "100px",
-
-                        }, "slow");
-
-                    }
-
-                },
-                afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
-
-                    // alert("masuk");
-                    $('.preload').fadeIn(600);
+                }, 1999000);
 
 
-                },
-                onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) {
 
-                    $('.preload').hide();
+            },
 
-                    // alert("keluar")
+            afterLoad: function (anchorLink, index) {
+                $('.preload').fadeIn(1000);
+                $('.hilang').fadeIn(1000);
+
+                if (index == 2) {
+                    $(".hitungPercaya").show();
+                    $(".dipercaya").fadeIn(400);
+
+                    $(".hitungPercaya").each(function () {
+                        $(this).prop('Counter', 0).animate({
+
+                            Counter: $(this).text()
+                        }, {
+
+                            duration: 4000,
+                            easing: 'swing',
+                            step: function (now) {
+                                $(this).text(Math.ceil(now));
+                            }
+
+                        })
+
+                    });
+                } // akhir index 2
+
+                if (index == 3) {
+
+                    $(".tiket").fadeIn({
+                        queue: false,
+                        duration: "slow"
+                    });
+
+                    $(".form-harga").fadeIn({
+                        queue: false,
+                        duration: "slow"
+                    });
+
+                    $(".tiket").animate({
+                        marginLeft: "350px",
+
+                    }, "slow");
 
                 }
 
+            },
+            afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {
+
+                // alert("masuk");
+                $('.preload').fadeIn(600);
 
 
-            });
+            },
+            onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) {
+
+                $('.preload').hide();
+
+                // alert("keluar")
+
+            }
+
+
+
         });
-    </script>
+    });
+</script>
