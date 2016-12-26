@@ -823,7 +823,7 @@ exports.cobaGet = function (req, res) {
 
 
 
-// dev
+// Admin
 
 exports.adminLogin = function (req, res) {
 
@@ -880,3 +880,9 @@ exports.adminDashboard = function (req,res){
 
 
 };
+
+exports.usersGold = function (req,res){
+
+     
+
+}

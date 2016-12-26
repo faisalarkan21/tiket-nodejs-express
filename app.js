@@ -149,7 +149,7 @@ var pengamananUser = function (req, res, next) {
     console.log(session.namaSession);
 
 
-    if (!req.session.admin  && req.session.namaSession !== undefined )
+    if (!req.session.namaAdmin  && req.session.namaSession !== undefined )
         return next();   
 
     res.send("Engga dijinin gan!");
@@ -158,9 +158,8 @@ var pengamananUser = function (req, res, next) {
 
 var pengamananAdmin = function (req, res, next) {
 
-    if (req.session.admin == true)
-
-        return next();   
+    if (req.session.admin === true)
+        return next();
 
      res.send("Engga dijinin gan!");
 };
@@ -171,7 +170,7 @@ var pengamananAdmin = function (req, res, next) {
 
 
 /*
-  Alamat!
+  aaAlamat!aa
 */
 
 
@@ -184,7 +183,8 @@ var pengamananAdmin = function (req, res, next) {
 app.get('/', routes.index);
 app.get('/admin/login', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
-app.get('/admin/dashboard', users.adminDashboard);
+app.get('/admin/dashboard',pengamananAdmin, users.adminDashboard);
+app.get('/admin/dashboard/users-gold',pengamananAdmin, users.usersGold);
 // app.post('/admin/posting',pengamananAdmin, routes.posting );
 
 
