@@ -1,56 +1,28 @@
 <!DOCTYPE html ng-app>
-
-
 <html>
 
 <head>
   <title>makan dilaut</title>
-
   <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-
-
   <link rel="stylesheet" href="/font-material/material-icons.css">
   <link rel="stylesheet" href="/material/css/bootstrap-material-design.min.css">
   <link rel="stylesheet" href="/material/css/ripples.min.css">
-
-
-
-
 </head>
 
-
 <body>
-
-
   <div class="container ">
-
     <div class="login col-md-4 col-md-offset-4 well ">
-
-
-
       <div class="form-group text-center">
-        <h1 class="judul"> Login Akun</h1>
-
-
+        <h1 style="text-align: center;" class="judul "> Login Akun</h1>
       </div>
-
       <div class="col-md-11">
         <form class="daftar text-center" method="post" action="/login">
-
-
-
-
           <div>
-
             <div id="ketikEmail" class="form-group {{error}}">
-
               <div class="input-group ">
                 <span class="input-group-addon">
                <i class="material-icons">account_circle</i>
@@ -58,54 +30,26 @@
                 <input class="form-control " name="email" placeholder="Email anda" type="email" value="faisalarkan21@gmail.com">
                 </span>
               </div>
-
-
-
             </div>
-
             <div id="ketikPass" class="form-group  {{error}}">
-
               <div class="input-group">
                 <span class="input-group-addon">
              <i class="material-icons">lock_outline</i>
              </span>
                 <input class="form-control" name="password" placeholder="Masukan Password" type="password" value="makan">
               </div>
-
             </div>
-
-            <div id="pesan" class="form-group {{error}}">
-                <a class=" btn btn-raised btn-info btn-md" href="/daftar" >Daftar</a>
-
+            <div style="text-align: center;" id="pesan" class="form-group {{error}}">
+              <a class=" btn btn-raised btn-info btn-md" href="/daftar">Daftar</a>
               <button id="login" class="btn btn-raised btn-primary" type="submit">Masuk</button>
-             
-
             </div>
-
-          
-
-
-
-
           </div>
-
         </form>
-
       </div>
-
-
     </div>
-
   </div>
-
-
-
 </body>
-
-
-
 {{>footer}}
-
 <script>
   // buat input change klik id login
 
@@ -150,13 +94,13 @@
 
   //   $.ajax({
   //     //disini
-        
+
   //     type: 'POST',     
   //     data: $("form").serialize(),
   //     dataType: 'html',
   //     url: 'http://127.0.0.1:3000/login'
   //     // success: function(res) {
-       
+
   //     //   if (res == true){
 
   //     //         alert('bener');
@@ -167,13 +111,13 @@
   //     //        alert('salah');
 
   //     //   }
-           
+
   //     //   },
 
   //     // error: function(res){
-    
+
   //     //     alert('failure');
-      
+
   //     // }
 
 
@@ -183,7 +127,7 @@
 
   // buat input change keyboard
 
-  $("input").on('input', function(e) {
+  $("input").on('input', function (e) {
 
     dataEmail = $('input[name=email]').val();
     dataPass = $('input[name=password]').val();
