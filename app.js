@@ -148,6 +148,7 @@ var pengamananUser = function (req, res, next) {
 
     console.log(session.namaSession);
 
+
     if (!req.session.admin  && req.session.namaSession !== undefined )
         return next();   
 
@@ -178,10 +179,13 @@ var pengamananAdmin = function (req, res, next) {
 
 
 /*
-    Untuk halaman depaan + posting
+    Untuk Admin
 */
 app.get('/', routes.index);
-app.post('/admin/posting',pengamananAdmin, routes.posting );
+app.get('/admin/login', users.adminLogin);
+app.post('/admin/login', users.adminValidasi);
+app.get('/admin/dashboard', users.adminDashboard);
+// app.post('/admin/posting',pengamananAdmin, routes.posting );
 
 
 /*

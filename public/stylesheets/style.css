@@ -846,3 +846,7 @@ img.node {
   padding-left: 40px;
 
 }
+
+hr.garisLogin {
+    margin-bottom: 0px !important;
+}

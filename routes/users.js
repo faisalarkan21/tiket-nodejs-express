@@ -233,7 +233,7 @@ exports.membuktikan = function (req, res, next) {
 exports.profile = function (req, res) {
 
 
-   var query = connection.query("select * from pembeli where email_pembeli = ? ", req.session.namaSession, function (err, data) {
+    var query = connection.query("select * from pembeli where email_pembeli = ? ", req.session.namaSession, function (err, data) {
 
 
 
@@ -242,12 +242,12 @@ exports.profile = function (req, res) {
             return next("Mysql error, check your query");
         }
 
-    res.render("user/halamanUser/profile", {
-        nama: req.session.namaSession,
-        namaPembeli : data[0].nm_pembeli
-    });
+        res.render("user/halamanUser/profile", {
+            nama: req.session.namaSession,
+            namaPembeli: data[0].nm_pembeli
+        });
 
-   });
+    });
 }
 
 exports.validasi = function (req, res) {
@@ -739,10 +739,10 @@ exports.validasiPost = function (req, res) {
 }
 
 
-exports.ketentuan = function (req,res){
+exports.ketentuan = function (req, res) {
 
 
-        res.render('user/halamanUser/ketentuan');
+    res.render('user/halamanUser/ketentuan');
 
 
 
@@ -753,74 +753,130 @@ exports.ketentuan = function (req,res){
 exports.tiket = function (req, res) {
 
 
-        var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
+    var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
 
-                    if (err) {
-                        console.log(err);
-                        return next("Error Query Level 1, Pembeli ");
-                    }
-                
+        if (err) {
+            console.log(err);
+            return next("Error Query Level 1, Pembeli ");
+        }
+
 
         var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
 
 
-                if (err) {
-                    console.log(err);
-                    return next("Error Query Level 2, Detail");
-                }
+            if (err) {
+                console.log(err);
+                return next("Error Query Level 2, Detail");
+            }
 
-                var tiketKeterangan;
+            var tiketKeterangan;
 
-                    if (detail[0].jenis_tk == "TK01") {
+            if (detail[0].jenis_tk == "TK01") {
 
-                        tiketKeterangan = "TK01 - TIKET PREMIUM";
+                tiketKeterangan = "TK01 - TIKET PREMIUM";
 
-                    } else if (detail[0].jenis_tk == "TK02") {
+            } else if (detail[0].jenis_tk == "TK02") {
 
-                        tiketKeterangan = "TK02 - TIKET GOLD";
+                tiketKeterangan = "TK02 - TIKET GOLD";
 
-                    } else {
+            } else {
 
-                        tiketKeterangan = "TK03 - TIKET SILVER";
+                tiketKeterangan = "TK03 - TIKET SILVER";
 
-                    }
+            }
 
 
-                    res.render("user/halamanUser/validasitiket", {
-                        nama: req.session.namaSession,
-                        emailUtama: pembeli[0],
-                        tiket: tiketKeterangan
-                    });
+            res.render("user/halamanUser/validasitiket", {
+                nama: req.session.namaSession,
+                emailUtama: pembeli[0],
+                tiket: tiketKeterangan
+            });
 
         });
-        });
+    });
 
 
-    }
-
-
-
-
-                exports.keluar = function (req, res) {
-
-
-                    req.session.destroy();
-
-
-                    res.redirect('/');
-
-
-                };
-
-
-                exports.cobaGet = function (req, res) {
-
-
-                    res.render("dev");
-
-
-                }
+}
 
 
 
-                // dev
+
+exports.keluar = function (req, res) {
+
+
+    req.session.destroy();
+
+
+    res.redirect('/');
+
+
+};
+
+
+exports.cobaGet = function (req, res) {
+
+
+    res.render("dev");
+
+
+}
+
+
+
+// dev
+
+exports.adminLogin = function (req, res) {
+
+
+    res.render('user/admin/login-admin');
+
+
+}
+
+exports.adminValidasi = function (req, res) {
+
+    var query = connection.query('select * from admin where email_admin = ?  ', req.body.email, function (err, data) {
+
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+
+        if (data.length < 1) {
+
+            res.render('user/admin/login-admin', {
+                error: "has-error is-empty",
+                data: "<label class='control-label' id='error' >Data tidak ada didalam database</label>"
+            });
+
+        } else if ((req.body.email === data[0].email_admin) && (req.body.password === data[0].pass_admin)) {
+
+            req.session.admin = true;
+            req.session.namaSession = data[0].email_admin;
+            req.session.nomor_pembeli = data[0].id_admin;
+            req.session.namaAdmin = data[0].nm_admin;
+            res.redirect('dashboard');
+
+
+        } else {
+
+            res.render('user/admin/login-admin', {
+                error: "has-error is-empty",
+                data: "<label class='control-label' id='error' >Password anda salah</label>"
+            });
+
+        }
+
+
+
+    });
+}
+
+
+exports.adminDashboard = function (req,res){
+
+
+    res.render('user/admin/dashboard' , {email : req.session.namaSession, nama : req.session.namaAdmin});
+
+
+};

@@ -27,8 +27,8 @@
         <span class="icon-bar"></span>
         
         </button>
-				<a class="navbar-brand" href="/">Dashboard Tiket <i style="padding-left: 6px;" class="fa fa-users fa-fw " aria-hidden="true"></i>
-       
+				<a class="navbar-brand" href="/"> Dashboard Admin <i class="fa fa-user-secret fa-fw fa-lg" aria-hidden="true"></i>
+           
         <div class="ripple-container">            
           </div>         
           </a>
@@ -41,8 +41,8 @@
 				</form>
 				<ul class="nav-drop nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" data-target="dropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-spin fa-fw"></i>
- Login Sebagai : {{nama}} <b class="caret"></b> </a>
+						<a href="#" data-target="dropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-spin fa-fw fa-lg"></i>
+Admin : {{email}} <b class="caret"></b> </a>
 						<ul class="dropdown-menu">
 							<li><a href="/keluar">Log Out  <i class="material-icons">keyboard_arrow_right</i> </a></li>
 							<li class="divider"></li>
@@ -54,19 +54,19 @@
 		</div>
 	</div>
 	<div class="nav-side-menu" >
-		<div class="brand"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i>
- Halaman Pembeli </div>
+		<div class="brand"> <i  class="fa fa-rocket fa-lg  fa-fw" aria-hidden="true"></i>
+ {{nama}} </div>
 		<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
 				<li >
 					<a  style="display: block;" href="/profile">
-						<i class="fa fa-home fa-lg"></i>Halaman Utama
+						<i class="fa fa-area-chart fa-lg"></i>Statistik Pembeli
 					</a>
 				</li>
 				
 				<li data-toggle="collapse" data-target="#data" >
-					<a href="#"><i class="fa fa-book fa-lg"></i>Data Pembeli <span class="arrow"></span></a>
+					<a href="#"><i class="fa fa-book fa-lg"></i>Data Pembeli Tiket <span class="arrow"></span></a>
 				</li>
 
 
@@ -80,7 +80,7 @@ Ketentuan</a></li>
 				</ul>
 				<li >
 					<a  style="display: block;"  href="/user/validasi">
-						<i class="fa fa-shield fa-lg"></i>Validasi Tiket
+						<i class="fa fa-envelope fa-lg"></i>Kotak Validasi Tiket
 					</a>
 				</li>
 			</ul>

@@ -11,13 +11,16 @@
   <link rel="stylesheet" href="/font-material/material-icons.css">
   <link rel="stylesheet" href="/material/css/bootstrap-material-design.min.css">
   <link rel="stylesheet" href="/material/css/ripples.min.css">
+      <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
   <div class="container ">
     <div class="login col-md-4 col-md-offset-4 well ">
       <div class="form-group text-center">
-        <h1 style="text-align: center;" class="judul "> Login Akun</h1>
+        <h1 style="text-align: center;" class="judul "> Login Akun <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+</h1>
+<hr class="garisLogin">
       </div>
       <div class="col-md-11">
         <form class="daftar text-center" method="post" action="/login">
@@ -38,8 +41,11 @@
              </span>
                 <input class="form-control" name="password" placeholder="Masukan Password" type="password" value="makan">
               </div>
+              
             </div>
+            
             <div style="text-align: center;" id="pesan" class="form-group {{error}}">
+              
               <a class=" btn btn-raised btn-info btn-md" href="/daftar">Daftar</a>
               <button id="login" class="btn btn-raised btn-primary" type="submit">Masuk</button>
             </div>
