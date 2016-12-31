@@ -29,9 +29,8 @@ th,
 input,
 div,
 h3.panel-title,
-#judul  {
+#judul {
   font-family: 'Cabin', sans-serif;
-  
 }
 
 #error {
@@ -87,7 +86,9 @@ html {
   margin-right: 11px;
 }
 
-#titleDaftar {}
+#titleDaftar {
+  font-size: 38px;
+}
 
 .page-header h1 {
   font-size: 3em
@@ -834,19 +835,25 @@ img.node {
   padding-left: 10px;
 }
 
-
-.text-center{
-
+.text-center {
   text-align: unset !important;
-
 }
 
-.labelPilihan{
-
+.labelPilihan {
   padding-left: 40px;
-
 }
 
 hr.garisLogin {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
+
+div.table-users {
+  /*padding-top: 10px;*/
+  padding-right: 50px;
+}
+
+.Garistema {
+  border-color: #455A64;
+  border-width: 3px;
+  padding-bottom: 10px;
+} 
