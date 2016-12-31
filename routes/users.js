@@ -385,15 +385,15 @@ exports.validasiPost = function (req, res) {
 
     var namaTiket;
 
-    if (req.body.namaJenis == "1") {
+    if (req.body.namaJenis === "TK01 - TIKET PREMIUM") {
 
         namaTiket = "TK01";
 
-    } else if (req.body.namaJenis == "2") {
+    } else if (req.body.namaJenis === "TK02 - TIKET GOLD") {
 
         namaTiket = "TK02"
 
-    } else if (req.body.namaJenis == "3") {
+    } else if (req.body.namaJenis == "TK03 - TIKET SILVER") {
 
         namaTiket = "TK03"
 
@@ -424,7 +424,7 @@ exports.validasiPost = function (req, res) {
         email_utama: req.body.emailUtama,
         nm_pembeli: req.body.nama2,
         hp_pembeli: req.body.hp2,
-        email_sekunder: req.body.email2,
+        email_pembeli: req.body.email2,
         jenis_tk: req.body.jk_utama
 
 
@@ -436,7 +436,7 @@ exports.validasiPost = function (req, res) {
         email_utama: req.body.emailUtama,
         nm_pembeli: req.body.nama3,
         hp_pembeli: req.body.hp3,
-        email_sekunder: req.body.email3,
+        email_pembeli: req.body.email3,
         jenis_tk: req.body.jk_utama
 
 
@@ -447,7 +447,7 @@ exports.validasiPost = function (req, res) {
         email_utama: req.body.emailUtama,
         nm_pembeli: req.body.nama4,
         hp_pembeli: req.body.hp4,
-        email_sekunder: req.body.email4,
+        email_pembeli: req.body.email4,
         jenis_tk: req.body.jk_utama
 
 
@@ -457,7 +457,7 @@ exports.validasiPost = function (req, res) {
         email_utama: req.body.emailUtama,
         nm_pembeli: req.body.nama5,
         hp_pembeli: req.body.hp5,
-        email_sekunder: req.body.email5,
+        email_pembeli: req.body.email5,
         jenis_tk: req.body.jk_utama
 
 
@@ -884,7 +884,7 @@ exports.adminDashboard = function (req,res){
 
 exports.usersGold = function (req,res){
 
-    var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK02' ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK02' ", function (err, pembeliSemua) {
 
         //  console.log(pembeliSemua);
 
@@ -908,7 +908,7 @@ exports.usersGold = function (req,res){
 
 exports.usersPremium = function (req,res){
 
-     var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK01' ", function (err, pembeliSemua) {
+     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK01'", function (err, pembeliSemua) {
 
      res.render('user/admin/users_premium', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiPremium:pembeliSemua});
   });
@@ -917,9 +917,17 @@ exports.usersPremium = function (req,res){
 
 
 exports.usersSilver = function (req,res){
-     var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK03' ", function (err, pembeliSemua) {
+     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
 
      res.render('user/admin/users_silver', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiSilver:pembeliSemua});
  });
+
+}
+
+
+exports.user_gold = function (req,res){
+
+ 
+    res.send("asasasasas");
 
 }

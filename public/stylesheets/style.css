@@ -849,7 +849,8 @@ hr.garisLogin {
 
 div.table-users {
   /*padding-top: 10px;*/
-  padding-right: 50px;
+  padding-right: 30px;
+  padding-left: 100px;
 }
 
 .Garistema {
@@ -857,3 +858,29 @@ div.table-users {
   border-width: 3px;
   padding-bottom: 10px;
 } 
+
+td.tengah {
+
+  text-align: center !important;
+}
+
+
+.btnBahaya{
+
+    background-color: #f44336 !important;
+
+}
+
+
+
+.info{
+
+    background-color: #546E7A !important;
+
+}
+
+/*.headerTengah{
+
+  background-color: #90A4AE !important;
+
+}*/

@@ -106,7 +106,7 @@
 									<div class="form-group has-warning ">
 										<label class="control-label" for="inputWarning">Jenis Tiket</label>
 										<div class="form-input">
-											<input class="form-control" id="tiketId{{tambahSatu @index}}" type="text" name="" value="" readonly>
+											<input class="form-control" id="tiketId{{tambahSatu @index}}" type="text" name="namaJenis" value="" readonly>
 										</div>
 									</div>
 								</div>
@@ -161,7 +161,7 @@ try {
 
         stat = "tidak terdifinisi di 3";
         $('#namaId2').val(pembeli[0].nm_pembeli);
-		$('#emailId2').val(pembeli[0].email_sekunder);
+		$('#emailId2').val(pembeli[0].email_pembeli);
 		$('#hpId2').val(pembeli[0].hp_pembeli);
 		
 
@@ -169,21 +169,21 @@ try {
 
             stat = "tidak terdifinisi di 4";
             $('#namaId3').val(pembeli[1].nm_pembeli);
-			$('#emailId3').val(pembeli[1].email_sekunder);
+			$('#emailId3').val(pembeli[1].email_pembeli);
 			$('#hpId3').val(pembeli[1].hp_pembeli);
 
 			if (pembeli[2].nm_pembeli){
 
 				stat = "tidak terdifinisi di 5";
             	$('#namaId4').val(pembeli[2].nm_pembeli);
-				$('#emailId4').val(pembeli[2].email_sekunder);
+				$('#emailId4').val(pembeli[2].email_pembeli);
 				$('#hpId4').val(pembeli[2].hp_pembeli);
 
 				if (pembeli[3].nm_pembeli){
 
 					console.log("Semua Aman");
             		$('#namaId5').val(pembeli[3].nm_pembeli);
-					$('#emailId5').val(pembeli[3].email_sekunder);
+					$('#emailId5').val(pembeli[3].email_pembeli);
 					$('#hpId5').val(pembeli[3].hp_pembeli);
 
 				}

@@ -1,112 +1,81 @@
- {{>headerAdmin}}
-<div class="container konten">
-    
-        <div class="col-md-10 col-md-offset-2">
+{{>headerAdmin}}
+<div class="page-content-wrapper">
+    <div class="table-users col-md-10 col-md-offset-2">
+        <div class="page-header text-center">
+            <div class="col-md-12 ">
+                <div class="col-md-7">
+                <h1 id="titleDaftar">List Pembeli Tiket Premium </h1>    
+                </div>
+                
+                
+                    <i style=" padding-top: 20px; " class=" fa fa-users  fa-3x" aria-hidden="true"></i>
+                <!--<br>-->
 
-            <div class="page-header text-center">
-
-                <h1 id="titleDaftar">Premi</h1>
-                <br>
-
-
-                <div class="bs-component">
-
-
-                    <table class="table table-striped table-hover jadi-vertical">
-
-                        <thead>
-
-
-                            <tr class="headerTengah" id="warnaTr">
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th colspan="3">Tindakan</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-
-
-                            {{#each pembeiPremium}}
-                            <tr class="<%=trUser%>">
-
-
-
-                                <td class="text-center pagination-centered">
-                                    {{tambahSatu @index}}
-                                </td>
-
-                                <td class="text-center pagination-centered">
-                                    {{this.nm_pembeli}}
-                                </td>
-
-                                <td class="text-center pagination-centered">
-                                    {{this.email_pembeli}}
-                                </td>
-
-
-
-
-
-
-
-                                <td class="text-center pagination-centered">
-
-                                    {{#if this.admin}}
-
-                                    <span class="<%= btnAdmin %>  bigStat"> Status Admin</span> {{else}}
-
-
-                                    <span class="<%= btnUser %> bigStat"> Bukan Admin</span> {{/if}}
-                                </td>
-
-
-                                <td id="btn-edit" class="text-center"> <a class="btn btn-raised btn-info" href="/admin/user/{{this.userId}}">Edit</a></td>
-                                <td class="text-center"> <a class="btn btn-raised btn-danger" href="/admin/dashboard/detele/{{this.userId}}">Hapus</a></td>
-                                {{/each}}
-
-
-                            </tr>
-
-                        </tbody>
-
-
-
-                    </table>
-   
-
+                  <hr class="Garistema">
+                
+              
+            </div>
+            
+            <div class="bs-component">
+                <table class="table  table-hover jadi-vertical">
+                    <thead>
+                        <tr class="headerTengah" id="warnaTr">
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email Utama</th>
+                            <th>Jenis Tiket</th>
+                            <th>Jumlah Tiket</th>
+                            <th>Status</th>
+                            <th colspan="3">Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each pembeiPremium}}
+                        <tr class="<%=trUser%>">
+                            <td class="text-center tengah pagination-centered">
+                                {{tambahSatuAdmin @index}}
+                            </td>
+                            <td class="text-center pagination-centered">
+                                {{this.nm_pembeli}}
+                            </td>
+                            <td class="text-center pagination-centered">
+                                {{this.email_pembeli}}
+                            </td>
+                              <td class="text-center tengah pagination-centered">
+                                {{this.jenis_tk}}
+                            </td>
+                            <td class="text-center tengah pagination-centered">
+                                {{this.jml_tiket}}
+                            </td>
+                            <td class="text-center tengah pagination-centered">
+                                {{#if this.admin}}
+                                <span class="<%= btnAdmin %>  bigStat"> Lunas</span> {{else}}
+                                <span class="<%= btnUser %> bigStat"> Belum Lunas</span> {{/if}}
+                            </td>
+                            <td id="btn-edit" class="text-center tengah"> <a class="btn btn-raised btn-info" href="/admin/user/{{this.id_pembeli}}">Detail</a></td>
+                        
+                            {{/each}}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
-
-   
-
-    </div>
-
+</div>
 </div>
 </body>
 
 </html>
-
 {{>footer}}
-
-
 <script>
+    $(document).on("click", "#masuk", function (e) {
+        // alert("click bound to document listening for #test-element");
 
 
+        e.preventDefault();
+        console.log('select_link clicked');
 
-$(document).on("click","#masuk",function(e) {
-    // alert("click bound to document listening for #test-element");
-
-     
-                    e.preventDefault();
-                    console.log('select_link clicked');
-                    
-                     /*$.ajax({
+        /*$.ajax({
                         dataType: 'jsonp',
                         data: "data=yeah",						
                         jsonp: 'callback',
@@ -116,32 +85,29 @@ $(document).on("click","#masuk",function(e) {
                             console.log(JSON.stringify(data));
                         }
                     });*/
-					// var data = {};
-					// data.title = "title";
-					// data.message = "message";
+        // var data = {};
+        // data.title = "title";
+        // data.message = "message";
 
-                      var coba = tinyMCE.activeEditor.getContent({format : 'raw'});
+        var coba = tinyMCE.activeEditor.getContent({
+            format: 'raw'
+        });
 
-                      var formData = {
-                        'judul'              : $('input[name=judul]').val(),       
-                        'posting'           : coba
-                        };		
-                                
-                       $.ajax({
-						            type: 'POST',
-					              data: JSON.stringify(formData),
-				                contentType: 'application/json',
-                        url: 'http://127.0.0.1:3000/admin/posting',				
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });
-			
-                });			
+        var formData = {
+            'judul': $('input[name=judul]').val(),
+            'posting': coba
+        };
 
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            url: 'http://127.0.0.1:3000/admin/posting',
+            success: function (data) {
+                console.log('success');
+                console.log(JSON.stringify(data));
+            }
+        });
 
-
-
-
+    });
 </script>

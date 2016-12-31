@@ -4,12 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 var assert = require('assert');
 var session = require('express-session');
-var fs       = require('fs');
-var http     = require('http');
-var  util     = require('util');
+var fs = require('fs');
+var http = require('http');
+var util = require('util');
 var routes = require('./routes/index');
 var users = require('./routes/users')
 var multer = require('multer');
@@ -23,38 +23,45 @@ var app = express()
 // helper handlebars
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
-    
-    extname:  '.html',
+
+    extname: '.html',
     helpers: {
-        cekAdmin: function () {        
-            if (data.admin == true){
+        cekAdmin: function () {
+            if (data.admin == true) {
 
-                return  "checked";
+                return "checked";
 
-            }else{
+            } else {
 
-                 return  "";
+                return "";
 
             }
-            
-    
+
+
         },
-        
-        bar: function () { return 'BAR!'; },
-        tambahSatu: function(angka) {return angka+1},
-        atas:function(){
 
-           for (var i=0;i<5; i++){
+        bar: function () {
+            return 'BAR!';
+        },
+        tambahSatu: function (angka) {
+            return angka + 2
+        },
+        tambahSatuAdmin: function (angka) {
+            return angka + 1
+        },
+        atas: function () {
 
-               return i;
+            for (var i = 0; i < 5; i++) {
 
-           }
+                return i;
+
+            }
 
 
         }
-  
 
- }
+
+    }
 });
 
 
@@ -84,17 +91,19 @@ app.set('view engine', '.html');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/tinymce', express.static(__dirname+'/node_modules/tinymce/'));
-app.use('/material', express.static(__dirname+'/node_modules/bootstrap-material-design/dist/'));
-app.use('/bootstrap', express.static(__dirname+'/node_modules/bootstrap/dist/'));
-app.use('/jquery', express.static(__dirname+'/node_modules/jquery/dist/'));
-app.use('/handlebars', express.static(__dirname+'/node_modules/handlebars/dist/'));
-app.use('/font-material', express.static(__dirname+'/node_modules/material-design-icons/iconfont/'));
-app.use('/font-awesome', express.static(__dirname+'/node_modules/font-awesome/'));
-app.use('/full-page', express.static(__dirname+'/node_modules/fullpage.js/dist/'));
+app.use('/tinymce', express.static(__dirname + '/node_modules/tinymce/'));
+app.use('/material', express.static(__dirname + '/node_modules/bootstrap-material-design/dist/'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/handlebars', express.static(__dirname + '/node_modules/handlebars/dist/'));
+app.use('/font-material', express.static(__dirname + '/node_modules/material-design-icons/iconfont/'));
+app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome/'));
+app.use('/full-page', express.static(__dirname + '/node_modules/fullpage.js/dist/'));
 
 
 
@@ -106,7 +115,7 @@ app.use(session({
 }));
 
 // buat session jdi global
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
 });
@@ -149,8 +158,8 @@ var pengamananUser = function (req, res, next) {
     console.log(session.namaSession);
 
 
-    if (!req.session.namaAdmin  && req.session.namaSession !== undefined )
-        return next();   
+    if (!req.session.namaAdmin && req.session.namaSession !== undefined)
+        return next();
 
     res.send("Engga dijinin gan!");
 };
@@ -161,7 +170,7 @@ var pengamananAdmin = function (req, res, next) {
     if (req.session.admin === true)
         return next();
 
-     res.send("Engga dijinin gan!");
+    res.send("Engga dijinin gan!");
 };
 
 
@@ -183,10 +192,10 @@ var pengamananAdmin = function (req, res, next) {
 app.get('/', routes.index);
 app.get('/admin/login', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
-app.get('/admin/dashboard',pengamananAdmin, users.adminDashboard);
-app.get('/admin/dashboard/users-gold',pengamananAdmin, users.usersGold);
-app.get('/admin/dashboard/users-premium',pengamananAdmin, users.usersPremium);
-app.get('/admin/dashboard/users-silver',pengamananAdmin, users.usersSilver);
+app.get('/admin/dashboard', pengamananAdmin, users.adminDashboard);
+app.get('/admin/dashboard/users-gold', pengamananAdmin, users.usersGold);
+app.get('/admin/dashboard/users-premium', pengamananAdmin, users.usersPremium);
+app.get('/admin/dashboard/users-silver', pengamananAdmin, users.usersSilver);
 
 
 
@@ -205,24 +214,24 @@ app.get('/profile', pengamananUser, users.profile);
 app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 // app.get('/admin/masukanpost', users.addPost);
-// app.get('/admin/user/:id',pengamananAdmin, users.user);
+app.get('/admin/dashboard/users-gold/:id',pengamananAdmin, users.user_gold);
 app.post('/mendaftar', users.mendaftar);
 // app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update);
 // app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
 
 //data diri user
-app.get('/user/data',pengamananUser, users.validasi);
-app.post('/user/data',pengamananUser , users.validasiPost);
+app.get('/user/data', pengamananUser, users.validasi);
+app.post('/user/data', pengamananUser, users.validasiPost);
 
-app.get('/user/ketentuan', pengamananUser,users.ketentuan);
+app.get('/user/ketentuan', pengamananUser, users.ketentuan);
 
 // validasi tiket
-app.get('/user/validasi',pengamananUser, users.tiket);
+app.get('/user/validasi', pengamananUser, users.tiket);
 
 
 
 //dev 
-app.get ('/dev', users.cobaGet);
+app.get('/dev', users.cobaGet);
 // app.post ('/dev', users.cobaPost);
 
 
@@ -231,10 +240,10 @@ app.get ('/dev', users.cobaGet);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -242,23 +251,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 
