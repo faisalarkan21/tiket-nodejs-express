@@ -872,18 +872,37 @@ exports.adminValidasi = function (req, res) {
     });
 }
 
-
+//,pembeli_sekunder where email_pembeli = ? 
 exports.adminDashboard = function (req,res){
 
-
+    
     res.render('user/admin/dashboard' , {email : req.session.namaSession, nama : req.session.namaAdmin});
+  
 
 
 };
 
 exports.usersGold = function (req,res){
 
-     res.render('user/admin/users_gold', {email : req.session.namaSession, nama : req.session.namaAdmin});
+    var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK02' ", function (err, pembeliSemua) {
+
+        //  console.log(pembeliSemua);
+
+        //  var query2 = connection.query('select pembeli_sekunder where  = ? ', pembeliUtama.email_pembeli, function(err,pembeliKedua){
+
+        //      console.log(pembeliKedua);
+
+        //  });
+
+        
+        
+           res.render('user/admin/users_gold', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeliGold:pembeliSemua});
+
+
+
+     });
+
+
 
 }
 
