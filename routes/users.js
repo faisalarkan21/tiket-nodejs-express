@@ -908,13 +908,18 @@ exports.usersGold = function (req,res){
 
 exports.usersPremium = function (req,res){
 
-     res.render('user/admin/users_premium', {email : req.session.namaSession, nama : req.session.namaAdmin});
+     var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK01' ", function (err, pembeliSemua) {
+
+     res.render('user/admin/users_premium', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiPremium:pembeliSemua});
+  });
 
 }
 
 
 exports.usersSilver = function (req,res){
+     var query = connection.query("select * from pembeli,detil_pesan_tiket where jenis_tk = 'TK03' ", function (err, pembeliSemua) {
 
-     res.render('user/admin/users_silver', {email : req.session.namaSession, nama : req.session.namaAdmin});
+     res.render('user/admin/users_silver', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiSilver:pembeliSemua});
+ });
 
 }

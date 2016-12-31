@@ -1,4 +1,6 @@
  {{>headerAdmin}}
+
+ 
 <div class="container konten">
     
         <div class="col-md-10 col-md-offset-2">
@@ -30,7 +32,7 @@
 
 
 
-                            {{#each data}}
+                            {{#each pembeiSilver}}
                             <tr class="<%=trUser%>">
 
 
@@ -40,11 +42,11 @@
                                 </td>
 
                                 <td class="text-center pagination-centered">
-                                    {{this.name}}
+                                    {{this.nm_pembeli}}
                                 </td>
 
                                 <td class="text-center pagination-centered">
-                                    {{this.email}}
+                                    {{this.email_pembeli}}
                                 </td>
 
 
