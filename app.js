@@ -185,6 +185,12 @@ app.get('/admin/login', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
 app.get('/admin/dashboard',pengamananAdmin, users.adminDashboard);
 app.get('/admin/dashboard/users-gold',pengamananAdmin, users.usersGold);
+app.get('/admin/dashboard/users-premium',pengamananAdmin, users.usersPremium);
+app.get('/admin/dashboard/users-silver',pengamananAdmin, users.usersSilver);
+
+
+
+
 // app.post('/admin/posting',pengamananAdmin, routes.posting );
 
 

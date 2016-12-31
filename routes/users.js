@@ -883,6 +883,19 @@ exports.adminDashboard = function (req,res){
 
 exports.usersGold = function (req,res){
 
-     
+     res.render('user/admin/users_gold', {email : req.session.namaSession, nama : req.session.namaAdmin});
+
+}
+
+exports.usersPremium = function (req,res){
+
+     res.render('user/admin/users_premium', {email : req.session.namaSession, nama : req.session.namaAdmin});
+
+}
+
+
+exports.usersSilver = function (req,res){
+
+     res.render('user/admin/users_silver', {email : req.session.namaSession, nama : req.session.namaAdmin});
 
 }
