@@ -56,7 +56,27 @@ var hbs = exphbs.create({
                 return i;
 
             }
+        },
+        tiket_user_utama: function (tiket_utama) {
 
+
+       
+
+            if (tiket_utama == "TK01") {
+
+               return "TK01 - TIKET PREMIUM";
+
+            } else if (tiket_utama == "TK02") {
+
+                return "TK02 - TIKET GOLD";
+
+            } else {
+
+                return "TK03 - TIKET SILVER";
+
+            }
+
+          
 
         }
 
@@ -214,7 +234,7 @@ app.get('/profile', pengamananUser, users.profile);
 app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 // app.get('/admin/masukanpost', users.addPost);
-app.get('/admin/dashboard/users-gold/:id',pengamananAdmin, users.user_gold);
+app.get('/admin/dashboard/users-gold/:id', pengamananAdmin, users.user_gold);
 app.post('/mendaftar', users.mendaftar);
 // app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update);
 // app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);

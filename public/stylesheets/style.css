@@ -1,7 +1,7 @@
 body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   background-color: white;
-  padding-top: 50px;
+  padding-top: 45px;
   margin: 0;
   /*background-color: #B0BEC5 !important;*/
 }
@@ -87,7 +87,8 @@ html {
 }
 
 #titleDaftar {
-  font-size: 38px;
+ 
+  /*font-size: 38px;*/
 }
 
 .page-header h1 {
@@ -848,7 +849,7 @@ hr.garisLogin {
 }
 
 div.table-users {
-  /*padding-top: 10px;*/
+  /*padding-top: 10px !important;*/
   padding-right: 30px;
   padding-left: 100px;
 }

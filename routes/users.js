@@ -873,16 +873,19 @@ exports.adminValidasi = function (req, res) {
 }
 
 //,pembeli_sekunder where email_pembeli = ? 
-exports.adminDashboard = function (req,res){
+exports.adminDashboard = function (req, res) {
 
-    
-    res.render('user/admin/dashboard' , {email : req.session.namaSession, nama : req.session.namaAdmin});
-  
+
+    res.render('user/admin/dashboard', {
+        email: req.session.namaSession,
+        nama: req.session.namaAdmin
+    });
+
 
 
 };
 
-exports.usersGold = function (req,res){
+exports.usersGold = function (req, res) {
 
     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK02' ", function (err, pembeliSemua) {
 
@@ -894,40 +897,78 @@ exports.usersGold = function (req,res){
 
         //  });
 
-        
-        
-           res.render('user/admin/users_gold', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeliGold:pembeliSemua});
+
+
+        res.render('user/admin/users_gold', {
+            email: req.session.namaSession,
+            nama: req.session.namaAdmin,
+            pembeliGold: pembeliSemua
+        });
 
 
 
-     });
+    });
 
 
 
 }
 
-exports.usersPremium = function (req,res){
+exports.usersPremium = function (req, res) {
 
-     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK01'", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK01'", function (err, pembeliSemua) {
 
-     res.render('user/admin/users_premium', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiPremium:pembeliSemua});
-  });
-
-}
-
-
-exports.usersSilver = function (req,res){
-     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
-
-     res.render('user/admin/users_silver', {email : req.session.namaSession, nama : req.session.namaAdmin,pembeiSilver:pembeliSemua});
- });
+        res.render('user/admin/users_premium', {
+            email: req.session.namaSession,
+            nama: req.session.namaAdmin,
+            pembeiPremium: pembeliSemua
+        });
+    });
 
 }
 
 
-exports.user_gold = function (req,res){
+exports.usersSilver = function (req, res) {
 
- 
-    res.send("asasasasas");
+    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
+
+        res.render('user/admin/users_silver', {
+            email: req.session.namaSession,
+            nama: req.session.namaAdmin,
+            pembeiSilver: pembeliSemua
+        });
+    });
+
+}
+
+
+exports.user_gold = function (req, res) {
+
+    console.log(req.params.id);
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli WHERE detil_pesan_tiket.id_pembeli = ?", req.params.id, function (err, user_gold_utama) {
+
+
+
+
+
+        var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_gold_utama[0].email_pembeli, function (err, user_gold_sekunder) {
+
+          
+
+            res.render("user/admin/user_gold", {
+                user_utama: user_gold_utama,
+                user_sekunder: user_gold_sekunder
+               
+
+            });
+
+        });
+        // console.log(user_gold);
+
+
+
+
+
+    });
+
 
 }
