@@ -235,6 +235,10 @@ app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 // app.get('/admin/masukanpost', users.addPost);
 app.get('/admin/dashboard/users-gold/:id', pengamananAdmin, users.user_gold);
+app.get('/admin/dashboard/users-premium/:id', pengamananAdmin, users.user_premium);
+app.get('/admin/dashboard/users-silver/:id', pengamananAdmin, users.user_silver);
+
+
 app.post('/mendaftar', users.mendaftar);
 // app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update);
 // app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);

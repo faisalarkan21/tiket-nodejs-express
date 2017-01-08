@@ -941,6 +941,15 @@ exports.usersSilver = function (req, res) {
 }
 
 
+/*
+
+    Tempat /User
+
+*/
+
+
+
+
 exports.user_gold = function (req, res) {
 
     console.log(req.params.id);
@@ -956,7 +965,8 @@ exports.user_gold = function (req, res) {
 
             res.render("user/admin/user_gold", {
                 user_utama: user_gold_utama,
-                user_sekunder: user_gold_sekunder
+                user_sekunder: user_gold_sekunder,
+                emailUtama : user_gold_utama[0].email_pembeli
                
 
             });
@@ -969,6 +979,69 @@ exports.user_gold = function (req, res) {
 
 
     });
+}
 
 
+exports.user_premium = function (req, res) {
+
+    console.log(req.params.id);
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli WHERE detil_pesan_tiket.id_pembeli = ?", req.params.id, function (err, user_premium_utama) {
+
+
+
+
+
+        var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_premium_utama[0].email_pembeli, function (err, user_premium_sekunder) {
+
+          
+
+            res.render("user/admin/user_premium", {
+                user_utama: user_premium_utama,
+                user_sekunder: user_premium_sekunder,
+                emailUtama : user_premium_utama[0].email_pembeli
+               
+
+            });
+
+        });
+        // console.log(user_gold);
+
+
+
+
+
+    });
+}
+
+
+
+exports.user_silver = function (req, res) {
+
+    console.log(req.params.id);
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli WHERE detil_pesan_tiket.id_pembeli = ?", req.params.id, function (err, user_silver_utama) {
+
+
+
+
+
+        var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_silver_utama[0].email_pembeli, function (err, user_silver_sekunder) {
+
+          
+
+            res.render("user/admin/user_premium", {
+                user_utama: user_silver_utama,
+                user_sekunder: user_premium_sekunder,
+                emailUtama : user_silver_utama[0].email_pembeli
+               
+
+            });
+
+        });
+        // console.log(user_gold);
+
+
+
+
+
+    });
 }
