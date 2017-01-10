@@ -16,11 +16,14 @@ body {
 
 form.daftar,
 h1.judul,
+h2.judul,
+h3.judul,
 h1.judulSlider,
 #titleDaftar,
 h1.dipercaya,
 h1.judul3,
 h2.kontak,
+p.tulisTiket,
 li,
 ul,
 a,
@@ -886,3 +889,52 @@ td.tengah {
   background-color: #90A4AE !important;
 
 }*/
+
+
+
+/* Tempat Style Chart  */
+
+
+
+.ct-chart .ct-bar {
+  stroke-width: 60px;
+
+}
+.ct-label .ct-horizontal .ct-end{
+  /*align-content: center;  */
+}
+
+line.ct-bar {
+    stroke: #263238 !important;
+}
+
+span.ct-label{
+
+  font-size: 16px  !important;
+  /*padding-left: 30px;
+  padding-right: 25px;*/
+
+  padding-top: 5px;
+
+}
+
+.ct-grids {
+  padding-left: 190px !important;
+}
+
+
+
+.GarisAbu {
+  border-color: #455A64;
+  border-width: 3px;
+  
+} 
+
+h2.judul {
+  font-size: 22px;
+}
+
+ul.tulisTiket {
+  font-size: 16px;
+}
+

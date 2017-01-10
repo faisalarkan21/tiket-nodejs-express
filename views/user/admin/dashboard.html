@@ -1,147 +1,80 @@
  {{>headerAdmin}}
-<div class="container konten">
-    
-        <div class="col-md-10 col-md-offset-2">
+<div style="padding-top: 50px;" class="container">
+    <div class="col-md-11 well  col-md-offset-2">
+        <div class="col-md-11">
+            <h1 class="judul"> Statistik Penjualan Tiket</h1>
+            <hr class="">
+        </div>
+        <div style="padding-left: 20px;" class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Keterangan Harga Tiket</h3>
+                </div>
+                <div class="panel-body">
 
-            <div class="page-header text-center">
-
-                <h1 id="titleDaftar">dashboard</h1>
-                <br>
-
-
-                <div class="bs-component">
-
-
-                    <table class="table table-striped table-hover jadi-vertical">
-
-                        <thead>
-
-
-                            <tr class="headerTengah" id="warnaTr">
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th colspan="3">Tindakan</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-
-
-                            {{#each data}}
-                            <tr class="<%=trUser%>">
-
-
-
-                                <td class="text-center pagination-centered">
-                                    {{tambahSatu @index}}
-                                </td>
-
-                                <td class="text-center pagination-centered">
-                                    {{this.name}}
-                                </td>
-
-                                <td class="text-center pagination-centered">
-                                    {{this.email}}
-                                </td>
-
-
-
-
-
-
-
-                                <td class="text-center pagination-centered">
-
-                                    {{#if this.admin}}
-
-                                    <span class="<%= btnAdmin %>  bigStat"> Status Admin</span> {{else}}
-
-
-                                    <span class="<%= btnUser %> bigStat"> Bukan Admin</span> {{/if}}
-                                </td>
-
-
-                                <td id="btn-edit" class="text-center"> <a class="btn btn-raised btn-info" href="/admin/user/{{this.userId}}">Edit</a></td>
-                                <td class="text-center"> <a class="btn btn-raised btn-danger" href="/admin/dashboard/detele/{{this.userId}}">Hapus</a></td>
-                                {{/each}}
-
-
-                            </tr>
-
-                        </tbody>
-
-
-
-                    </table>
-   
-
+            <ul class="tulisTiket" style="padding-left: 15px;">
+                <li style="list-style-type: none;"> Tiket Premium - Rp. 5.000.000</li>
+                <li style="list-style-type: none;"> Tiket Gold - Rp. 3.000.000</li>
+                <li style="list-style-type: none;"> Tiket Silver - Rp. 3.000.000</li>
+            </ul>
+                    
+                </div>
+            </div>
+           
+        </div>
+        <div style="padding-right: 30px;" class="col-md-8    ">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Diagram Penjualan Jenis Tiket</h3>
+                </div>
+                <div class="panel-body  ct-chart">
+                    <div class=””></div>
+                </div>
             </div>
         </div>
-
     </div>
-
-   
-
-    </div>
-
 </div>
 </body>
 
 </html>
-
 {{>footer}}
-
-
 <script>
+    var data = {
+        labels: ['Tiket Premium', 'Tiket Gold', 'Tiket Silver'],
+        series: [
+            [990, 888, 348]
+        ]
+    };
 
+    var options = {
+        seriesBarDistance: 1,
 
+        high: 1000,
+        low: 0,
+        scaleMinSpace: 20,
 
-$(document).on("click","#masuk",function(e) {
-    // alert("click bound to document listening for #test-element");
+        height: '500px'
 
-     
-                    e.preventDefault();
-                    console.log('select_link clicked');
-                    
-                     /*$.ajax({
-                        dataType: 'jsonp',
-                        data: "data=yeah",						
-                        jsonp: 'callback',
-                        url: 'http://localhost:3000/endpoint?callback=?',						
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });*/
-					// var data = {};
-					// data.title = "title";
-					// data.message = "message";
+    };
 
-                      var coba = tinyMCE.activeEditor.getContent({format : 'raw'});
+    var responsiveOptions = [
+        ['screen and (min-width: 641px) and (max-width: 1024px)', {
+            seriesBarDistance: 50,
+            axisX: {
+                labelInterpolationFnc: function (value) {
+                    return value;
+                }
+            }
+        }],
+        ['screen and (max-width: 640px)', {
+            seriesBarDistance: 90,
+            axisX: {
+                labelInterpolationFnc: function (value) {
+                    return value[0];
+                }
+            }
+        }]
+    ];
 
-                      var formData = {
-                        'judul'              : $('input[name=judul]').val(),       
-                        'posting'           : coba
-                        };		
-                                
-                       $.ajax({
-						            type: 'POST',
-					              data: JSON.stringify(formData),
-				                contentType: 'application/json',
-                        url: 'http://127.0.0.1:3000/admin/posting',				
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });
-			
-                });			
-
-
-
-
-
+    new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
 </script>

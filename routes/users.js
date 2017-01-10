@@ -275,87 +275,87 @@ exports.validasi = function (req, res) {
         var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
 
 
+            if (err) {
+                console.log(err);
+                return next("Error Query Level 2, Detail");
+            }
+
+            var arrayKosong = [];
+
+            var arrayPengisi = {
+
+                prefix: 'TK',
+                id_pembeli: null,
+                harga_satuan: null,
+                uang_transfer: null,
+                jenis_tk: null,
+                jml_tiket: null,
+                harga_total: null,
+                status: null
+
+            }
+
+            for (var z = 1; z < detail[0].jml_tiket; z++) {
+
+                arrayKosong.push(arrayPengisi);
+
+            }
+
+
+            var query = connection.query("select * from pembeli_sekunder where email_utama = ? ", req.session.namaSession, function (err, pembeliSekunder) {
+
                 if (err) {
                     console.log(err);
-                    return next("Error Query Level 2, Detail");
-                }
-
-                var arrayKosong = [];
-
-                var arrayPengisi = {
-
-                    prefix: 'TK',
-                    id_pembeli: null,
-                    harga_satuan: null,
-                    uang_transfer: null,
-                    jenis_tk: null,
-                    jml_tiket: null,
-                    harga_total: null,
-                    status: null
-
-                }
-
-                for (var z = 1; z < detail[0].jml_tiket; z++) {
-
-                    arrayKosong.push(arrayPengisi);
-
+                    return next("Error Query pembeliSekunder ! ");
                 }
 
 
-                var query = connection.query("select * from pembeli_sekunder where email_utama = ? ", req.session.namaSession, function (err, pembeliSekunder) {
-
-                    if (err) {
-                        console.log(err);
-                        return next("Error Query pembeliSekunder ! ");
-                    }
+                /// last time 20:29
 
 
-                    /// last time 20:29
+                var pembeliSekunderJson = JSON.stringify(pembeliSekunder);
+                console.log(pembeliSekunderJson);
 
 
-                    var pembeliSekunderJson = JSON.stringify(pembeliSekunder);
-                    console.log(pembeliSekunderJson);
+                //khusus tiket  // gagal
+                var tiketKeterangan;
+
+                if (detail[0].jenis_tk == "TK01") {
+
+                    tiketKeterangan = "TK01 - TIKET PREMIUM";
+
+                } else if (detail[0].jenis_tk == "TK02") {
+
+                    tiketKeterangan = "TK02 - TIKET GOLD";
+
+                } else {
+
+                    tiketKeterangan = "TK03 - TIKET SILVER";
+
+                }
 
 
-                    //khusus tiket  // gagal
-                    var tiketKeterangan;
+                // test array kosong nya ada apa kaga!
+                // console.log(arrayKosong);
 
-                    if (detail[0].jenis_tk == "TK01") {
-
-                        tiketKeterangan = "TK01 - TIKET PREMIUM";
-
-                    } else if (detail[0].jenis_tk == "TK02") {
-
-                        tiketKeterangan = "TK02 - TIKET GOLD";
-
-                    } else {
-
-                        tiketKeterangan = "TK03 - TIKET SILVER";
-
-                    }
-
-
-                    // test array kosong nya ada apa kaga!
-                    // console.log(arrayKosong);
-
-                    res.render("user/halamanUser/validasiUser", {
-                        nama: req.session.namaSession,
-                        emailUtama: pembeli[0],
-                        tiket: tiketKeterangan,
-                        generate_tiket: arrayKosong,
-                        pembeli_sekunder: pembeliSekunderJson
-                    });
-
-
-
+                res.render("user/halamanUser/validasiUser", {
+                    nama: req.session.namaSession,
+                    emailUtama: pembeli[0],
+                    tiket: tiketKeterangan,
+                    generate_tiket: arrayKosong,
+                    pembeli_sekunder: pembeliSekunderJson
                 });
 
 
 
+            });
 
 
-            })
-            //akhir query lapis dua
+
+
+
+        })
+        //akhir query lapis dua
 
     });
     // akhir query lapis satu
@@ -961,13 +961,15 @@ exports.user_gold = function (req, res) {
 
         var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_gold_utama[0].email_pembeli, function (err, user_gold_sekunder) {
 
-          
+
 
             res.render("user/admin/user_gold", {
                 user_utama: user_gold_utama,
                 user_sekunder: user_gold_sekunder,
-                emailUtama : user_gold_utama[0].email_pembeli
-               
+                emailUtama: user_gold_utama[0].email_pembeli,
+                email: req.session.namaSession,
+                nama: req.session.namaAdmin
+
 
             });
 
@@ -993,13 +995,15 @@ exports.user_premium = function (req, res) {
 
         var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_premium_utama[0].email_pembeli, function (err, user_premium_sekunder) {
 
-          
+
 
             res.render("user/admin/user_premium", {
                 user_utama: user_premium_utama,
                 user_sekunder: user_premium_sekunder,
-                emailUtama : user_premium_utama[0].email_pembeli
-               
+                emailUtama: user_premium_utama[0].email_pembeli,
+                email: req.session.namaSession,
+                nama: req.session.namaAdmin
+
 
             });
 
@@ -1026,13 +1030,16 @@ exports.user_silver = function (req, res) {
 
         var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_silver_utama[0].email_pembeli, function (err, user_silver_sekunder) {
 
-          
 
-            res.render("user/admin/user_premium", {
+
+            res.render("user/admin/user_silver", {
                 user_utama: user_silver_utama,
-                user_sekunder: user_premium_sekunder,
-                emailUtama : user_silver_utama[0].email_pembeli
-               
+                user_sekunder: user_silver_sekunder,
+                emailUtama: user_silver_utama[0].email_pembeli,
+                email: req.session.namaSession,
+                nama: req.session.namaAdmin
+
+
 
             });
 

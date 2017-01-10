@@ -3,7 +3,7 @@
     <div class="table-users col-md-10 col-md-offset-2">
         <div class="page-header text-center">
             <div class="col-md-10 ">
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <h1 id="titleDaftar">List Pembeli Tiket Silver </h1>
                 </div>
                 <i style=" padding-top: 20px; " class=" fa fa-users  fa-3x" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
                                 <span class="<%= btnAdmin %>  bigStat"> Lunas</span> {{else}}
                                 <span class="<%= btnUser %> bigStat"> Belum Lunas</span> {{/if}}
                             </td>
-                            <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/user/users-silver/{{this.id_pembeli}}">Detail</a></td>
+                            <td id="btn-edit" class="tengah text-center"> <a class="btn btn-raised btn-info" href="/admin/dashboard/users-silver/{{this.id_pembeli}}">Detail</a></td>
                             {{/each}}
                         </tr>
                     </tbody>
