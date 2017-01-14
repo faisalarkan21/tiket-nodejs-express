@@ -9,8 +9,15 @@ body {
 @font-face {
   font-family: Cabin;
   src: url('/font/Cabin/Cabin-Regular.ttf');
+ 
 }
 
+
+@font-face {
+
+  font-family: "Doppio One";
+  src: url('/font/Doppio_One/DoppioOne-Regular.ttf');
+}
 
 /*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');*/
 
@@ -90,7 +97,6 @@ html {
 }
 
 #titleDaftar {
-  
   color: black;
   /*font-size: 38px;*/
 }
@@ -862,27 +868,20 @@ div.table-users {
   border-color: #455A64;
   border-width: 3px;
   padding-bottom: 10px;
-} 
+}
 
 td.tengah {
-
   text-align: center !important;
 }
 
-
-.btnBahaya{
-
-    background-color: #f44336 !important;
-
+.btnBahaya {
+  background-color: #f44336 !important;
 }
 
-
-
-.info{
-
-    background-color: #546E7A !important;
-
+.info {
+  background-color: #546E7A !important;
 }
+
 
 /*.headerTengah{
 
@@ -891,44 +890,35 @@ td.tengah {
 }*/
 
 
-
 /* Tempat Style Chart  */
-
-
 
 .ct-chart .ct-bar {
   stroke-width: 60px;
-
 }
-.ct-label .ct-horizontal .ct-end{
+
+.ct-label .ct-horizontal .ct-end {
   /*align-content: center;  */
 }
 
 line.ct-bar {
-    stroke: #263238 !important;
+  stroke: #263238 !important;
 }
 
-span.ct-label{
-
-  font-size: 16px  !important;
+span.ct-label {
+  font-size: 16px !important;
   /*padding-left: 30px;
   padding-right: 25px;*/
-
   padding-top: 5px;
-
 }
 
 .ct-grids {
   padding-left: 190px !important;
 }
 
-
-
 .GarisAbu {
   border-color: #455A64;
   border-width: 3px;
-  
-} 
+}
 
 h2.judul {
   font-size: 22px;
@@ -938,3 +928,20 @@ ul.tulisTiket {
   font-size: 16px;
 }
 
+code.duit {
+  font-size: 16;
+}
+
+div.panel-dashboard-chart {
+  padding-top: 20px;
+}
+
+.panah::before {
+  font-family: FontAwesome;
+  content: "\f105";
+  display: inline-block;
+  /*padding-left: 10px;*/
+  padding-right: 10px;
+  /*vertical-align: middle;*/
+  float: left;
+}
