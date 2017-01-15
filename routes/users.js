@@ -1052,3 +1052,10 @@ exports.user_silver = function (req, res) {
 
     });
 }
+
+
+exports.tiketPost = function (req,res){
+
+
+    
+}

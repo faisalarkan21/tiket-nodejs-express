@@ -252,6 +252,7 @@ app.get('/user/ketentuan', pengamananUser, users.ketentuan);
 
 // validasi tiket
 app.get('/user/validasi', pengamananUser, users.tiket);
+app.post('/user/validasi', pengamananUser, users.tiketPost);
 
 
 
