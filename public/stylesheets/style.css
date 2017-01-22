@@ -860,8 +860,8 @@ hr.garisLogin {
 
 div.table-users {
   /*padding-top: 10px !important;*/
-  padding-right: 30px;
-  padding-left: 100px;
+  padding-right: 40px;
+  padding-left: 70px;
 }
 
 .Garistema {
@@ -944,4 +944,9 @@ div.panel-dashboard-chart {
   padding-right: 10px;
   /*vertical-align: middle;*/
   float: left;
+}
+
+
+button.btn:disabled {
+      color: #ffffff !important;
 }

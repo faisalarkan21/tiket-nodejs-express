@@ -5,19 +5,16 @@
 	}
 </style>
 <div id="page-content-wrapper">
-	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<h1 class="judul">Validasi Tiket <i style="padding-left: 15px; font-size: 40px;	" class="fa fa-shield " aria-hidden="true"></i>
- </h1>
+				</h1>
 				<br>
-				
 			</div>
 			<div class="col-lg-12">
-				<form class="" method="post" action="/user/data/">
+				<form class="" method="post" action="/user/validasi">
 					<fieldset>
-						
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class="panel-title">Form Validasi </h3>
@@ -55,14 +52,13 @@
 									<div class="form-group ">
 										<label class="control-label" for="">Pilih Bank </label>
 										<div class="col-md-8 input-group">
-											<select id="selectHarga" name="namaJenis" class="form-control">
+											<select id="selectHarga" name="namaBank" class="form-control">
                     
-                    <option value="1">BCA - NO REKENING 98080986643 - Faisal Arkan</option>
-                    <option value="2">BNI - NO REKENING 98080647381 - Zio Zeng </option>
-                    <option value="3">BRI - NO REKENING 78787878741 - Sativa Ken</option>
+                    <option value="BCA - NO REKENING 98080986643">BCA - NO REKENING 98080986643 - Faisal Arkan</option>
+                    <option value="BNI - NO REKENING 98080647381">BNI - NO REKENING 98080647381 - Zio Zeng </option>
+                    <option value="BRI - NO REKENING 78787878741">BRI - NO REKENING 78787878741 - Sativa Ken</option>
                     
                   </select>
-				  
 										</div>
 									</div>
 								</div>
@@ -71,7 +67,13 @@
 						<!-- orang 2 -->
 						<!-- Orang Sekunder -->
 						<div class="col-md-offset-9">
-							<button type="submit" class="btn btn-raised btn-info">Kirim Tiket Validasi</button>
+							{{#if statusValidasi}}
+							<button type="submit" class="btn btn-raised btn-info" disabled>Anda Sudah Mengirim Tiket</button>
+
+							{{else}}
+							<button type="submit" class="btn btn-raised btn-info" >Kirim Tiket Konfirmasi</button>
+
+							{{/if}}
 							<!-- Orang Ke 3 -->
 						</div>
 						<br>
@@ -84,9 +86,15 @@
 	</div>
 </div>
 <!-- /#page-content-wrapper -->
-
 </div>
 </body>
 
 </html>
 {{>footer}}
+
+
+<script>
+
+	console.log("{{statusValidasi}}")
+
+</script>

@@ -348,6 +348,7 @@ exports.validasi = function (req, res) {
 
 
 
+
             });
 
 
@@ -753,46 +754,74 @@ exports.ketentuan = function (req, res) {
 exports.tiket = function (req, res) {
 
 
-    var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
+    var query = connection.query("select * from pembeli_validasi where id_pembeli =  ?", req.session.nomor_pembeli, function (err, validasi) {
 
         if (err) {
+
             console.log(err);
-            return next("Error Query Level 1, Pembeli ");
+            return next("Error validasi Level 1, Pembeli ");
         }
 
-
-        var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
-
+        var query1 = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
 
             if (err) {
                 console.log(err);
-                return next("Error Query Level 2, Detail");
-            }
-
-            var tiketKeterangan;
-
-            if (detail[0].jenis_tk == "TK01") {
-
-                tiketKeterangan = "TK01 - TIKET PREMIUM";
-
-            } else if (detail[0].jenis_tk == "TK02") {
-
-                tiketKeterangan = "TK02 - TIKET GOLD";
-
-            } else {
-
-                tiketKeterangan = "TK03 - TIKET SILVER";
-
+                return next("Error Query Level 1, Pembeli ");
             }
 
 
-            res.render("user/halamanUser/validasitiket", {
-                nama: req.session.namaSession,
-                emailUtama: pembeli[0],
-                tiket: tiketKeterangan
+            var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
+
+
+                if (err) {
+                    console.log(err);
+                    return next("Error Query Level 2, Detail");
+                }
+
+                var tiketKeterangan;
+
+                if (detail[0].jenis_tk == "TK01") {
+
+                    tiketKeterangan = "TK01 - TIKET PREMIUM";
+
+                } else if (detail[0].jenis_tk == "TK02") {
+
+                    tiketKeterangan = "TK02 - TIKET GOLD";
+
+                } else {
+
+                    tiketKeterangan = "TK03 - TIKET SILVER";
+
+                }
+
+
+                var statusKirim;
+
+                if (validasi[0]) {
+
+                    statusKirim = true;
+
+                } else {
+
+                    statusKirim = false;
+
+                }
+
+
+                
+
+
+
+                res.render("user/halamanUser/validasitiket", {
+                    nama: req.session.namaSession,
+                    emailUtama: pembeli[0],
+                    tiket: tiketKeterangan,
+                    statusValidasi: statusKirim
+                });
+
             });
-
         });
+
     });
 
 
@@ -1054,8 +1083,101 @@ exports.user_silver = function (req, res) {
 }
 
 
-exports.tiketPost = function (req,res){
+exports.tiketPost = function (req, res) {
 
 
-    
+    insertValidasi = {
+        nama_utama: req.body.namaUtama,
+        email_utama: req.body.emailUtama,
+        jenis_tk: req.body.jk_utama,
+        jenis_bank: req.body.namaBank
+    }
+
+    var query = connection.query("insert into pembeli_validasi set ?", insertValidasi, function (err, data) {
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+        console.log("Data Masuk");
+    });
+    res.redirect('/user/validasi');
+}
+
+
+//admin kotak validasi 
+exports.kotakValidasi = function (req, res) {
+
+    var query = connection.query("select * from pembeli_validasi", function (err, userValidasi) {
+
+
+
+
+        res.render('user/admin/kotak_validasi', {
+            userValidasi: userValidasi
+        });
+
+
+
+    });
+
+
+
+}
+
+
+exports.kotakValidasi = function (req, res) {
+
+    var query = connection.query("select * from pembeli_validasi", function (err, userValidasi) {
+
+
+
+
+        res.render('user/admin/kotak_validasi', {
+            userValidasi: userValidasi,
+            email: req.session.namaSession,
+            nama: req.session.namaAdmin
+        });
+
+
+
+    });
+
+
+
+}
+
+
+exports.detailValidasi = function (req, res) {
+
+    var id = req.params.id;
+
+    var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
+
+        var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli=?", id, function (err, detail) {
+
+            if (err) {
+                console.log(err);
+
+            }
+
+            res.render("user/admin/detail_validasi", {
+                userValidasi: validasi[0],
+                detail_tiket: detail[0],
+                email: req.session.namaSession,
+                nama: req.session.namaAdmin
+            });
+
+
+        });
+
+
+
+
+
+    });
+
 }

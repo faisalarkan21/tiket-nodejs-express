@@ -218,6 +218,12 @@ app.get('/admin/dashboard/users-gold', pengamananAdmin, users.usersGold);
 app.get('/admin/dashboard/users-premium', pengamananAdmin, users.usersPremium);
 app.get('/admin/dashboard/users-silver', pengamananAdmin, users.usersSilver);
 
+//kotak validasi admin 
+app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
+
+app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
+
+
 
 
 
@@ -253,6 +259,7 @@ app.get('/user/ketentuan', pengamananUser, users.ketentuan);
 // validasi tiket
 app.get('/user/validasi', pengamananUser, users.tiket);
 app.post('/user/validasi', pengamananUser, users.tiketPost);
+
 
 
 
