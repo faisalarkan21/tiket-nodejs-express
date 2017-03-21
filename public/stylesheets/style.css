@@ -603,11 +603,11 @@ code {
 }
 
 #picScroll2 {
-  background-image: url("../images/tiket10.jpg");
+  background-image: url("../images/footer.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: 40px;
-  background-position-x: 160px;
+  /*background-position-y: 40px;*/
+  /*background-position-x: 160px;*/
 }
 
 #picScroll3 {
