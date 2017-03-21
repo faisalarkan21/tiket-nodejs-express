@@ -2,7 +2,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'tiket_sbd_bener',
+    password:'arkan14811',
+    database: 'database_tiket',
 
 });
 
@@ -845,7 +846,9 @@ exports.keluar = function (req, res) {
 exports.cobaGet = function (req, res) {
 
 
-    res.render("dev");
+     var nama = req.body.nama;
+
+    res.send("nama lau sadasdasdd " + nama);
 
 
 }

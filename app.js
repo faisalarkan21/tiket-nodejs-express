@@ -210,6 +210,7 @@ var pengamananAdmin = function (req, res, next) {
 /*
     Untuk Admin
 */
+
 app.get('/', routes.index);
 app.get('/admin/login', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
@@ -222,7 +223,6 @@ app.get('/admin/dashboard/users-silver', pengamananAdmin, users.usersSilver);
 app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
 
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
-
 
 
 
@@ -264,7 +264,7 @@ app.post('/user/validasi', pengamananUser, users.tiketPost);
 
 
 //dev 
-app.get('/dev', users.cobaGet);
+app.post('/dev', users.cobaGet);
 // app.post ('/dev', users.cobaPost);
 
 
@@ -280,6 +280,11 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
+app.set('port', (process.env.PORT || 3002));
+
+app.listen(app.get('port'),  () => {
+  console.log(`Server berjalan di port : http://localhost:${app.get('port')}/`)
+}) 
 
 // development error handler
 // will print stacktrace

@@ -34,9 +34,6 @@ var postArtikel = mongo.model('artikel', skema);
 
 
 
-
-
-
 exports.index = function (req, res,next) {
 
 

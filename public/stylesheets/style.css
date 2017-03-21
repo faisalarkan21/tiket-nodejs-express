@@ -1,6 +1,6 @@
 body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  background-color: white;
+  /*background-color: white ;*/
   padding-top: 45px;
   margin: 0;
   /*background-color: #B0BEC5 !important;*/
@@ -352,10 +352,7 @@ dev
     color: #009688 !important;
 }*/
 
-.navbar.navbar-inverse {
-  background-color: #121A1F !important;
-  color: #CFD8DC !important;
-}
+
 
 .navbar.navbar-inverse .dropdown-menu li>a:focus,
 .navbar.navbar-inverse .dropdown-menu li>a:hover {
@@ -590,10 +587,10 @@ code {
 }
 
 #pic2 {
-  background-image: url("../images/tiket7.jpg");
+  background-image: url("../images/node1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: -40px;
+  background-position-y: -60px;
   display: none;
 }
 
@@ -683,7 +680,7 @@ code {
 }
 
 #judul2 {
-  padding-top: 59px;
+  padding-top: 13px;
 }
 
 #judul3 {
@@ -736,7 +733,7 @@ label.size {
 }
 
 .gear {
-  padding-left: 1100px;
+  padding-left: 1150px;
   padding-top: 500px;
 }
 
@@ -949,4 +946,17 @@ div.panel-dashboard-chart {
 
 button.btn:disabled {
       color: #ffffff !important;
+}
+
+/*  new */
+
+.navbar.navbar-inverse {
+  background-color: #121A1F !important;
+  color: #CFD8DC !important;
+}
+
+.navbar.navbar-inverse.nav-depan {
+  padding-top: 15px;
+  background-color: transparent !important;
+
 }
