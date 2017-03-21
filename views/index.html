@@ -13,48 +13,40 @@
                 <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw "></i>
             </div>
         </div>
-     
+
     </div>
+
     <div data-anchor="scroll2" id="picScroll2" class="section">
-        <div class="col-md-8 hitung">
-            <h1 hidden class="dipercaya"> Tiket Yang Telah Terjual </h1>
-            <i style="display: none;" class="fa fa-ticket fa-4x  fa-pull-left fa-border dipercaya" aria-hidden="true"></i>
-            <label class="hitungPercaya" hidden for="">92342</label>
-            <br>
-            <br>
-            <h1 hidden class="dipercaya">Total Tiket Tersisa </h1>
-            <i style="display: none;" class="fa fa-rocket fa-4x  fa-pull-left fa-border dipercaya" aria-hidden="true"></i>
-            <label class="hitungPercaya" hidden for="">3239</label>
-        </div>
-    </div>
-    <div data-anchor="scroll3" id="picScroll3" class="section">
         <div class="col-md-12  pilihTiket">
-            <h1 hidden class="tiket judul3 col-md-offset-1">Pilih Jenis Tiket Untuk Anda </h1>
+            <h2 hidden class="dipercaya"> Pelajari Teknologi Terkini Dengan Waktu 12 minggu </h2>
+            <!--<h2 hidden class="dipercaya"> </h2>-->
+            <h2 hidden class="dipercaya"> Dengan stack Teknologi Javascript</h2>
             <!--<hr class=" garisTiket">-->
+        
             <form class="  form-horizontal form-harga  ">
-                <div class="col-md-3 ">
-                    <i class="fa fa-ticket fa-5x silver  fa-border " aria-hidden="true"></i>
-                    <label class="tipeTiket" for="">Silver</label>
-                    <label class="harga" for="">Rp.<span class="duit">1.000.000.000</span>/Tiket</label>
-                    <label class="lokasi"><code>Depan Podium Dekat Panggung</code> Berdiri Dengan Bebas </label>
-                    <a href="/daftar" class="btn btn-raised btn-info">Daftar Sekarang</a>
+
+                <br>
+             
+                
+                   <br>
+
+                <div class="col-md-1 " id="node">
+
                 </div>
-                <div class="col-md-3 col-md-offset-1">
-                    <i class="fa fa-ticket premium fa-5x  fa-border " aria-hidden="true"></i>
-                    <label class="tipeTiket" for="">Premium</label>
-                    <label class="harga" for="">Rp.<span class="duit">3.000.000.000</span>/Tiket</label>
-                    <label class="lokasi"> <code> Kursi Duduk Standard Premium</code> Ditengah Panggung</label>
-                    <a href="/daftar" class="btn btn-raised btn-info">Daftar Sekarang</a>
+                  <br>
+                    <br>
+                <div class="col-md-1 col-md-offset-1 " id="js">
+
                 </div>
-                <div class="col-md-3 col-md-offset-1">
-                    <i class="fa fa-ticket fa-5x gold  fa-border " aria-hidden="true"></i>
-                    <label class="tipeTiket" for="">Gold</label>
-                    <label class="harga" for="">Rp.<span class="duit">5.000.000.000</span>/Tiket</label>
-                    <label class="lokasi"> <code>Kursi Duduk Exskulusif</code> Ditengah Depan Panggung</label>
-                    <a href="/daftar" class="btn btn-raised btn-info">Daftar Sekarang</a>
-                </div>
+                <br>
+<!--
+                <div class="col-md-1 " id="mongo">
+
+                </div>-->
+
+            </form>
         </div>
-        </form>
+
     </div>
     <div data-anchor="scroll4 " id="picScroll4" class="section">
         <div class="col-md-4 sectionTempat">
@@ -80,7 +72,7 @@
         </div>
         <div id="Kolomkontak" class="col-md-3 col-md-offset-1">
             <h2 style="font-size: 20px;" class="kontak">Terhubung Dengan Kami</h2>
-            
+
             <ul class="kontak">
                 <li><i style=" padding-right: 9px;" class="fa fa-facebook footer-icons" aria-hidden="true"></i>
                     <a class="listSosial" href="#"> Facebook </a></li>
@@ -167,7 +159,7 @@
     $(document).ready(function () {
         $('#fullpage').fullpage({
 
-            anchors: ['scroll1', 'scroll2', 'scroll3', 'scroll4','scroll5'],
+            anchors: ['scroll1', 'scroll2', 'scroll3', 'scroll4', 'scroll5'],
 
             navigation: true,
             navigationPosition: 'right',
@@ -195,28 +187,31 @@
                 $('.preload').fadeIn(1000);
                 $('.hilang').fadeIn(1000);
 
+                // if (index == 2) {
+                //     $(".hitungPercaya").show();
+                //     $(".dipercaya").fadeIn(400);
+
+                //     $(".hitungPercaya").each(function () {
+                //         $(this).prop('Counter', 0).animate({
+
+                //             Counter: $(this).text()
+                //         }, {
+
+                //             duration: 4000,
+                //             easing: 'swing',
+                //             step: function (now) {
+                //                 $(this).text(Math.ceil(now));
+                //             }
+
+                //         })
+
+                //     });
+                // } // akhir index 2
+
                 if (index == 2) {
+
                     $(".hitungPercaya").show();
                     $(".dipercaya").fadeIn(400);
-
-                    $(".hitungPercaya").each(function () {
-                        $(this).prop('Counter', 0).animate({
-
-                            Counter: $(this).text()
-                        }, {
-
-                            duration: 4000,
-                            easing: 'swing',
-                            step: function (now) {
-                                $(this).text(Math.ceil(now));
-                            }
-
-                        })
-
-                    });
-                } // akhir index 2
-
-                if (index == 3) {
 
                     $(".tiket").fadeIn({
                         queue: false,

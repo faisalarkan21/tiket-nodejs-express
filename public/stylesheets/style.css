@@ -9,15 +9,13 @@ body {
 @font-face {
   font-family: Cabin;
   src: url('/font/Cabin/Cabin-Regular.ttf');
- 
 }
 
-
 @font-face {
-
   font-family: "Doppio One";
   src: url('/font/Doppio_One/DoppioOne-Regular.ttf');
 }
+
 
 /*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');*/
 
@@ -28,6 +26,7 @@ h3.judul,
 h1.judulSlider,
 #titleDaftar,
 h1.dipercaya,
+h2.dipercaya,
 h1.judul3,
 h2.kontak,
 p.tulisTiket,
@@ -352,8 +351,6 @@ dev
     color: #009688 !important;
 }*/
 
-
-
 .navbar.navbar-inverse .dropdown-menu li>a:focus,
 .navbar.navbar-inverse .dropdown-menu li>a:hover {
   color: #263238 !important;
@@ -603,11 +600,10 @@ code {
 }
 
 #picScroll2 {
-  background-image: url("../images/footer.jpg");
+   background-image: url("../images/footer.png");
   background-size: cover;
   background-repeat: no-repeat;
-  /*background-position-y: 40px;*/
-  /*background-position-x: 160px;*/
+  background-position-y: -50px;
 }
 
 #picScroll3 {
@@ -706,9 +702,11 @@ label.size {
 
 .hitung {
   color: white !important;
+  margin-top: -250px;
   padding-bottom: 120px;
   padding-left: 60px !important;
-  font-family: "Doppio One";
+  font-size: 10px;
+  /*font-family: "Doppio One";*/
 }
 
 .hitungPercaya {
@@ -722,8 +720,9 @@ label.size {
 }
 
 .pilihTiket {
+  padding-top: 95px;
   padding-bottom: 60px;
-  /*padding-left: 90px !important;*/
+  padding-left: 50px !important;
   color: white !important;
 }
 
@@ -737,8 +736,10 @@ label.size {
   padding-top: 500px;
 }
 
-.dipercaya {
-  padding-bottom: 10px;
+h2.dipercaya {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 500;
 }
 
 .tipeTiket {
@@ -943,10 +944,10 @@ div.panel-dashboard-chart {
   float: left;
 }
 
-
 button.btn:disabled {
-      color: #ffffff !important;
+  color: #ffffff !important;
 }
+
 
 /*  new */
 
@@ -958,5 +959,27 @@ button.btn:disabled {
 .navbar.navbar-inverse.nav-depan {
   padding-top: 15px;
   background-color: transparent !important;
-
 }
+
+#js {
+  background-image: url("../images/js2.png");
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 400px;
+}
+
+#node {
+  background-image: url("../images/nyatuNode.png");
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 600px;
+  /*margin-left: -60px;
+    margin-right: 80px;*/
+}
+
+/*#mongo {
+  background-image: url("../images/mongodb.png");
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+}*/
