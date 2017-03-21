@@ -720,9 +720,9 @@ label.size {
 }
 
 .pilihTiket {
-  padding-top: 95px;
+  padding-top: 100px;
   padding-bottom: 60px;
-  padding-left: 50px !important;
+  /*padding-left: 50px !important;*/
   color: white !important;
 }
 
@@ -737,7 +737,7 @@ label.size {
 }
 
 h2.dipercaya {
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
   font-weight: 500;
 }
@@ -836,13 +836,6 @@ a.listSosial {
   color: white !important;
 }
 
-img.node {
-  max-width: 80%;
-  max-height: 80%;
-  /*transform: scale(13);*/
-  /*padding-bottom: 80px;*/
-  padding-left: 10px;
-}
 
 .text-center {
   text-align: unset !important;
@@ -965,7 +958,9 @@ button.btn:disabled {
   background-image: url("../images/js2.png");
   background-repeat: no-repeat;
   height: 500px;
-  width: 400px;
+  width: 500px;
+  /*margin-left: 20px;*/
+  /*padding-top: 90px;*/
 }
 
 #node {
@@ -976,6 +971,8 @@ button.btn:disabled {
   /*margin-left: -60px;
     margin-right: 80px;*/
 }
+
+
 
 /*#mongo {
   background-image: url("../images/mongodb.png");
