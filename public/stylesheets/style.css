@@ -1,7 +1,7 @@
 body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   /*background-color: white ;*/
-  padding-top: 45px;
+  padding-top: 30px;
   margin: 0;
   /*background-color: #B0BEC5 !important;*/
 }
@@ -52,6 +52,7 @@ form.text-center {}
 form.daftar {
   margin: 0 auto;
   width: 100%;
+  
 }
 
 .login {
