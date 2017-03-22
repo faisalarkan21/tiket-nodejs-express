@@ -954,11 +954,12 @@ button.btn:disabled {
   background-color: transparent !important;
 }
 
-#js {
-  background-image: url("../images/js2.png");
+#meteor {
+  background-image: url("../images/meteor.png");
   background-repeat: no-repeat;
   height: 500px;
   width: 500px;
+  margin-left: -90px;
   /*margin-left: 20px;*/
   /*padding-top: 90px;*/
 }
@@ -971,6 +972,17 @@ button.btn:disabled {
   /*margin-left: -60px;
     margin-right: 80px;*/
 }
+
+#backgroudlogin {
+
+  background-image: url("../images/backnode1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 40px;
+  display: none;
+
+}
+
 
 
 
