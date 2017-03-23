@@ -52,7 +52,7 @@ form.text-center {}
 form.daftar {
   margin: 0 auto;
   width: 100%;
-  
+
 }
 
 .login {
@@ -984,7 +984,13 @@ button.btn:disabled {
 
 }
 
+hr.garisbagian {
 
+  margin-top: 10px !important;
+  margin-bottom: 15px;
+  margin-left: 16px;
+
+}
 
 
 /*#mongo {
