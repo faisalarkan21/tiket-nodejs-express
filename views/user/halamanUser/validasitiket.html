@@ -8,7 +8,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class="judul">Validasi Tiket <i style="padding-left: 15px; font-size: 40px;	" class="fa fa-shield " aria-hidden="true"></i>
+				<h1 class="judul">Validasi Tiket <i style="padding-left: 15px; font-size: 40px;	padding-top: 25px;" class="fa fa-shield " aria-hidden="true"></i>
 				</h1>
 				<br>
 			</div>
@@ -42,20 +42,19 @@
 								</div>
 								<div class="col-md-4 ">
 									<div class="form-group has-warning ">
-										<label class="control-label" for="inputWarning">Jenis Tiket</label>
+										<label class="control-label" for="inputWarning">No Handphone</label>
 										<div class="form-input">
-											<input class="form-control" id="inputWarning" type="text" name="jk_utama" value="{{tiket}}" readonly>
+											<input class="form-control" id="inputWarning" type="text" name="jk_utama" value="{{emailUtama.hp_pembeli}}" readonly>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-10 ">
+								<div class="col-md-4 col-md-offset-1 ">
 									<div class="form-group ">
 										<label class="control-label" for="">Pilih Bank </label>
 										<div class="col-md-8 input-group">
 											<select id="selectHarga" name="namaBank" class="form-control">
-                    
-                    <option value="BCA - NO REKENING 98080986643">BCA - NO REKENING 98080986643 - Faisal Arkan</option>
-                    <option value="BNI - NO REKENING 98080647381">BNI - NO REKENING 98080647381 - Zio Zeng </option>
+                    <option  hidden>Pilih Bank</option>
+                    <option value="BCA - NO REKENING 98080986643">BCA - NO REKENING 98080986643 - Faisal Arkan</option>                 
                     <option value="BRI - NO REKENING 78787878741">BRI - NO REKENING 78787878741 - Sativa Ken</option>
                     
                   </select>
@@ -63,6 +62,8 @@
 									</div>
 								</div>
 							</div>
+									<br>
+								
 						</div>
 						<!-- orang 2 -->
 						<!-- Orang Sekunder -->

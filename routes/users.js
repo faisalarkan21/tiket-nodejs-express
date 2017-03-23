@@ -262,6 +262,7 @@ exports.validasi = function (req, res) {
                 res.render("user/halamanUser/validasiUser", {
                     nama: req.session.namaSession,
                     emailUtama: pembeli[0],
+                    detailPembeli: detail[0]
                    
                   
                    
@@ -692,21 +693,7 @@ exports.tiket = function (req, res) {
                     return next("Error Query Level 2, Detail");
                 }
 
-                var tiketKeterangan;
-
-                if (detail[0].jenis_tk == "TK01") {
-
-                    tiketKeterangan = "TK01 - TIKET PREMIUM";
-
-                } else if (detail[0].jenis_tk == "TK02") {
-
-                    tiketKeterangan = "TK02 - TIKET GOLD";
-
-                } else {
-
-                    tiketKeterangan = "TK03 - TIKET SILVER";
-
-                }
+              
 
 
                 var statusKirim;
@@ -729,7 +716,7 @@ exports.tiket = function (req, res) {
                 res.render("user/halamanUser/validasitiket", {
                     nama: req.session.namaSession,
                     emailUtama: pembeli[0],
-                    tiket: tiketKeterangan,
+                    
                     statusValidasi: statusKirim
                 });
 
