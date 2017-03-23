@@ -2,8 +2,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password:'arkan14811',
-    database: 'database_tiket',
+    password: 'arkan14811',
+    database: 'bootcamp_node',
 
 });
 
@@ -15,10 +15,6 @@ connection.connect(function (err) {
 
     console.log('connected as id ' + connection.threadId);
 });
-
-
-
-
 
 
 exports.daftar = function (req, res) {
@@ -37,18 +33,14 @@ exports.mendaftar = function (req, res, next) {
     var insertPembeli = {
 
         nm_pembeli: req.body.nama,
+        email_pembeli: req.body.email,
+        password: req.body.password,
         hp_pembeli: req.body.hp,
         gd_pembeli: req.body.gd,
-        email_pembeli: req.body.email,
-        password: req.body.password
-
+        motivasi_pembeli: req.body.motivasi
 
 
     };
-
-    var waktu = new Date();
-
-    console.log(waktu);
 
     //masukin nama, hp,gender,email, password
 
@@ -63,8 +55,12 @@ exports.mendaftar = function (req, res, next) {
 
     });
 
+    var waktu = new Date();
+
+    console.log(waktu);
+
     //masukin date
-    var query = connection.query("INSERT INTO tgl_pesan set tgl_order = ?", waktu, function (err, rows) {
+    var query = connection.query("INSERT INTO tgl_pesan set tgl_order = ?", "waktu", function (err, rows) {
 
         if (err) {
             console.log(err);
@@ -74,26 +70,7 @@ exports.mendaftar = function (req, res, next) {
 
 
     });
-    //masukin harga, status
-    var namaTiket;
 
-    if (req.body.namaJenis == "1") {
-
-        namaTiket = "TK01";
-
-    } else if (req.body.namaJenis == "2") {
-
-        namaTiket = "TK02"
-
-    } else if (req.body.namaJenis == "3") {
-
-        namaTiket = "TK03"
-
-    } else {
-
-        namaTiket = "Engga ada"
-
-    }
 
 
 
@@ -101,10 +78,10 @@ exports.mendaftar = function (req, res, next) {
 
 
 
-        harga_satuan: req.body.satuan,
-        jenis_tk: namaTiket,
-        jml_tiket: req.body.jmlTiket,
-        harga_total: req.body.totalHarga,
+        harga_tiket: 500000,
+        uang_transfer: 0,
+        pilihan_bank: req.body.bank,
+        status: "Belum Lunas",
 
 
 
@@ -118,7 +95,7 @@ exports.mendaftar = function (req, res, next) {
 
     */
 
-    var query = connection.query("INSERT INTO detil_pesan_tiket set  ?", insertDetail, function (err, rows) {
+    var query = connection.query("INSERT INTO detil_pesan_tiket set ?", insertDetail, function (err, rows) {
 
         if (err) {
             console.log(err);
@@ -809,7 +786,7 @@ exports.tiket = function (req, res) {
                 }
 
 
-                
+
 
 
 
@@ -846,7 +823,7 @@ exports.keluar = function (req, res) {
 exports.cobaGet = function (req, res) {
 
 
-     var nama = req.body.nama;
+    var nama = req.body.nama;
 
     res.send("nama lau sadasdasdd " + nama);
 
