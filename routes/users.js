@@ -256,80 +256,16 @@ exports.validasi = function (req, res) {
             if (err) {
                 console.log(err);
                 return next("Error Query Level 2, Detail");
-            }
+            }          
 
-            var arrayKosong = [];
-
-            var arrayPengisi = {
-
-                prefix: 'TK',
-                id_pembeli: null,
-                harga_satuan: null,
-                uang_transfer: null,
-                jenis_tk: null,
-                jml_tiket: null,
-                harga_total: null,
-                status: null
-
-            }
-
-            for (var z = 1; z < detail[0].jml_tiket; z++) {
-
-                arrayKosong.push(arrayPengisi);
-
-            }
-
-
-            var query = connection.query("select * from pembeli_sekunder where email_utama = ? ", req.session.namaSession, function (err, pembeliSekunder) {
-
-                if (err) {
-                    console.log(err);
-                    return next("Error Query pembeliSekunder ! ");
-                }
-
-
-                /// last time 20:29
-
-
-                var pembeliSekunderJson = JSON.stringify(pembeliSekunder);
-                console.log(pembeliSekunderJson);
-
-
-                //khusus tiket  // gagal
-                var tiketKeterangan;
-
-                if (detail[0].jenis_tk == "TK01") {
-
-                    tiketKeterangan = "TK01 - TIKET PREMIUM";
-
-                } else if (detail[0].jenis_tk == "TK02") {
-
-                    tiketKeterangan = "TK02 - TIKET GOLD";
-
-                } else {
-
-                    tiketKeterangan = "TK03 - TIKET SILVER";
-
-                }
-
-
-                // test array kosong nya ada apa kaga!
-                // console.log(arrayKosong);
 
                 res.render("user/halamanUser/validasiUser", {
                     nama: req.session.namaSession,
                     emailUtama: pembeli[0],
-                    tiket: tiketKeterangan,
-                    generate_tiket: arrayKosong,
-                    pembeli_sekunder: pembeliSekunderJson
+                   
+                  
+                   
                 });
-
-
-
-
-            });
-
-
 
 
 
