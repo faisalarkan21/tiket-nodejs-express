@@ -993,6 +993,7 @@ exports.tiketPost = function (req, res) {
         id_pembeli: req.session.nomor_pembeli,
         nm_pembeli: req.body.namaUtama,
         email_pembeli: req.body.emailUtama,
+        uang_transfer: 500000,
         hp_pembeli: req.body.hp_utama,
         pilihan_bank: req.body.namaBank
     }
