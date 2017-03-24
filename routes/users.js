@@ -716,7 +716,7 @@ exports.tiket = function (req, res) {
                 res.render("user/halamanUser/validasitiket", {
                     nama: req.session.namaSession,
                     emailUtama: pembeli[0],
-                    
+                    detailTiket: detail[0],
                     statusValidasi: statusKirim
                 });
 
@@ -990,10 +990,11 @@ exports.tiketPost = function (req, res) {
 
 
     insertValidasi = {
-        nama_utama: req.body.namaUtama,
-        email_utama: req.body.emailUtama,
-        jenis_tk: req.body.jk_utama,
-        jenis_bank: req.body.namaBank
+        id_pembeli: req.session.nomor_pembeli,
+        nm_pembeli: req.body.namaUtama,
+        email_pembeli: req.body.emailUtama,
+        hp_pembeli: req.body.hp_utama,
+        pilihan_bank: req.body.namaBank
     }
 
     var query = connection.query("insert into pembeli_validasi set ?", insertValidasi, function (err, data) {

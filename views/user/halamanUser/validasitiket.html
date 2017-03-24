@@ -21,7 +21,7 @@
 							</div>
 							<div class="panel-body">
 								<div class="col-md-12">
-									<legend class="control-label">* Data Email Utama</legend>
+									<legend class="control-label">* Submit Tiket Validasi </legend>
 									<hr>
 								</div>
 								<div class="col-md-4 ">
@@ -44,14 +44,23 @@
 									<div class="form-group has-warning ">
 										<label class="control-label" for="inputWarning">No Handphone</label>
 										<div class="form-input">
-											<input class="form-control" id="inputWarning" type="text" name="jk_utama" value="{{emailUtama.hp_pembeli}}" readonly>
+											<input class="form-control" id="inputWarning" type="text" name="hp_utama" value="{{emailUtama.hp_pembeli}}" readonly>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-4 col-md-offset-1 ">
+
+								<div class="col-md-4 col-md-offset-1">
+									<div class="form-group has-warning ">
+										<label class="control-label" for="inputWarning">Harga Tiket</label>
+										<div class="form-input">
+											<input class="form-control" id="hargaTiket" type="text" name="hp_utama" value="{{detailTiket.harga_tiket}}" readonly>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 ">
 									<div class="form-group ">
 										<label class="control-label" for="">Pilih Bank </label>
-										<div class="col-md-8 input-group">
+										<div class="col-md-13 input-group">
 											<select id="selectHarga" name="namaBank" class="form-control">
                     <option  hidden>Pilih Bank</option>
                     <option value="BCA - NO REKENING 98080986643">BCA - NO REKENING 98080986643 - Faisal Arkan</option>                 
@@ -97,5 +106,27 @@
 <script>
 
 	console.log("{{statusValidasi}}")
+
+	$( document ).ready(function() {
+    
+	// alert(toRp({{detailPembeli.harga_tiket}}));
+	    
+	$('#hargaTiket').val(toRp('{{detailTiket.harga_tiket}}'));
+
+    function toRp(angka) {
+        var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+        var rev2 = '';
+        for (var i = 0; i < rev.length; i++) {
+            rev2 += rev[i];
+            if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
+                rev2 += '.';
+            }
+        }
+        return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+    }
+
+});
+
+
 
 </script>
