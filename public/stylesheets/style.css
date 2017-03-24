@@ -992,6 +992,29 @@ hr.garisbagian {
 
 }
 
+.ct-label {
+
+  font-size: 20px !important;
+
+}
+
+/*.ct-series-c .ct-area, .ct-series-c .ct-slice-pie {
+
+    fill: #1A237E !important;
+
+}
+
+.ct-series-a .ct-area, .ct-series-a .ct-slice-pie{
+
+  fill: #424242 !important;
+
+}
+
+.ct-series-b .ct-area, .ct-series-b .ct-slice-pie{
+
+  fill: #BDBDBD !important;
+
+}*/
 
 /*#mongo {
   background-image: url("../images/mongodb.png");
