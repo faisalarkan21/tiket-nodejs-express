@@ -743,6 +743,7 @@ exports.tiket = function (req, res) {
                     nama: req.session.namaSession,
                     emailUtama: pembeli[0],
                     detailTiket: detail[0],
+                    validasiTable: validasi[0],
                     statusValidasi: statusKirim
                 });
 
