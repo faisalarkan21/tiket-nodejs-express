@@ -11,7 +11,7 @@
             </div>
 
 
-            <div class="col-md-10">
+            <div style="margin-top: -20px;" class="col-md-10">
 
                 <div class="col-md-9 col-md-offset-1" style="margin-bottom: -15px;">
 
@@ -29,24 +29,30 @@
 
                                 <div class="input-group ">
 
-                                    <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></span>
-                                    <input class="form-control " name="nama" placeholder="Nama Anda" type="name" value="">
+                                    <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg detailDashIcon" aria-hidden="true"></i></span>
+                                    <label for="nama " class="control-label"> Nama Peserta      
+                                  </label>
+                                    <input class="form-control " name="nama" placeholder="Nama Anda" type="name" id="nama" value="{{userDetail.nm_pembeli}}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-md-offset-1">
                             <div id="ketikPass" class="form-group  {{error}}">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-                                    <input class="form-control" name="email" placeholder="Email Anda" type="email" value="">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa-lg detailDashIcon" aria-hidden="true"></i></span>
+                                     <label for="email " class="control-label"> Email Peserta             
+                                  </label>
+                                    <input class="form-control" name="email" placeholder="Email Anda" type="email" id="email" value="{{userDetail.email_pembeli}}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 ">
                             <div id="ketikEmail" class="form-group {{error}}">
                                 <div class="input-group ">
-                                    <span class="input-group-addon"><i class="fa fa-eye-slash fa-lg" aria-hidden="true"></i></span>
-                                    <input class="form-control " name="password" placeholder="Password" type="password" value="">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash fa-lg detailDashIcon" aria-hidden="true"></i></span>
+                                      <label for="password " class="control-label">                 
+                                  Password Peserta</label>
+                                    <input class="form-control " name="password" placeholder="Password" type="text" id="password" value="{{userDetail.password}}">
                                 </div>
                             </div>
                         </div>
@@ -54,78 +60,85 @@
                         <div class="col-md-4 col-md-offset-1">
                             <div id="ketikEmail" class="form-group {{error}}">
                                 <div class="input-group ">
-                                    <span class="input-group-addon"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></span>
-                                    <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="">
+                                    <span class="input-group-addon"><i class="fa fa-phone-square fa-lg detailDashIcon" aria-hidden="true"></i></span>
+                                    <label for="hp " class="control-label">                 
+                                  No Handphone</label>
+                                    <input class="form-control " name="hp" placeholder="No Handphone" id="hp" type="text" value="{{userDetail.hp_pembeli}}">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 ">
-                            <div id="ketikPass" class="form-group  {{error}}">
+                        <div class="col-md-4 " style="margin-left: 4px;">
+                            <div id="ketikEmail" class="form-group  {{error}}">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
-
-                                    <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="">
+                                    <span  class="input-group-addon"><i class="fa fa-user fa-lg detailDashIcon" aria-hidden="true"></i></span>
+                                        <label for="gender " class="control-label">                 
+                                  Gender</label>
+                                    <input class="form-control " name="hp" placeholder="No Handphone" type="text" id="gender" value="{{userDetail.gd_pembeli}}" readonly>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-9">
+                        <div style="margin-left: -15px;">
 
-                            <br>
-                            <label class="control-label">                 
-                                  Pilih Metode Pembayaran</label>
-                            <hr class="garisbagian">
-
-                        </div>
-                        <div class="col-md-12" style="margin-top: -30px;">
-
-                            <div class="col-md-12 ">
-
-
-
-
-                                <div id="ketikEmail" class="form-group {{error}} col-md-6">
-                                    <div class="input-group col-md-9">
-                                        <label for="metode " class="control-label">                 
-                                  Pilih Metode Pembayaran</label>
-                                        <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="">
-
-                                    </div>
-                                </div>
-
-
-                                <div id="ketikEmail" class="form-group {{error}} col-md-6">
-                                    <div class="input-group col-md-8">
-                                        <label for="harga " class="control-label">                 
-                                  Biaya Pendaftaran</label>
-                                        <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Rp. 500.000" disabled>
-
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-                            <div class="col-md-8 ">
-                                <div class="form-group">
-                                    <label for="textArea" style="text-align: left;" class="col-md-2 control-label">Motivasi Anda </label>
-
-                                    <div class="col-md-10">
-                                        <textarea name="motivasi" class="form-control" rows="3" id="textArea"></textarea>
-                                        <span class="help-block">Apa motivasi anda untuk terpilih mengikuti bootcamp ini ?</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-2">
+                            
+                            <div class="col-md-9" style=" margin-top: 25px;">
 
                                 <br>
-                                <br>
-                                <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                                <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
-                            </div>
+                                <label style="margin-left: 15px;" class="control-label">                 
+                                  Metode Pembayaran</label>
+                                <hr class="garisbagian">
 
+                            </div>
+                            <div class="col-md-12" style="margin-top: -30px;">
+
+                                <div class="col-md-12 ">
+
+
+
+
+                                    <div id="ketikEmail" class="form-group {{error}} col-md-8">
+                                        <div class="input-group col-md-9">
+                                            <label for="metode " class="control-label">                 
+                                  Metode Pembayaran</label>
+                                            <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="{{userDetail.pilihan_bank}}">
+
+                                        </div>
+                                    </div>
+
+
+                                    <div id="ketikEmail" class="form-group {{error}} col-md-6">
+                                        <div class="input-group col-md-8">
+                                            <label for="harga " class="control-label">                 
+                                  Pendaftaran</label>
+                                            <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Rp. 500.000" disabled>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-md-8 ">
+                                    <div class="form-group">
+                                        <label for="textArea" style="text-align: left;" class="col-md-2 control-label">Motivasi </label>
+
+                                        <div class="col-md-10">
+                                            <textarea name="motivasi" class="form-control" rows="3" id="textArea">{{userDetail.motivasi_pembeli}}</textarea>
+                                            <span class="help-block">Motivasi peserta mengikuti bootcamp.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-2">
+
+                                    <br>
+                                    <br>
+                                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                                    <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
+                                </div>
+
+                            </div>
 
                         </div>
 

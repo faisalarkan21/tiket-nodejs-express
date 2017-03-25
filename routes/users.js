@@ -930,25 +930,20 @@ exports.waitingList = function (req, res) {
 exports.userDetail = function (req, res) {
 
     console.log(req.params.id);
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli WHERE detil_pesan_tiket.id_pembeli = ?", req.params.id, function (err, user_gold_utama) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE pembeli.id_pembeli = ?", req.params.id, function (err, userDetail) {
 
 
 
 
 
-        var query2 = connection.query("select * FROM pembeli INNER JOIN pembeli_sekunder on pembeli.email_pembeli=pembeli_sekunder.email_utama WHERE pembeli_sekunder.email_utama = ?", user_gold_utama[0].email_pembeli, function (err, user_gold_sekunder) {
 
-
-
-            res.render("user/admin/user-detail", {
-                user_utama: user_gold_utama,
-                user_sekunder: user_gold_sekunder,
-                emailUtama: user_gold_utama[0].email_pembeli,
+            res.render("user/admin/user-detail", {             
+                userDetail: userDetail[0],
                 email: req.session.namaSession,
                 nama: req.session.namaAdmin
 
 
-            });
+           
 
         });
         // console.log(user_gold);
