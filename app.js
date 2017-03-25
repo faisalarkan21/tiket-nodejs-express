@@ -228,7 +228,7 @@ app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi 
 
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
 
-
+app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
 
 
 // app.post('/admin/posting',pengamananAdmin, routes.posting );
@@ -245,9 +245,6 @@ app.get('/profile', pengamananUser, users.profile);
 app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 // app.get('/admin/masukanpost', users.addPost);
-app.get('/admin/dashboard/users-gold/:id', pengamananAdmin, users.user_gold);
-app.get('/admin/dashboard/users-premium/:id', pengamananAdmin, users.user_premium);
-app.get('/admin/dashboard/users-silver/:id', pengamananAdmin, users.user_silver);
 
 
 app.post('/mendaftar', users.mendaftar);
