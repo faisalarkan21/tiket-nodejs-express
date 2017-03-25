@@ -892,12 +892,13 @@ exports.userLunas = function (req, res) {
 
 exports.userBelumLunas = function (req, res) {
 
-    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 0"
+, function (err, pembeliBelumLunas) {
 
         res.render('user/admin/user-belum-lunas', {
             email: req.session.namaSession,
             nama: req.session.namaAdmin,
-            pembeiSilver: pembeliSemua
+            BelumLunas: pembeliBelumLunas
         });
     });
 
