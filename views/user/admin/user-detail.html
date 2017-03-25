@@ -3,7 +3,7 @@
 <div class="table-users col-md-10 col-md-offset-2 container">
     <div style="margin-top: 70px;" class="page-header text-center well col-md-12">
         <div>
-            <div class="col-md-offset-1">
+            <div class="col-md-offset-2">
                 <h1 style="font-size: 30px;" class="judul"> Detail Informasi Pembeli </h1>
 
                 <hr class="Garistema">
@@ -79,15 +79,15 @@
                             </div>
                         </div>
                         <div class="col-md-8 ">
-                                    <div class="form-group">
-                                        <label for="textArea" style="text-align: left;" class="col-md-2 control-label">Motivasi </label>
+                            <div class="form-group">
+                                <label for="textArea" style="text-align: left;" class="col-md-2 control-label">Motivasi </label>
 
-                                        <div class="col-md-10">
-                                            <textarea name="motivasi" class="form-control" rows="3" id="textArea">{{userDetail.motivasi_pembeli}}</textarea>
-                                            <span class="help-block">Motivasi peserta mengikuti bootcamp.</span>
-                                        </div>
-                                    </div>
+                                <div class="col-md-10">
+                                    <textarea name="motivasi" class="form-control" rows="3" id="textArea">{{userDetail.motivasi_pembeli}}</textarea>
+                                    <span class="help-block">Motivasi peserta mengikuti bootcamp.</span>
                                 </div>
+                            </div>
+                        </div>
 
 
 
@@ -129,20 +129,14 @@
                                     </div>
 
 
-                                     <div id="ketikEmail" class="form-group {{error}} col-md-5 col-md-offset-1">
+                                    <div id="ketikEmail" class="form-group {{error}} col-md-5 col-md-offset-1">
                                         <div class="input-group col-md-8">
                                             <label for="harga " class="control-label">  Kotak Validasi               
-                                  </label>
+                                  </label> {{#if userDetail.uang_transfer_validasi}}
 
-                                            {{#if userDetail.uang_transfer_validasi}}
+                                            <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Sudah Konfirmasi" readonly>                                            {{else}}
 
-                                            <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Sudah Konfirmasi" readonly>
-
-                                            {{else}}
-
-                                               <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Belum Konfirmasi" readonly>
-
-                                            {{/if}}
+                                            <input class="form-control " name="harga" id="harga" placeholder="Biaya" type="text" value="Belum Konfirmasi" readonly>                                            {{/if}}
 
                                         </div>
                                     </div>
@@ -157,40 +151,72 @@
                                         </div>
                                     </div>
 
+                                    <divs style="margin-top: 60px;" class="col-md-5 ">
+                                        <div class="input-group col-md-8">
+
+                                            <div class="togglebutton">
+                                                <label for="lunasCheck">
+
+                                                    {{#if userDetail.uang_transfer}}
 
 
+                                                <input type="checkbox" id="lunasCheck" checked /> <label id="labelCheck" for=""> Lunas</label>
+
+                                                </label>
+
+                                                {{else}}
+
+
+                                                <input type="checkbox" id="lunasCheck" /> <label id="labelCheck" for=""> Belum Lunas</label>
+
+                                                </label>
+
+
+                                                {{/if}}
+
+
+
+
+                                            </div>
+                                        </div>
                                 </div>
-                                
 
-                                <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-2">
-
-                                    <br>
-                                    <br>
-                                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                                    <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
-                                </div>
 
                             </div>
 
                         </div>
-
-                    </form>
-
-
                 </div>
 
 
+                <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-2">
+
+                    <br>
+                    <br>
+                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                    <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
+                </div>
 
             </div>
 
-
-
-
-
         </div>
+
+        </form>
 
 
     </div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
 </div>
 </div>
 
@@ -201,25 +227,61 @@
 
 
 <script>
+    $(document).ready(function () {
+
+        // if ($("#lunasCheck").prop("checked", true)) {
+
+        //     $("#lunasCheck").html("Lunas");
+
+        // } else if ($("#lunasCheck").prop("checked", false)) {
+
+        //     $("#lunasCheck").html("Belum Lunas");
+
+        // }
 
 
-    $( document ).ready(function() {
-    
-	// alert(toRp({{detailPembeli.harga_tiket}}));
-	    
-	$('#uangtf').val(toRp('{{userDetail.uang_transfer}}'));
+        $("#lunasCheck").change(function () {
+            if (this.checked) {
+                console.log("Dicekliks");
+                $("#labelCheck").html("Lunas");
+            } else {
+                console.log("Kaga diceklis");
+                $("#labelCheck").html("Belum Lunas");
 
-    function toRp(angka) {
-        var rev = parseInt(angka, 10).toString().split('').reverse().join('');
-        var rev2 = '';
-        for (var i = 0; i < rev.length; i++) {
-            rev2 += rev[i];
-            if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
-                rev2 += '.';
             }
-        }
-        return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
-    }
+        });
 
-});
+        // var uangtf = '{{userDetail.uang_transfer}}';
+        // // console.log(uangtf);
+        // // if (uangtf == 0) {
+
+        // //     $("#lunasCheck").prop("checked", false);
+
+
+        // // } else {
+
+        // //     $("#lunasCheck").prop("checked", true);
+
+
+        // // }
+
+        // console.log(uangtf);
+
+        // alert(toRp({{detailPembeli.harga_tiket}}));
+
+        $('#uangtf').val(toRp('{{userDetail.uang_transfer}}'));
+
+        function toRp(angka) {
+            var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+            var rev2 = '';
+            for (var i = 0; i < rev.length; i++) {
+                rev2 += rev[i];
+                if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
+                    rev2 += '.';
+                }
+            }
+            return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+        }
+
+    });
 </script>
