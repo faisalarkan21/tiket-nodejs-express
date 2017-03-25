@@ -60,7 +60,7 @@ exports.mendaftar = function (req, res, next) {
     console.log(waktu);
 
     //masukin date
-    var query = connection.query("INSERT INTO tgl_pesan set tgl_order = ?", "waktu", function (err, rows) {
+    var query = connection.query("INSERT INTO tgl_pesan set tgl_order = ?", waktu, function (err, rows) {
 
         if (err) {
             console.log(err);
@@ -96,6 +96,32 @@ exports.mendaftar = function (req, res, next) {
     */
 
     var query = connection.query("INSERT INTO detil_pesan_tiket set ?", insertDetail, function (err, rows) {
+
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+
+
+
+
+    });
+
+
+
+    var insertPembeliValidasi = {
+
+        nm_pembeli: req.body.nama,
+        email_pembeli: req.body.email,      
+        hp_pembeli: req.body.hp,
+        
+
+
+
+
+    };
+
+    var query = connection.query("INSERT INTO pembeli_validasi set ?", insertPembeliValidasi, function (err, rows) {
 
         if (err) {
             console.log(err);
@@ -256,17 +282,17 @@ exports.validasi = function (req, res) {
             if (err) {
                 console.log(err);
                 return next("Error Query Level 2, Detail");
-            }          
+            }
 
 
-                res.render("user/halamanUser/validasiUser", {
-                    nama: req.session.namaSession,
-                    emailUtama: pembeli[0],
-                    detailPembeli: detail[0]
-                   
-                  
-                   
-                });
+            res.render("user/halamanUser/validasiUser", {
+                nama: req.session.namaSession,
+                emailUtama: pembeli[0],
+                detailPembeli: detail[0]
+
+
+
+            });
 
 
 
@@ -693,7 +719,7 @@ exports.tiket = function (req, res) {
                     return next("Error Query Level 2, Detail");
                 }
 
-              
+
 
 
                 var statusKirim;
@@ -817,39 +843,44 @@ exports.adminDashboard = function (req, res) {
 
 };
 
-exports.usersGold = function (req, res) {
+exports.semuaUser = function (req, res) {
 
-    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK02' ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli ", function (err, pembeliSemua) {
 
-        //  console.log(pembeliSemua);
-
-        //  var query2 = connection.query('select pembeli_sekunder where  = ? ', pembeliUtama.email_pembeli, function(err,pembeliKedua){
-
-        //      console.log(pembeliKedua);
-
-        //  });
+        console.log(pembeliSemua);
 
 
 
-        res.render('user/admin/users_gold', {
+
+        res.render('user/admin/semua-user', {
             email: req.session.namaSession,
             nama: req.session.namaAdmin,
-            pembeliGold: pembeliSemua
+            dataSemua: pembeliSemua,
+            // validasi: pembeliValidasi 
+
         });
 
 
 
-    });
+
+
+    })
 
 
 
-}
 
-exports.usersPremium = function (req, res) {
+
+};
+
+
+
+
+
+exports.userLunas = function (req, res) {
 
     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK01'", function (err, pembeliSemua) {
 
-        res.render('user/admin/users_premium', {
+        res.render('user/admin/user-lunas', {
             email: req.session.namaSession,
             nama: req.session.namaAdmin,
             pembeiPremium: pembeliSemua
@@ -859,11 +890,24 @@ exports.usersPremium = function (req, res) {
 }
 
 
-exports.usersSilver = function (req, res) {
+exports.userBelumLunas = function (req, res) {
 
     var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
 
-        res.render('user/admin/users_silver', {
+        res.render('user/admin/user-belum-lunas', {
+            email: req.session.namaSession,
+            nama: req.session.namaAdmin,
+            pembeiSilver: pembeliSemua
+        });
+    });
+
+}
+
+exports.waitingList = function (req, res) {
+
+    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
+
+        res.render('user/admin/user-waiting', {
             email: req.session.namaSession,
             nama: req.session.namaAdmin,
             pembeiSilver: pembeliSemua
@@ -993,7 +1037,7 @@ exports.tiketPost = function (req, res) {
         id_pembeli: req.session.nomor_pembeli,
         nm_pembeli: req.body.namaUtama,
         email_pembeli: req.body.emailUtama,
-        uang_transfer: 500000,
+        uang_transfer_validasi: 500000,
         hp_pembeli: req.body.hp_utama,
         pilihan_bank: req.body.namaBank
     }

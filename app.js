@@ -215,9 +215,13 @@ app.get('/', routes.index);
 app.get('/admin/login', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
 app.get('/admin/dashboard', pengamananAdmin, users.adminDashboard);
-app.get('/admin/dashboard/users-gold', pengamananAdmin, users.usersGold);
-app.get('/admin/dashboard/users-premium', pengamananAdmin, users.usersPremium);
-app.get('/admin/dashboard/users-silver', pengamananAdmin, users.usersSilver);
+
+// rubah
+app.get('/admin/dashboard/semua-user', pengamananAdmin, users.semuaUser);
+app.get('/admin/dashboard/lunas', pengamananAdmin, users.userLunas);
+app.get('/admin/dashboard/belum-lunas', pengamananAdmin, users.userBelumLunas);
+app.get('/admin/dashboard/waiting-list', pengamananAdmin, users.waitingList);
+
 
 //kotak validasi admin 
 app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
