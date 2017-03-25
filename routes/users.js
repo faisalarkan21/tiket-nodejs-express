@@ -724,7 +724,7 @@ exports.tiket = function (req, res) {
 
                 var statusKirim;
 
-                if (validasi[0]) {
+                if (validasi[0].uang_transfer_validasi) {
 
                     statusKirim = true;
 
@@ -892,7 +892,7 @@ exports.userLunas = function (req, res) {
 
 exports.userBelumLunas = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 0"
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 0   "
 , function (err, pembeliBelumLunas) {
 
         res.render('user/admin/user-belum-lunas', {
@@ -1034,16 +1034,14 @@ exports.user_silver = function (req, res) {
 exports.tiketPost = function (req, res) {
 
 
-    insertValidasi = {
-        id_pembeli: req.session.nomor_pembeli,
-        nm_pembeli: req.body.namaUtama,
-        email_pembeli: req.body.emailUtama,
-        uang_transfer_validasi: 500000,
-        hp_pembeli: req.body.hp_utama,
+    updateValidasi = {
+       
+      
+        uang_transfer_validasi: 500000,      
         pilihan_bank: req.body.namaBank
     }
 
-    var query = connection.query("insert into pembeli_validasi set ?", insertValidasi, function (err, data) {
+    var query = connection.query("update pembeli_validasi set ?  where id_pembeli =  ?", [updateValidasi,req.session.nomor_pembeli], function (err, data) {
         if (err) {
             console.log(err);
             return next("Mysql error, check your query");
