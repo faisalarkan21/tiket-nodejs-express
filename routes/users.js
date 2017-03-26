@@ -1091,6 +1091,9 @@ exports.sendEmailAct = function (req,res){
 
     var id = req.params.id;
     console.log(req.body.contents);
+    console.log(req.body.subjek);
+    console.log(req.body.email);
+
 
     var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
 

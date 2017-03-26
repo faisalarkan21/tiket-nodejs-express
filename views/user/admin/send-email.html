@@ -39,7 +39,7 @@
 
                         <label for="nama " class="control-label"> Email Peserta      
                                   </label>
-                        <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
+                        <input class="form-control " name="nama" placeholder="Email Tujuan"  id="email" value="{{userValidasi.email_pembeli}}">
                     </div>
                 </div>
             </div>
@@ -50,9 +50,9 @@
                     <div class="input-group ">
 
 
-                        <label for="nama " class="control-label"> Subject      
+                        <label for="Subject " class="control-label"> Subject      
                                   </label>
-                        <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
+                        <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="subject" value="Konfirmasi Pembayaran">
                     </div>
                 </div>
             </div>
@@ -226,15 +226,23 @@
 
     $("#clickEmail").click(function () {
 
-        console.log();
+       
 
         var isiEditor = document.querySelector(".ql-editor").innerHTML;
+        var subject =  $("#subject").val();
+        var email = $("#email").val();
+
+        // alert(subject);
+        // alert(email);
 
         var request = $.ajax({
             url: "http://127.0.0.1:3000/admin/dashboard/send-email/{{userValidasi.id_pembeli}}",
             method: "POST",
             data: {
-                contents: isiEditor
+                contents: isiEditor,
+                subjek : subject,
+                email: email
+
             },
             dataType: "html"
         });
