@@ -848,7 +848,7 @@ exports.adminDashboard = function (req, res) {
 
 exports.semuaUser = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli limit 60", function (err, pembeliSemua) {
 
         console.log(pembeliSemua);
 
@@ -880,7 +880,7 @@ exports.semuaUser = function (req, res) {
 
 exports.userLunas = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 500000", function (err, Lunas) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 500000 limit 60", function (err, Lunas) {
 
         res.render('user/admin/user-lunas', {
             email: req.session.namaSession,
@@ -894,7 +894,7 @@ exports.userLunas = function (req, res) {
 
 exports.userBelumLunas = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 0   "
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE detil_pesan_tiket.uang_transfer = 0 limit 60"
 , function (err, pembeliBelumLunas) {
 
         res.render('user/admin/user-belum-lunas', {
@@ -908,7 +908,9 @@ exports.userBelumLunas = function (req, res) {
 
 exports.waitingList = function (req, res) {
 
-    var query = connection.query("select * FROM  pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli  WHERE jenis_tk ='TK03' ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli ", function (err, pembeliSemua) {
+
+        // if (pembeliSemua > )
 
         res.render('user/admin/user-waiting', {
             email: req.session.namaSession,
