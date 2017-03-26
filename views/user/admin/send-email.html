@@ -226,7 +226,7 @@
     // ]);
 
     quill.clipboard.dangerouslyPasteHTML(3,
-        "<h3><b>Hallo {{userValidasi.nm_pembeli}} </b></h3></br> <p><b>Kami tim Bootcamp Node.js.</b></p> <p> Kami Ingin menyampaikan bahwa <b>pembayaran anda telah kami terima </b> dengan keterangan sebagai berikut : </p> <br/> <li> Atas Nama : <b> {{userValidasi.nm_pembeli}} </b> </li> <li> Bank Tujuan : <b> {{userValidasi.pilihan_bank}} </b> </li> <li> Nominal Uang : <b> {{uangRp}} </b></li>  <br> <p> Terima kasih Telah Percaya Kepada Kami.</p></p><b>Selamat Mengikuti Jalannya Bootcamp Node.js </b> </p>"
+        "<h3><b>Hallo {{userValidasi.nm_pembeli}} </b></h3></br> <p><b>Kami tim Bootcamp Node.js.</b></p> <p> Kami Ingin menyampaikan bahwa <b>pembayaran anda telah kami terima </b> dengan keterangan sebagai berikut : </p> <br/> <li> Atas Nama : <b> {{userValidasi.nm_pembeli}} </b> </li> <li> Bank Tujuan : <b> {{userValidasi.pilihan_bank}} </b> </li> <li> Nominal Uang : <b> {{uangRp}} </b></li>  <br> <p> Silahkan login pada link berikut untuk info lebih lanjut : <a href='http://127.0.0.1:3000/login'> Masuk </a>  </p>  <p> Terima kasih Telah Percaya Kepada Kami.</p></p><b>Selamat Mengikuti Jalannya Bootcamp Node.js </b> </p>"
     );
 
 
@@ -274,23 +274,23 @@
     })
 
 
-    function post() {
+    // function post() {
 
-        console.log("Masuk!");
-        method = "post";
+    //     console.log("Masuk!");
+    //     method = "post";
 
-        var form = document.createElement("form");
-        form.setAttribute("method", method);
-        form.setAttribute("action", "/admin/dashboard/send-email/{{userValidasi.id_pembeli}}");
+    //     var form = document.createElement("form");
+    //     form.setAttribute("method", method);
+    //     form.setAttribute("action", "/admin/dashboard/send-email/{{userValidasi.id_pembeli}}");
 
-        var hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", "contents");
-        hiddenField.setAttribute("value", document.querySelector(".ql-editor").innerHTML);
+    //     var hiddenField = document.createElement("input");
+    //     hiddenField.setAttribute("type", "hidden");
+    //     hiddenField.setAttribute("name", "contents");
+    //     hiddenField.setAttribute("value", document.querySelector(".ql-editor").innerHTML);
 
-        form.appendChild(hiddenField);
+    //     form.appendChild(hiddenField);
 
-        document.body.appendChild(form);
-        form.submit();
-    }
+    //     document.body.appendChild(form);
+    //     form.submit();
+    // }
 </script>
