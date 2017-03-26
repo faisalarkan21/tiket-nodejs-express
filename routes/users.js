@@ -1168,39 +1168,55 @@ exports.sendEmailAct = function (req,res){
       console.log(body);
     });
 
+}
+
+exports.deletePeserta  = function (req,res){
+
+
+    console.log(req.params.id)
+    
+
+      var query = connection.query("delete from pembeli_validasi where id_pembeli=?", req.params.id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
 
 
 
-
-    // var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
-
-    //     if (err) {
-    //         console.log(err);
-    //     }
-
-    //     var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli=?", id, function (err, detail) {
-
-    //         if (err) {
-    //             console.log(err);
-
-    //         }
-
-    //         res.render("user/admin/send-email", {
-    //             userValidasi: validasi[0],
-    //             detail_tiket: detail[0],
-    //             email: req.session.namaSession,
-    //             nama: req.session.namaAdmin
-    //         });
+      });
 
 
-    //     });
-    // });
+      var query2 = connection.query("delete from detil_pesan_tiket where id_pembeli=?", req.params.id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
+
+       });
+
+    
+     var query3 = connection.query("delete from tgl_pesan where id_pembeli=?", req.params.id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
+
+       });
 
 
+
+     var query4 = connection.query("delete from pembeli where id_pembeli=?", req.params.id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
+
+       });
 
     
 
-
+       res.redirect('admin/dashboard/semua-user');
 
 
 }

@@ -233,6 +233,8 @@ app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
 app.post('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetailPost);
 app.get('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmail);
 app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct);
+
+app.post('/admin/dashboard/delete-user/:id', pengamananAdmin, users.deletePeserta);
 // app.post('/admin/dashboard/user-detail/kirimsms',pengamananAdmin, users.kirimSms)
 
 // app.post('/admin/posting',pengamananAdmin, routes.posting );

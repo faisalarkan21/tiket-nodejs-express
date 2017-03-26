@@ -15,6 +15,7 @@
 
                 <div class="col-md-9 col-md-offset-1" style="margin-bottom: -15px;">
 
+
                     <br>
                     <label style="margin-left: 16px;" class="control-label ">                 
                                   Data Pribadi</label>
@@ -195,12 +196,34 @@
                             <br>
                             <br>
                             <a href="/admin/dashboard/send-email/{{userDetail.id_pembeli}}" class="btn btn-primary btn-raised col-md-10">Beritahukan Lewat Email</a>
-
+                            <a style="color: white !important; background-color:#ef5350 !important;" href="#" class="btn btn-raised col-md-10" data-toggle="modal"
+                                data-target="#modal">Hapus Peserta</a>
                             <div style="padding-left:25px;" class="col-md-offset-2">
                                 <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
                                 <button style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
 
 
+                            </div>
+
+                        </div>
+
+
+                        <div style="padding-top: 140px;" id="modal" class="modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title">Hapus Data Peserta</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Anda yakin akan menghapus {{userDetail.nm_pembeli}} dari bootcamp ? </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-raised btn-primary" data-dismiss="modal">Batal</button>
+                                        <button style="color: white !important; background-color:#ef5350 !important;" type="button" class="btn btn-raised btn-primary"
+                                            data-dismiss="modal" id="btnHapus">Hapus peserta</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -235,6 +258,8 @@
 
 </body>
 
+
+
 </html>
 {{>footer}}
 
@@ -264,6 +289,24 @@
                 $("#uangtf").val(toRp('0'))
             }
         });
+
+
+        $("#btnHapus").click(function () {
+
+
+            var request = $.ajax({
+                url: "http://127.0.0.1:3000/admin/dashboard/delete-user/{{userDetail.id_pembeli}}",
+                type: "POST",
+                success: window.location.replace(
+                    "http://127.0.0.1:3000/admin/dashboard/semua-user")
+
+            });
+
+
+
+
+        })
+
 
         // var uangtf = '{{userDetail.uang_transfer}}';
         // // console.log(uangtf);
