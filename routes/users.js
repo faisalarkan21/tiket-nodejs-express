@@ -1086,6 +1086,45 @@ exports.sendEmail = function (req, res) {
 }
 
 
+exports.sendEmailAct = function (req,res){
+
+
+    var id = req.params.id;
+    console.log(req.body.editor);
+
+    var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
+
+        if (err) {
+            console.log(err);
+        }
+
+        var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli=?", id, function (err, detail) {
+
+            if (err) {
+                console.log(err);
+
+            }
+
+            res.render("user/admin/send-email", {
+                userValidasi: validasi[0],
+                detail_tiket: detail[0],
+                email: req.session.namaSession,
+                nama: req.session.namaAdmin
+            });
+
+
+        });
+    });
+
+
+
+    
+
+
+
+
+}
+
 
 
 

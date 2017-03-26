@@ -11,81 +11,88 @@
             </div>
         </div>
 
-        <div class="col-md-10">
-
-            <div class=" col-md-12  ">
-                <div id="ketikEmail" class="form-group {{error}}">
-
-                    <div class="input-group col-md-12">
+        <form method="POST" action="/admin/dashboard/send-email/{{userValidasi.id_pembeli}}">
 
 
-                        <label for="nama " class="control-label"> Dikirim Dari      
+            <div class="col-md-10" style="margin-top: -25px;">
+
+                <div class=" col-md-12  ">
+                    <div id="ketikEmail" class="form-group {{error}}">
+
+                        <div class="input-group col-md-12">
+
+
+                            <label for="nama " class="control-label"> Dikirim Dari      
                                   </label>
-                        <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
-                            readonly>
+                            <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
+                                readonly>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="col-md-6">
-                <div id="ketikEmail" class="form-group {{error}}">
+                <div class="col-md-6">
+                    <div id="ketikEmail" class="form-group {{error}}">
 
-                    <div class="input-group ">
+                        <div class="input-group ">
 
 
-                        <label for="nama " class="control-label"> Email Peserta      
+                            <label for="nama " class="control-label"> Email Peserta      
                                   </label>
-                        <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
+                            <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div id="ketikEmail" class="form-group {{error}}">
+                <div class="col-md-6">
+                    <div id="ketikEmail" class="form-group {{error}}">
 
-                    <div class="input-group ">
+                        <div class="input-group ">
 
 
-                        <label for="nama " class="control-label"> Subject      
+                            <label for="nama " class="control-label"> Subject      
                                   </label>
-                        <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
+                            <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
+                        </div>
                     </div>
                 </div>
+
+
+
             </div>
 
+            <div style="margin-left: 14px;" class="col-md-10  ">
+                <div >
 
-
-        </div>
-
-        <div class="col-md-10  ">
-            <div style="margin-left:14px;">
-
-                <label for="ditor-container " class="control-label"> Isi Pesan      
+                    <label for="editor-container " class="control-label"> Isi Pesan      
                                   </label>
-                <hr>
-            </div>
-            <div style="margin-left:14px;" id="editor-container">
-
-            </div>
-
-        </div>
+                    <hr>
+                </div>
 
 
-        <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
-
-
-            <br>
-
-            <div style="padding-left:25px;" class="col-md-offset-2">
-                <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                <a href="/admin/dashboard/send-email/{{userDetail.id_pembeli}}" class="btn btn-primary btn-raised">Kirim Email</a>
+                <textarea style=" " name="editor" id="editor-container" class="col-md-12" cols=""></textarea>
 
 
 
             </div>
 
-        </div>
+
+
+
+            <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
+
+
+                <br>
+
+                <div style="padding-left:25px;" class="col-md-offset-2">
+                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                    <button type="submit" class="btn btn-primary btn-raised">Kirim Email</button>
+
+
+
+                </div>
+
+            </div>
 
 
 
