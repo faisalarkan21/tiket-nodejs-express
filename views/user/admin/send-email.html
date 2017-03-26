@@ -3,7 +3,7 @@
 <div class="table-users col-md-10 col-md-offset-2 container">
     <div style="margin-top: 70px;" class="page-header text-center well col-md-12">
         <div>
-            <div class="col-md-10 ">
+            <div class="col-md-10 " style="margin-left: 16px;">
                 <h1 style="font-size: 30px;" class="judul"> Kirim Email Ke Peserta </h1>
 
                 <hr class="Garistema">
@@ -11,35 +11,91 @@
             </div>
         </div>
 
+        <div class="col-md-10">
 
-        <div class="col-md-10  ">
+            <div class=" col-md-12  ">
+                <div id="ketikEmail" class="form-group {{error}}">
+
+                    <div class="input-group col-md-12">
 
 
-            <div id="editor-container">
-
+                        <label for="nama " class="control-label"> Dikirim Dari      
+                                  </label>
+                        <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
+                            readonly>
+                    </div>
+                </div>
             </div>
+
+
+            <div class="col-md-6">
+                <div id="ketikEmail" class="form-group {{error}}">
+
+                    <div class="input-group ">
+
+
+                        <label for="nama " class="control-label"> Email Peserta      
+                                  </label>
+                        <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="ketikEmail" class="form-group {{error}}">
+
+                    <div class="input-group ">
+
+
+                        <label for="nama " class="control-label"> Subject      
+                                  </label>
+                        <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
+        <div class="col-md-10  ">
+            <div style="margin-left:14px;">
+
+                <label for="ditor-container " class="control-label"> Isi Pesan      
+                                  </label>
+                <hr>
+            </div>
+            <div style="margin-left:14px;" id="editor-container">
+
+            </div>
+
+        </div>
+
+
+        <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
+
+
+            <br>
+
+            <div style="padding-left:25px;" class="col-md-offset-2">
+                <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                <a href="/admin/dashboard/send-email/{{userDetail.id_pembeli}}" class="btn btn-primary btn-raised">Kirim Email</a>
+
+
+
+            </div>
+
+        </div>
+
+
+
     </div>
 
 
 </div>
 
 
-<div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
 
-    <br>
-    <br>
-    <a href="/admin/dashboard/send-email/{{userDetail.id_pembeli}}" class="btn btn-primary btn-raised col-md-10">Beritahukan Lewat Email</a>
-
-    <div style="padding-left:25px;" class="col-md-offset-2">
-        <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-        <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
-
-
-    </div>
-
-</div>
 
 </div>
 
