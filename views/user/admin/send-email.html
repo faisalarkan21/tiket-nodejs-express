@@ -39,7 +39,7 @@
 
                         <label for="nama " class="control-label"> Email Peserta      
                                   </label>
-                        <input class="form-control " name="nama" placeholder="Email Tujuan"  id="email" value="{{userValidasi.email_pembeli}}">
+                        <input class="form-control " name="nama" placeholder="Email Tujuan" id="email" value="{{userValidasi.email_pembeli}}">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
 
             <div id="editor-container">
 
-                <label for="editor-container " class="control-label"> Isi Pesan      
+                <label for="editor-container " class="control-label">       
                                   </label>
                 <hr>
             </div>
@@ -217,6 +217,20 @@
         theme: 'snow'
     });
 
+    //     quill.setContents([
+    //   { insert: 'Hallo {{userValidasi.nm_pembeli}} ' ,attributes: { h1: true} },
+    //   { insert: '\n' },
+    //   { insert: 'Kami dari Tim Bootcamp Node.js'  },
+    //   { insert: '\n\n' },
+    //   { insert: 'Pembayaran Anda Telah Kami Konfirmasi', attributes: { bold: true }  },
+    // ]);
+
+    quill.clipboard.dangerouslyPasteHTML(3,
+        "<h3><b>Hallo {{userValidasi.nm_pembeli}} </b></h3></br> <p><b>Kami tim Bootcamp Node.js.</b></p> <p> Kami Ingin menyampaikan bahwa <b>pembayaran anda telah kami terima </b> dengan keterangan sebagai berikut : </p> <br/> <li> Atas Nama : <b> {{userValidasi.nm_pembeli}} </b> </li> <li> Bank Tujuan : <b> {{userValidasi.pilihan_bank}} </b> </li> <li> Nominal Uang : <b> {{uangRp}} </b></li>  <br> <p> Terima kasih Telah Percaya Kepada Kami.</p></p><b>Selamat Mengikuti Jalannya Bootcamp Node.js </b> </p>"
+    );
+
+
+
     quill.on('selection-change', function (range) {
         console.log('selection-change', range)
     });
@@ -226,10 +240,10 @@
 
     $("#clickEmail").click(function () {
 
-       
+
 
         var isiEditor = document.querySelector(".ql-editor").innerHTML;
-        var subject =  $("#subject").val();
+        var subject = $("#subject").val();
         var email = $("#email").val();
         var alamatHost = $("#alamatkita").val();
 
@@ -241,9 +255,9 @@
             method: "POST",
             data: {
                 contents: isiEditor,
-                subjek : subject,
+                subjek: subject,
                 emailTujuan: email,
-                alamatEmailHost:alamatHost 
+                alamatEmailHost: alamatHost
 
             },
             dataType: "html"
