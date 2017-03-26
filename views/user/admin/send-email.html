@@ -62,7 +62,8 @@
             </div>
 
             <div style="margin-left: 14px;" class="col-md-10  ">
-                <div >
+
+                <div id="editor-container">
 
                     <label for="editor-container " class="control-label"> Isi Pesan      
                                   </label>
@@ -70,7 +71,7 @@
                 </div>
 
 
-                <textarea style=" " name="editor" id="editor-container" class="col-md-12" cols=""></textarea>
+                <!--<textarea  name="editor" class="col-md-12" cols=""></textarea>-->
 
 
 
@@ -86,7 +87,7 @@
 
                 <div style="padding-left:25px;" class="col-md-offset-2">
                     <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                    <button type="submit" class="btn btn-primary btn-raised">Kirim Email</button>
+                    <a id="clickEmail" class="btn btn-primary btn-raised">Kirim Email</a>
 
 
 
@@ -215,4 +216,36 @@
         placeholder: 'Compose an epic...',
         theme: 'snow'
     });
+
+    quill.on('selection-change', function (range) {
+        console.log('selection-change', range)
+    });
+    quill.on('text-change', function (delta, source) {
+        console.log('text-change', delta, source)
+    });
+
+    $("#clickEmail").click(function () {
+
+        post();
+
+    })
+
+
+    function post() {
+        method = "post";
+
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", "/admin/dashboard/send-email/{{userValidasi.id_pembeli}}");
+
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "contents");
+        hiddenField.setAttribute("value", quill.getText());
+
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
 </script>
