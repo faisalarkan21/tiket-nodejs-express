@@ -908,7 +908,7 @@ exports.userBelumLunas = function (req, res) {
 
 exports.waitingList = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli ", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli limit 60, 18446744073709551615", function (err, pembeliSemua) {
 
         // if (pembeliSemua > )
 
