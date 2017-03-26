@@ -1009,7 +1009,13 @@ hr.garisbagian {
 
 .detailDashIcon {
   margin-top: 32px;
-  
+
+}
+
+.tengah-table{
+
+  text-align: center !important; 
+
 }
 
 /*.ct-series-c .ct-area, .ct-series-c .ct-slice-pie {

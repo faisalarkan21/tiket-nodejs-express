@@ -125,7 +125,8 @@ app.use('/font-material', express.static(__dirname + '/node_modules/material-des
 app.use('/font-awesome', express.static(__dirname + '/node_modules/font-awesome/'));
 app.use('/full-page', express.static(__dirname + '/node_modules/fullpage.js/dist/'));
 app.use('/chartist', express.static(__dirname + '/node_modules/chartist/dist/'));
-
+app.use('/chartist', express.static(__dirname + '/node_modules/chartist/dist/'));
+app.use('/quill', express.static(__dirname + '/node_modules/quill/dist/'));
 
 
 // buat session 
@@ -229,7 +230,8 @@ app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi 
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
 
 app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
-
+app.get('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmail);
+// app.post('/admin/dashboard/user-detail/kirimsms',pengamananAdmin, users.kirimSms)
 
 // app.post('/admin/posting',pengamananAdmin, routes.posting );
 
@@ -270,6 +272,22 @@ app.post('/dev', users.cobaGet);
 
 
 
+
+
+// var api_key = 'key-fd687b0a68bc8505dfa4eb84605b9033';
+// var domain = 'sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org';
+// var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+ 
+// var data = {
+//   from: 'Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>',
+//   to: 'faisalarkan21@gmail.com',
+//   subject: 'Hello',
+//   text: 'Testing some Mailgun awesomness!'
+// };
+ 
+// mailgun.messages().send(data, function (error, body) {
+//   console.log(body);
+// });
 
 
 

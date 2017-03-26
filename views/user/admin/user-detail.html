@@ -3,7 +3,7 @@
 <div class="table-users col-md-10 col-md-offset-2 container">
     <div style="margin-top: 70px;" class="page-header text-center well col-md-12">
         <div>
-            <div class="col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <h1 style="font-size: 30px;" class="judul"> Detail Informasi Pembeli </h1>
 
                 <hr class="Garistema">
@@ -63,7 +63,7 @@
                                     <span class="input-group-addon"><i class="fa fa-phone-square fa-lg detailDashIcon" aria-hidden="true"></i></span>
                                     <label for="hp " class="control-label">                 
                                   No Handphone</label>
-                                    <input class="form-control " name="hp" placeholder="No Handphone" id="hp" type="text" value="{{userDetail.hp_pembeli}}">
+                                    <input class="form-control " name="no_hp" placeholder="No Handphone" id="hp" type="text" value="{{userDetail.hp_pembeli}}">
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                     <span class="input-group-addon"><i class="fa fa-user fa-lg detailDashIcon" aria-hidden="true"></i></span>
                                     <label for="gender " class="control-label">                 
                                   Gender</label>
-                                    <input class="form-control " name="hp" placeholder="No Handphone" type="text" id="gender" value="{{userDetail.gd_pembeli}}"
+                                    <input class="form-control " name="gender" placeholder="gender" type="text" id="gender" value="{{userDetail.gd_pembeli}}"
                                         readonly>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                         </div>
                                     </div>
 
-                                    <divs style="margin-top: 60px;" class="col-md-5 ">
+                                    <div style="margin-top: 60px;" class="col-md-6 ">
                                         <div class="input-group col-md-8">
 
                                             <div class="togglebutton">
@@ -179,35 +179,48 @@
 
                                             </div>
                                         </div>
+                                    </div>
+
+
+
+
                                 </div>
+
+                            </div>
+                        </div>
+
+
+                        <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
+
+                            <br>
+                            <br>
+                            <a href="/admin/dashboard/send-email/{{userDetail.id_pembeli}}" class="btn btn-primary btn-raised col-md-10">Beritahukan Lewat Email</a>
+
+                            <div style="padding-left:25px;" class="col-md-offset-2">
+                                <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                                <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
 
 
                             </div>
 
                         </div>
-                </div>
 
-
-                <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-2">
-
-                    <br>
-                    <br>
-                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                    <button id="login" style="margin-left: 10px;" class="btn btn-raised btn-primary " type="submit">  Submit</button>
                 </div>
 
             </div>
 
+            </form>
+<br>
+<br>
+<br>
+<br>
+
+
         </div>
 
-        </form>
 
 
     </div>
-
-
-
-</div>
 
 
 
@@ -248,7 +261,7 @@
             } else {
                 console.log("Kaga diceklis");
                 $("#labelCheck").html("Belum Lunas");
-                 $("#uangtf").val(toRp('0'))
+                $("#uangtf").val(toRp('0'))
             }
         });
 
