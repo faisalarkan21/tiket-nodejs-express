@@ -24,7 +24,7 @@
 
                         <label for="nama " class="control-label"> Dikirim Dari      
                                   </label>
-                        <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
+                        <input class="form-control" name="nama" placeholder="Email" type="name" id="alamatkita" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
                             readonly>
                     </div>
                 </div>
@@ -231,6 +231,7 @@
         var isiEditor = document.querySelector(".ql-editor").innerHTML;
         var subject =  $("#subject").val();
         var email = $("#email").val();
+        var alamatHost = $("#alamatkita").val();
 
         // alert(subject);
         // alert(email);
@@ -241,7 +242,8 @@
             data: {
                 contents: isiEditor,
                 subjek : subject,
-                email: email
+                emailTujuan: email,
+                alamatEmailHost:alamatHost 
 
             },
             dataType: "html"

@@ -1089,35 +1089,55 @@ exports.sendEmail = function (req, res) {
 exports.sendEmailAct = function (req,res){
 
 
-    var id = req.params.id;
+    // var id = req.params.id;
+    console.log(req.body.alamatEmailHost);
     console.log(req.body.contents);
     console.log(req.body.subjek);
-    console.log(req.body.email);
+    console.log(req.body.emailTujuan);
 
 
-    var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
-
-        if (err) {
-            console.log(err);
-        }
-
-        var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli=?", id, function (err, detail) {
-
-            if (err) {
-                console.log(err);
-
-            }
-
-            res.render("user/admin/send-email", {
-                userValidasi: validasi[0],
-                detail_tiket: detail[0],
-                email: req.session.namaSession,
-                nama: req.session.namaAdmin
-            });
-
-
-        });
+    var api_key = 'key-fd687b0a68bc8505dfa4eb84605b9033';
+    var domain = 'sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org';
+    var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+     
+    var data = {
+      from: req.body.alamatEmailHost,
+      to: req.body.emailTujuan,
+      subject: req.body.subjek,/**/
+      html: req.body.contents
+    };
+     
+    mailgun.messages().send(data, function (error, body) {
+      console.log(body);
     });
+
+
+
+
+
+    // var query = connection.query("select * from pembeli_validasi where id_pembeli=?", id, function (err, validasi) {
+
+    //     if (err) {
+    //         console.log(err);
+    //     }
+
+    //     var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli=?", id, function (err, detail) {
+
+    //         if (err) {
+    //             console.log(err);
+
+    //         }
+
+    //         res.render("user/admin/send-email", {
+    //             userValidasi: validasi[0],
+    //             detail_tiket: detail[0],
+    //             email: req.session.namaSession,
+    //             nama: req.session.namaAdmin
+    //         });
+
+
+    //     });
+    // });
 
 
 
