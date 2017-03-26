@@ -11,89 +11,89 @@
             </div>
         </div>
 
-        <form method="POST" action="/admin/dashboard/send-email/{{userValidasi.id_pembeli}}">
 
 
-            <div class="col-md-10" style="margin-top: -25px;">
 
-                <div class=" col-md-12  ">
-                    <div id="ketikEmail" class="form-group {{error}}">
+        <div class="col-md-10" style="margin-top: -25px;">
 
-                        <div class="input-group col-md-12">
+            <div class=" col-md-12  ">
+                <div id="ketikEmail" class="form-group {{error}}">
+
+                    <div class="input-group col-md-12">
 
 
-                            <label for="nama " class="control-label"> Dikirim Dari      
+                        <label for="nama " class="control-label"> Dikirim Dari      
                                   </label>
-                            <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
-                                readonly>
-                        </div>
+                        <input class="form-control" name="nama" placeholder="Email" type="name" id="nama" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
+                            readonly>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="col-md-6">
-                    <div id="ketikEmail" class="form-group {{error}}">
+            <div class="col-md-6">
+                <div id="ketikEmail" class="form-group {{error}}">
 
-                        <div class="input-group ">
+                    <div class="input-group ">
 
 
-                            <label for="nama " class="control-label"> Email Peserta      
+                        <label for="nama " class="control-label"> Email Peserta      
                                   </label>
-                            <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
-                        </div>
+                        <input class="form-control " name="nama" placeholder="Email Tujuan" type="name" id="nama" value="{{userValidasi.email_pembeli}}">
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-6">
-                    <div id="ketikEmail" class="form-group {{error}}">
+            <div class="col-md-6">
+                <div id="ketikEmail" class="form-group {{error}}">
 
-                        <div class="input-group ">
+                    <div class="input-group ">
 
 
-                            <label for="nama " class="control-label"> Subject      
+                        <label for="nama " class="control-label"> Subject      
                                   </label>
-                            <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
-                        </div>
+                        <input class="form-control " name="nama" placeholder="Subject Pesan" type="name" id="nama" value="Konfirmasi Pembayaran">
                     </div>
                 </div>
+            </div>
+
+
+
+        </div>
+
+        <div style="margin-left: 14px;" class="col-md-10  ">
+
+            <div id="editor-container">
+
+                <label for="editor-container " class="control-label"> Isi Pesan      
+                                  </label>
+                <hr>
+            </div>
+
+
+            <!--<textarea  name="editor" class="col-md-12" cols=""></textarea>-->
+
+
+
+        </div>
+
+
+
+
+        <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
+
+
+            <br>
+
+            <div style="padding-left:25px;" class="col-md-offset-2">
+                <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
+                <a id="clickEmail" class="btn btn-primary btn-raised">Kirim Email</a>
 
 
 
             </div>
 
-            <div style="margin-left: 14px;" class="col-md-10  ">
-
-                <div id="editor-container">
-
-                    <label for="editor-container " class="control-label"> Isi Pesan      
-                                  </label>
-                    <hr>
-                </div>
-
-
-                <!--<textarea  name="editor" class="col-md-12" cols=""></textarea>-->
-
-
-
-            </div>
-
-
-
-
-            <div style="padding-bottom: 30px; padding-left: 20px;" class="col-md-10 col-md-offset-1">
-
-
-                <br>
-
-                <div style="padding-left:25px;" class="col-md-offset-2">
-                    <a class=" btn btn-raised btn-info btn-md" href="/login"> Kembali</a>
-                    <a id="clickEmail" class="btn btn-primary btn-raised">Kirim Email</a>
-
-
-
-                </div>
-
-            </div>
+        </div>
 
 
 
@@ -109,7 +109,7 @@
 
 </div>
 
-</form>
+
 <br>
 <br>
 <br>
@@ -226,12 +226,33 @@
 
     $("#clickEmail").click(function () {
 
-        post();
+        console.log();
+
+        var isiEditor = document.querySelector(".ql-editor").innerHTML;
+
+        var request = $.ajax({
+            url: "http://127.0.0.1:3000/admin/dashboard/send-email/{{userValidasi.id_pembeli}}",
+            method: "POST",
+            data: {
+                contents: isiEditor
+            },
+            dataType: "html"
+        });
+
+        request.done(function (msg) {
+            $("#log").html(msg);
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            console.log("Request failed: " + textStatus);
+        });
 
     })
 
 
     function post() {
+
+        console.log("Masuk!");
         method = "post";
 
         var form = document.createElement("form");
@@ -241,7 +262,7 @@
         var hiddenField = document.createElement("input");
         hiddenField.setAttribute("type", "hidden");
         hiddenField.setAttribute("name", "contents");
-        hiddenField.setAttribute("value", quill.getText());
+        hiddenField.setAttribute("value", document.querySelector(".ql-editor").innerHTML);
 
         form.appendChild(hiddenField);
 
