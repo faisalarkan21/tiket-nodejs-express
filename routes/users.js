@@ -908,14 +908,33 @@ exports.userBelumLunas = function (req, res) {
 
 exports.waitingList = function (req, res) {
 
-    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli limit 60, 18446744073709551615", function (err, pembeliSemua) {
+    var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli limit 60, 18446744073709551615", function (err, pembeliWaiting) {
+
+        // console.log(pembeliWaiting < 1);
+
+        var pembeliFilterAda, pembeliFilterNull;
+
+        if (pembeliWaiting.length < 1){
+
+            pembeliFilterNull = "List Kosong Sampai saat ini kouta tiket masih dapat dipenuhi";
+
+        }else{
+
+            pembeliFilterAda = pembeliWaiting;
+
+        }
+
+
+        console.log(pembeliFilterAda);
+        console.log(pembeliFilterNull);
 
         // if (pembeliSemua > )
 
         res.render('user/admin/user-waiting', {
             email: req.session.namaSession,
             nama: req.session.namaAdmin,
-            pembeiSilver: pembeliSemua
+            pembeliFilterAda: pembeliFilterAda,
+            filterNUll: pembeliFilterNull
         });
     });
 
@@ -957,6 +976,29 @@ exports.userDetail = function (req, res) {
 
 
     });
+}
+
+
+exports.userDetailPost = function (req,res){
+
+
+    updateDetail = {
+       
+      
+        uang_transfer: 500000,      
+       
+    }
+
+    var query = connection.query("update detil_pesan_tiket set ?  where id_pembeli =  ?", [updateDetail,req.session.nomor_pembeli], function (err, data) {
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+        console.log("Data Masuk");
+    });
+    res.redirect('/admin/dashboard/user-detail/'+ req.session.nomor_pembeli);
+
+
 }
 
 

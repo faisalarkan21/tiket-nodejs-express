@@ -230,6 +230,7 @@ app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi 
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
 
 app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
+app.post('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetailPost);
 app.get('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmail);
 app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct);
 // app.post('/admin/dashboard/user-detail/kirimsms',pengamananAdmin, users.kirimSms)
