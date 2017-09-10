@@ -200,6 +200,7 @@ var pengamananAdmin = function (req, res, next) {
 
 
 
+
 /*
   aaAlamat!aa
 */
@@ -225,9 +226,25 @@ app.get('/admin/dashboard/waiting-list', pengamananAdmin, users.waitingList);
 
 
 //kotak validasi admin 
-app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
 
+// not implmented
+app.get('/admin/dashboard/rincian_bootcamp', pengamananAdmin, users.rincianBootcamp );
+
+
+app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
+app.get('/admin/dashboard/jadwal/:id', pengamananAdmin,users.week);
+app.get('/admin/dashboard/add_trainer', pengamananAdmin,users.addTrainer);
+
+app.post('/admin/dashboard/add_trainer', pengamananAdmin, users.addTrainerPost);
+app.get('/admin/dashboard/list_trainer', pengamananAdmin, users.list_trainer);
+app.get('/admin/dashboard/trainer/:id', pengamananAdmin, users.trainerDetail);
+app.get('/admin/dashboard/trainer/', pengamananAdmin, users.trainerDetailFull);
+app.post('/admin/dashboard/trainer/:id', pengamananAdmin, users.trainerDetailUpdate);
+app.post('/admin/dashboard/delete-trainer/:id', pengamananAdmin, users.trainerDetailDelete);
+
+//list_trainer
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
+
 
 app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
 app.post('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetailPost);
@@ -236,6 +253,11 @@ app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct)
 
 app.post('/admin/dashboard/delete-user/:id', pengamananAdmin, users.deletePeserta);
 // app.post('/admin/dashboard/user-detail/kirimsms',pengamananAdmin, users.kirimSms)
+
+
+
+
+
 
 // app.post('/admin/posting',pengamananAdmin, routes.posting );
 
@@ -252,7 +274,6 @@ app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 // app.get('/admin/masukanpost', users.addPost);
 
-
 app.post('/mendaftar', users.mendaftar);
 // app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update);
 // app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
@@ -262,10 +283,13 @@ app.get('/user/data', pengamananUser, users.validasi);
 app.post('/user/data', pengamananUser, users.validasiPost);
 
 app.get('/user/ketentuan', pengamananUser, users.ketentuan);
+app.get('/user/dashboard/jadwal/:id', pengamananUser,users.weekUser);
 
 // validasi tiket
 app.get('/user/validasi', pengamananUser, users.tiket);
 app.post('/user/validasi', pengamananUser, users.tiketPost);
+
+
 
 
 

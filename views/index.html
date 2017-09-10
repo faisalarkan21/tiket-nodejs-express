@@ -4,10 +4,10 @@
         <div id="pic2" class="slide hilang" data-anchor="slide1">
             <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
                 <h1 class="judulSlider judul3">Pelatihan Bootcamp Node JS</h1>
-                <label class="judul3 size" for="">Dilatih secara intensif selama 12 minggu untuk dapat terjun kedunia kerja</label>                <br>
-                <label class="judul3 size" for="">Dengan Standar Ecmascript 2016</label> <br>
+                <label class="judul3 size" for="">Dilatih secara intensif selama 4 minggu untuk dapat terjun kedunia kerja</label>                <br>
+                <label class="judul3 size" for="">Dengan Standar Ecmascript 2017</label> <br>
                 <br>
-                <a class="btn btn-raised btn-info" href="">Daftar</a>
+                <a class="btn btn-raised btn-info" href="/daftar">Daftar</a>
             </div>
             <div class="gear ">
                 <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw "></i>
@@ -21,7 +21,7 @@
 
             <div style="margin-top: 10px;" class=" col-md-12 pilihTiket">
 
-                <h2 hidden class="dipercaya"> Pelajari Teknologi Terkini Dengan Waktu 12 minggu </h2>
+                <h2 hidden class="dipercaya"> Pelajari Teknologi Terkini Dengan Waktu 4 minggu </h2>
                 <!--<h2 hidden class="dipercaya"> </h2>-->
                 <h2 hidden class="dipercaya"> Dengan stack Teknologi Javascript</h2>
                 <!--<hr class=" garisTiket">-->
@@ -52,20 +52,35 @@
     </div>
 
     <div data-anchor="scroll3" id="picScroll4" class="section">
-        <div style="margin-top: -30px;" class="col-md-4 sectionTempat">
-            <h1 class="lokasi judul3"> Lokasi Bootcamp </h1>
-            <div class="col-md-10 col-md-offset-1">
-                <p class="namaJalan lokasi">Indonesia, JL. Haji Usa Ciseeng Kabupaten Bogor Jawa Barat. <code> Glora Gunung Bunder.  </code></p>
-                <p style="margin-top: -25px;" class="namaJalan lokasi">Pendaftaran akan secepatnya dibuka jam 10 pagi pada <code>  12 Juni 2017</code>   dengan biaya <code> Rp.500.000</code></p>
-                <div style="padding-left: 30px;">
+        <div style="margin-top: -30px;" class="col-md-5 sectionTempat">
+            <h1 style="    padding-bottom: 30px;
+            padding-top: 20;" class="lokasi judul3"> Lokasi Bootcamp </h1>
+            <div class="col-md-12">
+                <p class="namaJalan lokasi">Gedung Aquarius Pondok Indah, Jl. Sultan Iskandar Muda No.7 Kebayoran Lama, Kota Jakarta Selatan.</p>
 
-                    <i class="fa fa-rocket fa-5x col-md-offset-3 judul3 fa-border" aria-hidden="true"></i>
+                <div style="margin-bottom: -15px;     padding-left: 40px;">
+                    {{{messageError}}}
+                    <br>
+                    <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Sekarang Termasuk Bootcamp  Batch Ke {{idBatch}}.
+                        </label><br>
+
+                        <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp akan berlangsung dalam waktu 4 minggu.
+                      </label><br>
+                      <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Pendaftaran Dibuka dari tanggal  {{pendaftaranOpen}} s/d {{pendaftaranClose}}
+                        </label><br>
+                      <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp Ke {{idBatch}} dimulai pada  {{batchDimulai}} s/d {{batchSelesai}}
+                        </label><br>
+
+                 
+
                 </div>
+
             </div>
         </div>
-        <div class="col-md-2 ">
-            <iframe id="mapKonser" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63431.87365358485!2d106.64782527219214!3d-6.459162803701716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e7849a168057%3A0x9aaa58ad730a1b7b!2sCiseeng%2C+Bogor%2C+West+Java!5e0!3m2!1sen!2sid!4v1482654121182"
-                width="750" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="col-md-1 ">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.022861908095!2d106.77942215006297!3d-6.260718695446134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1a8713ce207%3A0x2c3ea1f4a28bfac5!2sHacktiv8+Indonesia!5e0!3m2!1sen!2sid!4v1504999354184"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
         </div>
     </div>
     <div data-anchor="scroll4" id="picScroll5" class="section fp-auto-height ">
@@ -133,28 +148,22 @@
         })
 
 
-        $("#terjual").click(function () {
+        $("#teknologi").click(function () {
 
             $.fn.fullpage.moveTo(2, 0);
 
         })
 
 
-        $("#tiket").click(function () {
+            $("#lokasi").click(function () {
 
             $.fn.fullpage.moveTo(3, 0);
 
         })
 
-        $("#lokasi").click(function () {
-
-            $.fn.fullpage.moveTo(4, 0);
-
-        })
-
         $("#kontak").click(function () {
 
-            $.fn.fullpage.moveTo(5, 0);
+            $.fn.fullpage.moveTo(4, 0);
 
         })
 

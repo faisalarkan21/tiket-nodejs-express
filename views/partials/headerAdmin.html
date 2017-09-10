@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>makan dilaut</title>
+		<title>Bootcamp Javascript</title>
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/stylesheets/style.css">
@@ -65,10 +65,41 @@ Admin : {{email}} <b class="caret"></b> </a>
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
 				<li >
+					<a  style="display: block;" href="/admin/dashboard/rincian_bootcamp">
+						<i class="fa  fa-bell fa-lg"></i>Rincian Bootcamp
+					</a>
+				</li>
+				
+				<li >
 					<a  style="display: block;" href="/admin/dashboard">
 						<i class="fa fa-area-chart fa-lg"></i>Statistik Pembeli
 					</a>
 				</li>
+
+				<li  data-toggle="collapse" data-target="#kursus" >
+					<a  >
+						<i class="fa fa-cogs fa-lg"></i>Penjadwalan Kursus <span class="arrow"></span>
+					</a>
+				</li>
+
+
+				<ul class="sub-menu collapse" id="kursus">
+					<li class="active"><a href="/admin/dashboard/jadwal/1"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+Minggu Ke 1 - Ecmascript 6</a></li>
+					<li class="active"><a href="/admin/dashboard/jadwal/2"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+Minggu Ke 2 - Node.js Framework</a></li>
+<li class="active"><a href="/admin/dashboard/jadwal/3"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+Minggu Ke 3 - Database</a></li>
+<li class="active"><a href="/admin/dashboard/jadwal/4"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+Minggu Ke 4 - Version Control</a></li>
+				</ul>
+
+				<li >
+					<a  style="display: block;" href="/admin/dashboard/list_trainer">
+						<i class="fa fa-user-circle-o fa-lg"></i>List Pengisi Materi
+					</a>
+				</li>
+
 				
 				<li data-toggle="collapse" data-target="#data" >
 					<a href="#"><i class="fa fa-book fa-lg"></i>Data Pembeli Tiket <span class="arrow"></span></a>
@@ -84,19 +115,14 @@ Semua Pembeli</a></li>
 Pembeli Lunas </a></li>
 <li class="active"><a href="/admin/dashboard/belum-lunas"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 Pembeli Belum Lunas</a></li>
-<li class="active"><a href="/admin/dashboard/waiting-list"><i class="fa fa-chevron-right" aria-hidden="true"></i>
-Pembeli Waiting List</a></li>
+
 				</ul>
 				<li >
 					<a  style="display: block;"  href="/admin/dashboard/kotak-validasi">
 						<i class="fa fa-envelope fa-lg"></i>Kotak Validasi Tiket
 					</a>
 				</li>
-				<li >
-					<a  style="display: block;"  href="/admin/dashboard/kotak-validasi">
-						<i class="fa fa-envelope fa-lg"></i>Kotak Saran
-					</a>
-				</li>
+				
 			</ul>
 		</div>
 	</div>

@@ -24,6 +24,32 @@
                 <hr>
 
             </div>
+            <div class="col-md-9 col-md-offset-1" style="margin-bottom: -15px;">
+
+                <br>
+                <label style="margin-left: 16px;" class="control-label ">                 
+                                                      Keterangan Bootcamp</label>
+                <hr class="garisbagian">
+
+            </div>
+
+            <div class="col-md-9 col-md-offset-1" style="margin-bottom: -15px;     padding-left: 40px;">
+                {{{messageError}}}
+                <br>
+                <i class="fa fa-angle-double-right  " aria-hidden="true"></i><label id="listJadwalPanduan">Anda termasuk bootcamp <code> batch Ke {{idBatch}} Dalam Bootcamp ini.</code>
+                    </label><br>
+
+                <i class="fa fa-angle-double-right " aria-hidden="true"></i><label id="listJadwalPanduan">Bootcamp akan berlangsung <code>dalam waktu 4 minggu.</code>
+                  </label><br>
+                <i class="fa fa-angle-double-right  " aria-hidden="true"></i><label id="listJadwalPanduan">Pendaftaran akan dibuka dari tanggal  <code> {{pendaftaranOpen}} s/d {{pendaftaranClose}} </code>
+                      </label><br>
+                <i class="fa fa-angle-double-right  " aria-hidden="true"></i><label id="listJadwalPanduan">Bootcamp akan dimulai pada tanggal  <code> {{batchDimulai}} s/d  {{batchSelesai}}</code>
+                    </label><br>
+                <i class="fa fa-angle-double-right  " aria-hidden="true"></i><label id="listJadwalPanduan">Setiap minggu bootcamp akan <code> ditemani 3 orang trainer.</code>
+                    </label><br>
+
+
+            </div>
 
             <div class="col-md-9 col-md-offset-1" style="margin-bottom: -15px;">
 
@@ -53,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="col-md-4 ">
+                    <div class="col-md-4 ">
                         <div id="ketikEmail" class="form-group {{error}}">
                             <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-eye-slash fa-lg" aria-hidden="true"></i></span>
@@ -251,7 +277,4 @@
     // });
 
     // buat input change keyboard
-
-
-
 </script>

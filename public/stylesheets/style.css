@@ -777,6 +777,7 @@ i.fa-ticket {
 .lokasi {
   color: white !important;
   text-align: center !important;
+  padding-bottom: 50px;
 }
 
 .duit {
@@ -797,11 +798,11 @@ i.silver {
 
 .lokasi {
   color: white;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .namaJalan {
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .kontak {
@@ -1026,6 +1027,24 @@ hr.garisbagian {
   font-size: 37px;
 
 }
+
+#listJadwal{
+  font-size: 14px;
+}
+
+#listJadwalPanduan{
+  font-size: 13px;
+  padding-left: 10px;
+
+}
+
+
+#listJadwalIndex{
+  font-size: 17px;
+  padding-left: 10px;
+}
+
+
 /*
 .ql-toolbar.ql-snow{
 

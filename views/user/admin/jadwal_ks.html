@@ -1,0 +1,79 @@
+ {{>headerAdmin}}
+
+<div class="table-users col-md-12 col-md-offset-2 container   bs-component">
+    <div style="margin-top: 70px;" class="page-header text-center ">
+
+
+        <div class="col-md-8 well">
+            <div class="col-md-13">
+                <h1 style="margin-left:25px;" class="judul"> Pengisi Materi Minggu Ke - {{minggu}} </h1>
+
+                <hr class="Garistema">
+
+            </div>
+
+            <div style="margin-left:30px;" class="col-md-13 ">
+                <label class="judul">Keterangan : </label>
+                <br>
+                <label>Bootcamp periode ke - {{idBatch}} </label>
+                <br>
+                <label for="">Dimulai pada {{ReBegin}} pampai dengan {{ReEnd}} </label><br>
+                <label>Setiap minggu akan dipilih 3 orang trainer untuk mengajar. </label>
+
+                <hr class="Garistema">
+
+            </div>
+
+
+            <div style="font-size: 3px;" class=" bs-component">
+                <table class="table table-hover jadi-vertical">
+                    <thead>
+                        <tr class="headerTengah" id="warnaTr">
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email Trainer</th>
+                            <th>No Handphone</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each trainer}}
+                        <tr class="<%=trUser%>">
+                            <td class="text-center tengah pagination-centered">
+                                {{tambahSatuAdmin @index}}
+                            </td>
+                            <td class="text-center tengah pagination-centered">
+                                {{this.trainer_name}}
+                            </td>
+                            <td class="text-center tengah pagination-centered">
+                                {{this.trainer_email}}
+                            </td>
+                            <td class="text-center tengah pagination-centered">
+                                {{this.trainer_hp}}
+                            </td>
+
+
+                            {{/each}}
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-6">
+            <a class="btn btn-raised btn-info" href="/admin/dashboard/list_trainer">Pilih Trainer</a>
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+</body>
+
+</html>
+{{>footer}}
+
+
+<script>
+</script>
