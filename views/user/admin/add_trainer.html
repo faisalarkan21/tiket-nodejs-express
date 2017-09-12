@@ -33,7 +33,7 @@
                                     <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg detailDashIcon" aria-hidden="true"></i></span>
                                     <label for="nama " class="control-label"> Nama Trainer      
                                   </label>
-                                    <input class="form-control " name="nama" placeholder="Nama Anda" type="name" id="nama" value="{{userDetail.nm_pembeli}}">
+                                    <input class="form-control " name="nama" placeholder="Nama Anda" type="name" id="nama" value="{{userDetail.nm_pembeli}}" required>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                     <span class="input-group-addon"><i class="fa fa-envelope fa-lg detailDashIcon" aria-hidden="true"></i></span>
                                     <label for="email " class="control-label"> Email Trainer             
                                   </label>
-                                    <input class="form-control" name="email" placeholder="Email Anda" type="email" id="email" value="{{userDetail.email_pembeli}}">
+                                    <input class="form-control" name="email" placeholder="Email Anda" type="email" id="email" value="{{userDetail.email_pembeli}}" required>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                     <span class="input-group-addon"><i class="fa fa-phone-square fa-lg detailDashIcon" aria-hidden="true"></i></span>
                                     <label for="hp " class="control-label">                 
                                   No Handphone</label>
-                                    <input class="form-control " name="no_hp" placeholder="No Handphone" id="hp" type="text" value="{{userDetail.hp_pembeli}}">
+                                    <input class="form-control " name="no_hp" placeholder="No Handphone" id="hp" type="text" value="{{userDetail.hp_pembeli}}" required>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                                     <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
                                     <label for="hp " class="control-label">                 
                                            Jenis Kelamin</label>
-                                    <select name="gd" id="gender" class="form-control">
-                                            <option  hidden>Pilih gender</option>
+                                    <select name="gd" id="gender" class="form-control" required>
+                                            <option value=""  hidden>Pilih gender</option>
                   <option>Pria</option>
                   <option>Wanita</option>
                   

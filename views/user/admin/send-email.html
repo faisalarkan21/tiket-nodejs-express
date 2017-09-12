@@ -24,8 +24,7 @@
 
                         <label for="nama " class="control-label"> Dikirim Dari      
                                   </label>
-                        <input class="form-control" name="nama" placeholder="Email" type="name" id="alamatkita" value="Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>"
-                            readonly>
+                        <input class="form-control" name="nama" placeholder="Email" type="name" id="alamatkita" value="Node JS Bootcamp Team" readonly>
                     </div>
                 </div>
             </div>
@@ -260,7 +259,11 @@
                 alamatEmailHost: alamatHost
 
             },
-            dataType: "html"
+            dataType: "html",
+            success: function (data) {
+                alert('Email Terkirim.');
+            }
+
         });
 
         request.done(function (msg) {

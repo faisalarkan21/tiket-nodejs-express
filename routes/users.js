@@ -1,4 +1,8 @@
 var mysql = require('mysql');
+var nodemailer = require('nodemailer');
+var SHA256 = require("crypto-js/sha256");
+var CryptoJS = require("crypto-js");
+
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -133,11 +137,16 @@ exports.daftar = function (req, res) {
 
 
 
-        if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
-            let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let dimulaiKs = new Date(dataJadwal[0].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let selesaiKs = new Date(dataJadwal[0].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+        if ((today >= dataJadwal[0].tgl_daftar_mulai) &&
+            (today <= dataJadwal[0].tgl_daftar_selesai)) {
+            let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai)
+                .toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai)
+                .toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let dimulaiKs = new Date(dataJadwal[0].tgl_mulai)
+                .toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let selesaiKs = new Date(dataJadwal[0].tgl_selesai)
+                .toLocaleDateString().slice(0, 10).replace('T', ' ');
 
             idBatch = 1;
             batchDimulai = dimulaiKs;
@@ -146,12 +155,17 @@ exports.daftar = function (req, res) {
             pendaftaranClose = pendaftaranTutup;
             console.log("masuk batch 1");
 
-        } else if ((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai)) {
+        } else if ((today >= dataJadwal[1].tgl_daftar_mulai) &&
+            (today <= dataJadwal[1].tgl_daftar_selesai)) {
 
-            let pendaftaranBuka = new Date(dataJadwal[1].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranBuka = new Date(dataJadwal[1]
+                .tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranTutup = new Date(dataJadwal[1]
+                .tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let dimulaiKs = new Date(dataJadwal[1]
+                .tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let selesaiKs = new Date(dataJadwal[1]
+                .tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
 
             idBatch = 2;
             batchDimulai = dimulaiKs;
@@ -161,15 +175,20 @@ exports.daftar = function (req, res) {
             console.log("masuk batch 2");
 
 
-        } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[2].tgl_daftar_selesai)) {
+        } else if ((today >= dataJadwal[2].tgl_daftar_mulai) &&
+            (today <= dataJadwal[2].tgl_daftar_selesai)) {
 
 
 
 
-            let pendaftaranBuka = new Date(dataJadwal[2].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let pendaftaranTutup = new Date(dataJadwal[2].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let dimulaiKs = new Date(dataJadwal[2].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let selesaiKs = new Date(dataJadwal[2].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranBuka = new Date(dataJadwal[2]
+                .tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranTutup = new Date(dataJadwal[2]
+                .tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let dimulaiKs = new Date(dataJadwal[2]
+                .tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let selesaiKs = new Date(dataJadwal[2]
+                .tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
 
             idBatch = 3;
             batchDimulai = dimulaiKs;
@@ -178,12 +197,17 @@ exports.daftar = function (req, res) {
             pendaftaranClose = pendaftaranTutup;
             console.log("masuk minggu 4");
 
-        } else if ((today >= dataJadwal[3].tgl_daftar_mulai) && (today <= dataJadwal[3].tgl_daftar_selesai)) {
+        } else if ((today >= dataJadwal[3].tgl_daftar_mulai) &&
+            (today <= dataJadwal[3].tgl_daftar_selesai)) {
 
-            let pendaftaranBuka = new Date(dataJadwal[3].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let pendaftaranTutup = new Date(dataJadwal[3].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let dimulaiKs = new Date(dataJadwal[3].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-            let selesaiKs = new Date(dataJadwal[3].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranBuka = new Date(dataJadwal[3]
+                .tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let pendaftaranTutup = new Date(dataJadwal[3]
+                .tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let dimulaiKs = new Date(dataJadwal[3]
+                .tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+            let selesaiKs = new Date(dataJadwal[3]
+                .tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
 
             idBatch = 4;
             batchDimulai = dimulaiKs;
@@ -260,15 +284,52 @@ exports.mendaftar = function (req, res, next) {
         }
 
 
+        
+
+        var hash = SHA256(req.body.email);
+        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(req.body.password), 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+
+        var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'node.bootcamp@gmail.com',
+                pass: 'arkan14811'
+            }
+        });
+
+        // Or using SMTP Pool if you need to send a large amount of emails
+
+        var mailOptions = {
+            from: "node.bootcamp@gmail.com", // sender address
+            to: req.body.email,
+            subject: 'Konfirmasi Email Peserta Node Bootcamp',
+            text: `http://127.0.0.1:3000/verification/?token=${hash}`
+
+        };
+
+        console.log(mailOptions.text);
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                request.flash('success', 'Votre message à bien été envoyé.');
+                response.redirect('/contacter-printwithlove');
+            }
+        });
+
+
 
         var insertPembeli = {
 
             nm_pembeli: req.body.nama,
             id_batch: idBatch,
-            password: req.body.password,
+            email_pembeli: req.body.email,
+            password: ciphertext,
             hp_pembeli: req.body.hp,
             gd_pembeli: req.body.gd,
-            motivasi_pembeli: req.body.motivasi
+            motivasi_pembeli: req.body.motivasi,
+            token_verification: hash
 
 
         };
@@ -354,6 +415,10 @@ exports.mendaftar = function (req, res, next) {
 
         };
 
+
+
+
+
         var query = connection.query("INSERT INTO pembeli_validasi set ?", insertPembeliValidasi, function (err, rows) {
 
             if (err) {
@@ -408,9 +473,9 @@ exports.membuktikan = function (req, res, next) {
             return next("Mysql error, check your query");
         }
 
-
-        // console.log(data);
-
+        var bytes = CryptoJS.AES.decrypt(data[0].password, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        console.log(decryptedData);
 
         if (data.length < 1) {
 
@@ -419,7 +484,7 @@ exports.membuktikan = function (req, res, next) {
                 data: "<label class='control-label' id='error' >Data tidak ada didalam database</label>"
             });
 
-        } else if ((req.body.email === data[0].email_pembeli) && (req.body.password === data[0].password)) {
+        } else if ((req.body.email === data[0].email_pembeli) && (req.body.password === decryptedData)) {
 
             req.session.namaSession = data[0].email_pembeli;
             req.session.nomor_pembeli = data[0].id_pembeli;
@@ -479,6 +544,7 @@ exports.profile = function (req, res) {
 
     var query = connection.query("select * from pembeli where email_pembeli = ? ", req.session.namaSession, function (err, data) {
 
+        let status = data[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
 
         if (err) {
@@ -488,7 +554,8 @@ exports.profile = function (req, res) {
 
         res.render("user/halamanUser/profile", {
             nama: req.session.namaSession,
-            namaPembeli: data[0].nm_pembeli
+            namaPembeli: data[0].nm_pembeli,
+            status: status
         });
 
     });
@@ -525,10 +592,13 @@ exports.validasi = function (req, res) {
             }
 
 
+            let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
+
             res.render("user/halamanUser/validasiUser", {
                 nama: req.session.namaSession,
                 emailUtama: pembeli[0],
-                detailPembeli: detail[0]
+                detailPembeli: detail[0],
+                status
 
 
 
@@ -733,116 +803,117 @@ exports.week = function (req, res) {
 
 
 exports.weekUser = function (req, res) {
-    
-        console.log('week user')
-        var query = connection.query("select * from kursus where id_kursus=?", req.params.id, function (err, kursus) {
-    
+
+    console.log('week user')
+    var query = connection.query("select * from kursus where id_kursus=?", req.params.id, function (err, kursus) {
+
+        if (err) {
+            console.log(err);
+        }
+
+
+
+        var query = connection.query("select * from trainer where id_kursus=?", req.params.id, function (err, trainer) {
+
             if (err) {
                 console.log(err);
             }
-    
-    
-    
-            var query = connection.query("select * from trainer where id_kursus=?", req.params.id, function (err, trainer) {
-    
+
+
+            var query = connection.query("select * from periode", function (err, dataJadwal) {
+
+
                 if (err) {
                     console.log(err);
+                    return next("Mysql error, check your query");
                 }
-    
-    
-                var query = connection.query("select * from periode", function (err, dataJadwal) {
-    
-    
-                    if (err) {
-                        console.log(err);
-                        return next("Mysql error, check your query");
-                    }
-    
-                    var today = new Date();
-    
-                    var idBatch;
-                    var pendaftaranOpen;
-                    var pendaftaranClose;
-                    var batchDimulai;
-                    var batchSelesai;
-    
-    
-    
-                    if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
-                        let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let dimulaiKs = new Date(dataJadwal[0].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let selesaiKs = new Date(dataJadwal[0].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-    
-                        idBatch = 1;
-                        batchDimulai = dimulaiKs;
-                        batchSelesai = selesaiKs;
-                        pendaftaranOpen = pendaftaranBuka;
-                        pendaftaranClose = pendaftaranTutup;
-                        console.log("masuk batch 1");
-    
-                    } else if ((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai)) {
-    
-                        let pendaftaranBuka = new Date(dataJadwal[1].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-    
-                        idBatch = 2;
-                        batchDimulai = dimulaiKs;
-                        batchSelesai = selesaiKs;
-                        pendaftaranOpen = pendaftaranBuka;
-                        pendaftaranClose = pendaftaranTutup;
-                        console.log("masuk batch 2");
-    
-    
-                    } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[2].tgl_daftar_selesai)) {
-    
-    
-    
-    
-                        let pendaftaranBuka = new Date(dataJadwal[2].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let pendaftaranTutup = new Date(dataJadwal[2].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let dimulaiKs = new Date(dataJadwal[2].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let selesaiKs = new Date(dataJadwal[2].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-    
-                        idBatch = 3;
-                        batchDimulai = dimulaiKs;
-                        batchSelesai = selesaiKs;
-                        pendaftaranOpen = pendaftaranBuka;
-                        pendaftaranClose = pendaftaranTutup;
-                        console.log("masuk minggu 4");
-    
-                    } else if ((today >= dataJadwal[3].tgl_daftar_mulai) && (today <= dataJadwal[3].tgl_daftar_selesai)) {
-    
-                        let pendaftaranBuka = new Date(dataJadwal[3].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let pendaftaranTutup = new Date(dataJadwal[3].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let dimulaiKs = new Date(dataJadwal[3].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                        let selesaiKs = new Date(dataJadwal[3].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-    
-                        idBatch = 4;
-                        batchDimulai = dimulaiKs;
-                        batchSelesai = selesaiKs;
-                        pendaftaranOpen = pendaftaranBuka;
-                        pendaftaranClose = pendaftaranTutup;
-                        console.log("masuk minggu 4");
-    
-                    }
-    
-    
-    
-    
-    
-    
+
+                var today = new Date();
+
+                var idBatch;
+                var pendaftaranOpen;
+                var pendaftaranClose;
+                var batchDimulai;
+                var batchSelesai;
+
+
+
+                if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
+                    let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[0].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[0].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+
+                    idBatch = 1;
+                    batchDimulai = dimulaiKs;
+                    batchSelesai = selesaiKs;
+                    pendaftaranOpen = pendaftaranBuka;
+                    pendaftaranClose = pendaftaranTutup;
+                    console.log("masuk batch 1");
+
+                } else if ((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai)) {
+
+                    let pendaftaranBuka = new Date(dataJadwal[1].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+
+                    idBatch = 2;
+                    batchDimulai = dimulaiKs;
+                    batchSelesai = selesaiKs;
+                    pendaftaranOpen = pendaftaranBuka;
+                    pendaftaranClose = pendaftaranTutup;
+                    console.log("masuk batch 2");
+
+
+                } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[2].tgl_daftar_selesai)) {
+
+
+
+
+                    let pendaftaranBuka = new Date(dataJadwal[2].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[2].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[2].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[2].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+
+                    idBatch = 3;
+                    batchDimulai = dimulaiKs;
+                    batchSelesai = selesaiKs;
+                    pendaftaranOpen = pendaftaranBuka;
+                    pendaftaranClose = pendaftaranTutup;
+                    console.log("masuk minggu 4");
+
+                } else if ((today >= dataJadwal[3].tgl_daftar_mulai) && (today <= dataJadwal[3].tgl_daftar_selesai)) {
+
+                    let pendaftaranBuka = new Date(dataJadwal[3].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[3].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[3].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[3].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+
+                    idBatch = 4;
+                    batchDimulai = dimulaiKs;
+                    batchSelesai = selesaiKs;
+                    pendaftaranOpen = pendaftaranBuka;
+                    pendaftaranClose = pendaftaranTutup;
+                    console.log("masuk minggu 4");
+
+                }
+
+
+                var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
+
+
+                    let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
+
                     // var stringDate = jadwal[0].tgl_mulai.toString();
-    
+
                     // var stringDate2 = jadwal[0].tgl_selesai.toString();
-    
+
                     // const ReBegin = stringDate.slice(3, 15);
                     // const ReEnd = stringDate2.slice(3, 15);
-    
-    
-    
+
+
+
                     res.render('user/halamanUser/jadwal_ks', {
                         nama: req.session.namaSession,
                         namaPembeli: req.session.namaPembeli,
@@ -851,21 +922,29 @@ exports.weekUser = function (req, res) {
                         trainer: trainer,
                         idBatch: idBatch,
                         ReBegin: batchDimulai,
-                        ReEnd: batchSelesai
-                        // ReBegin: ReBegin,
+                        ReEnd: batchSelesai,
+                        status: status
                         // ReEnd: ReEnd
                     });
                 });
             });
         });
-    }
+    });
+}
 
 exports.ketentuan = function (req, res) {
 
+    var query = connection.query("select * from pembeli where id_pembeli = ? ", req.session.nomor_pembeli, function (err, pembeli) {
 
-    res.render('user/halamanUser/ketentuan');
+        let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
+        res.render('user/halamanUser/ketentuan', {
+            nama: req.session.namaSession,
+            namaPembeli: req.session.namaPembeli,
+            status
+        });
 
+    });
 
 };
 
@@ -884,35 +963,19 @@ exports.addTrainer = function (req, res) {
 
 
 exports.addTrainerPost = function (req, res) {
-
-
-
     var insertTrainer = {
-
         trainer_name: req.body.nama,
         trainer_email: req.body.email,
         trainer_hp: req.body.no_hp,
         trainer_gd: req.body.gd
-
-
-
     };
-
-    //masukin nama, hp,gender,email, password
-
     var query = connection.query("INSERT INTO trainer set ?", insertTrainer, function (err, rows) {
-
         if (err) {
             console.log(err);
             return next("Mysql error, check your query");
         }
-
         res.redirect('/admin/dashboard/list_trainer');
-
-
     });
-
-
 }
 
 
@@ -983,7 +1046,7 @@ exports.tiket = function (req, res) {
 
 
 
-
+                let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
 
                 res.render("user/halamanUser/validasitiket", {
@@ -991,7 +1054,8 @@ exports.tiket = function (req, res) {
                     emailUtama: pembeli[0],
                     detailTiket: detail[0],
                     validasiTable: validasi[0],
-                    statusValidasi: statusKirim
+                    statusValidasi: statusKirim,
+                    status
                 });
 
             });
@@ -1449,31 +1513,36 @@ exports.sendEmail = function (req, res) {
 exports.sendEmailAct = function (req, res) {
 
 
-    // var id = req.params.id;
-    console.log(req.body.alamatEmailHost);
-    console.log(req.body.contents);
-    console.log(req.body.subjek);
-    console.log(req.body.emailTujuan);
-
-
-    var api_key = 'key-fd687b0a68bc8505dfa4eb84605b9033';
-    var domain = 'sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org';
-    var mailgun = require('mailgun-js')({
-        apiKey: api_key,
-        domain: domain
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'node.bootcamp@gmail.com',
+            pass: 'arkan14811'
+        }
     });
 
-    var data = {
-        from: req.body.alamatEmailHost,
+    // Or using SMTP Pool if you need to send a large amount of emails
+
+    var mailOptions = {
+        from: "node.bootcamp@gmail.com", // sender address
         to: req.body.emailTujuan,
         subject: req.body.subjek,
-        /**/
-        html: req.body.contents
+        html:req.body.contents
+
     };
 
-    mailgun.messages().send(data, function (error, body) {
-        console.log(body);
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            request.flash('success', 'Votre message à bien été envoyé.');
+            response.redirect('/contacter-printwithlove');
+        }
     });
+
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+
 
 }
 
@@ -1664,6 +1733,42 @@ exports.rincianBootcamp = function (req, res) {
 
 
 }
+
+
+exports.verification = function (req, res) {
+
+    console.log('kena');
+    var updateVerification = {
+        email_verification: 1,
+        token_verification: ""
+    }
+    var query = connection.query("select * from pembeli where token_verification = ? ", req.query.token, function (err, data) {
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+        var query = connection.query("update pembeli set ? where token_verification =  ?", [updateVerification, req.query.token], function (err, rows) {
+
+            console.log(data);
+
+            if (err) {
+                console.log(err);
+                return next("Mysql error, check your query");
+            }
+            console.log(rows);
+            req.session.namaSession = data[0].email_pembeli;
+            req.session.nomor_pembeli = data[0].id_pembeli;
+            req.session.namaPembeli = data[0].nm_pembeli;
+            console.log(req.session.nomor_pembeli);
+            console.log(data[0].id_pembeli);
+            res.render("user/halamanUser/profile", {
+                nama: req.session.namaSession,
+                namaPembeli: req.session.namaPembeli
+            });
+        });
+    })
+}
+
 
 
 // nexmo.message.sendSms(

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-		<title>Bootcamp Javascript</title>
+	<title>Bootcamp Javascript</title>
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/stylesheets/style.css">
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/material/css/ripples.min.css">
 	<link rel="stylesheet" href="/font-material/material-icons.css">
-	
+
 
 
 
@@ -27,17 +27,19 @@
         <span class="icon-bar"></span>
         
         </button>
-				<a class="navbar-brand" href="/">Dashboard Tiket <i style="padding-left: 6px;" class="fa fa-users fa-fw " aria-hidden="true"></i>
-       
-        <div class="ripple-container">            
-          </div>         
-          </a>
+				<a class="navbar-brand" href="/">Dashboard Tiket <i style="padding-left: 6px;" class="fa fa-users fa-fw " aria-hidden="true"></i> </a>
+
+				
+				<div class="ripple-container">
+
+				</div>
+				</a>
 			</div>
 			<div class="navbar-collapse navbar-inverse-collapse collapse">
 				<form class="navbar-form navbar-left ">
-					<!--<div class="form-group">
-                <button class="btn btn-raised" type="sumbit">Cari</button>              
-              </div>-->
+						<div class="form-group">
+								<label style="color:white !important; margin-top:3px; margin-left:20px;" for="">{{status}} </label>
+							</div>
 				</form>
 				<ul class="nav-drop nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -53,41 +55,40 @@
 			</div>
 		</div>
 	</div>
-	<div class="nav-side-menu" >
-		<div class="brand"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i>
- Halaman Pembeli </div>
+	<div class="nav-side-menu">
+		<div class="brand"><i class="fa fa-shopping-basket fa-fw" aria-hidden="true"></i> Halaman Pembeli </div>
 		<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
-				<li >
-					<a  style="display: block;" href="/profile">
+				<li>
+					<a style="display: block;" href="/profile">
 						<i class="fa fa-home fa-lg"></i>Halaman Utama
 					</a>
 				</li>
 
-				<li  data-toggle="collapse" data-target="#kursus" >
-						<a  >
+				<li data-toggle="collapse" data-target="#kursus">
+					<a>
 							<i class="fa fa-cogs fa-lg"></i>Penjadwalan Kursus <span class="arrow"></span>
 						</a>
-					</li>
-	
-	
-					<ul class="sub-menu collapse" id="kursus">
-						<li class="active"><a href="/user/dashboard/jadwal/1"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+				</li>
+
+
+				<ul class="sub-menu collapse" id="kursus">
+					<li class="active"><a href="/user/dashboard/jadwal/1"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 	Minggu Ke 1 - Ecmascript 6</a></li>
-						<li class="active"><a href="/user/dashboard/jadwal/2"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+					<li class="active"><a href="/user/dashboard/jadwal/2"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 	Minggu Ke 2 - Node.js Framework</a></li>
-	<li class="active"><a href="/user/dashboard/jadwal/3"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+					<li class="active"><a href="/user/dashboard/jadwal/3"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 	Minggu Ke 3 - Database</a></li>
-	<li class="active"><a href="/user/dashboard/jadwal/4"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+					<li class="active"><a href="/user/dashboard/jadwal/4"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 	Minggu Ke 4 - Version Control</a></li>
-					</ul>
-				<li data-toggle="collapse" data-target="#data" >
+				</ul>
+				<li data-toggle="collapse" data-target="#data">
 					<a href="#"><i class="fa fa-book fa-lg"></i>Data Pembeli <span class="arrow"></span></a>
 				</li>
 
 
-             
+
 
 				<ul class="sub-menu collapse" id="data">
 					<li class="active"><a href="/user/data"><i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -95,10 +96,10 @@ Data Pemesan</a></li>
 					<li class="active"><a href="/user/ketentuan"><i class="fa fa-chevron-right" aria-hidden="true"></i>
 Ketentuan</a></li>
 				</ul>
-				<li >
+				<li>
 
 
-					<a  style="display: block;"  href="/user/validasi">
+					<a style="display: block;" href="/user/validasi">
 						<i class="fa fa-shield fa-lg"></i>Validasi Tiket
 					</a>
 				</li>

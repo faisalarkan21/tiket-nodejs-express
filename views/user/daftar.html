@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>makan dilaut</title>
+    <title>Bootcamp</title>
     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="">
@@ -60,14 +60,14 @@
 
             </div>
             <div class="col-md-12 col-md-offset-1">
-                <form class="daftar form-horizontal text-center" action="/mendaftar" method="post">
+                <form class="daftar daftar-validasi form-horizontal text-center" action="/mendaftar" method="post">
                     <div class="col-md-4">
                         <div id="ketikEmail" class="form-group {{error}}">
 
                             <div class="input-group ">
 
                                 <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></span>
-                                <input class="form-control " name="nama" placeholder="Nama Anda" type="name" value="">
+                                <input class="form-control " name="nama" placeholder="Nama Anda" type="name" value="" required>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <div id="ketikPass" class="form-group  {{error}}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-                                <input class="form-control" name="email" placeholder="Email Anda" type="email" value="">
+                                <input class="form-control" name="email" placeholder="Email Anda" type="email" value="" required>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div id="ketikEmail" class="form-group {{error}}">
                             <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-eye-slash fa-lg" aria-hidden="true"></i></span>
-                                <input class="form-control " name="password" placeholder="Password" type="password" value="">
+                                <input class="form-control " name="password" placeholder="Password" id="passwordParent" type="password" value="" required>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <div id="ketikEmail" class="form-group {{error}}">
                             <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-eye-slash fa-lg" aria-hidden="true"></i></span>
-                                <input class="form-control " placeholder="Konfirmasi Password" type="password" value="">
+                                <input class="form-control " placeholder="Konfirmasi Password" name="password_confirm" type="password" value="" required>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <div id="ketikEmail" class="form-group {{error}}">
                             <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></span>
-                                <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="">
+                                <input class="form-control " name="hp" placeholder="No Handphone" type="text" value="" required>
                             </div>
                         </div>
                     </div>
@@ -107,8 +107,8 @@
                         <div id="ketikPass" class="form-group  {{error}}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
-                                <select name="gd" id="gender" class="form-control">
-                                    <option  hidden>Pilih gender</option>
+                                <select name="gd" id="gender" class="form-control" required>
+                                    <option value=""  hidden>Pilih gender</option>
           <option>Pria</option>
           <option>Wanita</option>
           
@@ -136,8 +136,8 @@
                                 <div class="input-group col-md-9">
                                     <label for="metode " class="control-label">                 
                                   Pilih Metode Pembayaran</label>
-                                    <select name="bank" id="metode" class="form-control">
-                                    <option  hidden>Pilih Bank</option>
+                                    <select name="bank" id="metode" class="form-control" required>
+                                    <option value=""  hidden>Pilih Bank</option>
           <option>BCA NO. 98080986643 - Faisal Arkan</option>
           <option>BRI NO. 78787878741 - Sativa Ken</option>
           
@@ -165,7 +165,7 @@
                                 <label for="textArea" style="text-align: left;" class="col-md-2 control-label">Motivasi Anda </label>
 
                                 <div class="col-md-10">
-                                    <textarea name="motivasi" class="form-control" rows="3" id="textArea"></textarea>
+                                    <textarea name="motivasi" class="form-control" rows="3" id="textArea" required></textarea>
                                     <span class="help-block">Apa motivasi anda untuk terpilih mengikuti bootcamp ini ?</span>
                                 </div>
                             </div>
@@ -199,82 +199,21 @@
 </body>
 {{>footer}}
 <script>
-    //var nomor = $("#selectHarga").val();
-    // alert(nomor);
+  jQuery('.daftar-validasi').validate({
+            
+            rules : {
+               
+				password : {
+					minlength : 5
+				},
+				password_confirm : {
+					minlength : 5,
+					equalTo : "#passwordParent"
+				}
+			}
+		});
 
-    // buat input change klik id login
-
-    // $(document).on("click", "#login", function(e) {
-
-
-    //   e.preventDefault();
-    //   console.log('select_link clicked');
-
-    //   dataEmail = $('input[name=email]').val();
-    //   dataPass = $('input[name=password]').val();
-
-
-    //   if (($.trim(dataEmail) == '') && ($.trim(dataPass) == '')) {
-
-    //     $('#ketikEmail').addClass('has-error is-empty');
-
-    //     $('#ketikPass').addClass('has-error is-empty');
-
-    //     $('#pesan').addClass('has-error is-empty');
-
-    //     $('label').show();
-
-
-    //   } else if (($.trim(dataPass) == '')) {
-    //     $('#ketikPass').addClass('has-error is-empty');
-
-    //     $('#pesan').addClass('has-error is-empty');
-
-    //     $('label').show();
-
-
-    //   } else if (($.trim(dataEmail) == '')) {
-
-
-    //     $('#ketikEmail').addClass('has-error is-empty');
-    //     $('#pesan').addClass('has-error is-empty');
-    // $('label').show();
-
-
-    //   }else{
-
-    //   $.ajax({
-    //     //disini
-
-    //     type: 'POST',     
-    //     data: $("form").serialize(),
-    //     dataType: 'html',
-    //     url: 'http://127.0.0.1:3000/login'
-    //     // success: function(res) {
-
-    //     //   if (res == true){
-
-    //     //         alert('bener');
-
-    //     //   }else{
-
-    //     //        console.log(res)
-    //     //        alert('salah');
-
-    //     //   }
-
-    //     //   },
-
-    //     // error: function(res){
-
-    //     //     alert('failure');
-
-    //     // }
-
-
-
-    //   });
-    // });
-
-    // buat input change keyboard
+$('button').click(function(){
+    console.log($('.daftar-validasi').valid());
+});
 </script>

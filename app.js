@@ -128,6 +128,7 @@ app.use('/full-page', express.static(__dirname + '/node_modules/fullpage.js/dist
 app.use('/chartist', express.static(__dirname + '/node_modules/chartist/dist/'));
 app.use('/chartist', express.static(__dirname + '/node_modules/chartist/dist/'));
 app.use('/quill', express.static(__dirname + '/node_modules/quill/dist/'));
+app.use('/jquery-validation', express.static(__dirname + '/node_modules/jquery-validation/dist/'));
 
 
 // buat session 
@@ -254,7 +255,7 @@ app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct)
 app.post('/admin/dashboard/delete-user/:id', pengamananAdmin, users.deletePeserta);
 // app.post('/admin/dashboard/user-detail/kirimsms',pengamananAdmin, users.kirimSms)
 
-
+app.get('/verification', users.verification);
 
 
 
