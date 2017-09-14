@@ -39,7 +39,7 @@ Bootcamp Node.JS
 Pembelajaran Teknologi </a> </li>
           <li><a id="lokasi" href="#">
 Lokasi Bootcamp </a></li>
-        
+
           <li><a id="kontak" href="#"> Hubungi Kami </a></li>
         </ul>
         <form class="navbar-form navbar-left ">
@@ -49,17 +49,21 @@ Lokasi Bootcamp </a></li>
         </form>
         <ul class="col-md-2 nav navbar-nav navbar-right">
           <div class="search ">
-           
+
           </div>
           <li>
-            {{#if session.admin}}
+            {{#if isDisable}} {{#if session.admin}}
             <a href="/admin/dashboard">Dasboard Admin</a> {{else if session.namaSession}}
             <a href="/profile">Dasboard User</a> {{else}}
             <a href="/login"><i class="fa fa-user-circle-o fa-fw fa-lg" aria-hidden="true"></i>
-Masuk / Daftar</a> {{/if}}
+Masuk / Login</a> {{/if}} {{else}} {{#if session.admin}}
+            <a href="/admin/dashboard">Dasboard Admin</a> {{else if session.namaSession}}
+            <a href="/profile">Dasboard User</a> {{else}}
+            <a href="/login"><i class="fa fa-user-circle-o fa-fw fa-lg" aria-hidden="true"></i>
+Masuk / Daftar</a> {{/if}} {{/if}}
+
           </li>
         </ul>
       </div>
     </div>
   </div>
-

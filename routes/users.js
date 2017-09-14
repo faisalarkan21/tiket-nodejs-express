@@ -44,6 +44,9 @@ exports.index = function (req, res) {
         var batchSelesai;
 
 
+        // console.log(dataJadwal[3].tgl_daftar_mulai);
+
+
 
         if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
             let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
@@ -106,13 +109,32 @@ exports.index = function (req, res) {
 
         }
 
+        var query = connection.query("select COUNT(*) AS tiketCount FROM pembeli", function (err, countKuota) {
 
-        res.render('index', {
-            idBatch: idBatch,
-            batchDimulai: batchDimulai,
-            batchSelesai: batchSelesai,
-            pendaftaranOpen: pendaftaranOpen,
-            pendaftaranClose: pendaftaranClose
+            let counting = 15 - countKuota[0].tiketCount;
+
+            let htmlCountAvailable = `<label class="judul3 size" for="">Status Kuota Batch ${idBatch} Tersisa ${counting} Peserta <i style="padding-left:8px; padding-top:5px;" class="fa fa-user-circle-o" aria-hidden="true"></i>`;
+
+            let htmlCountFull = `<label class="judul3 size" for="">Status Batch ${idBatch} Kuota Penuh <i style="padding-left:8px; padding-top:10px;" class="fa fa-user-circle-o" aria-hidden="true"></i>`;
+
+
+
+            let isFull = counting > 0 ? htmlCountAvailable : htmlCountFull;
+            let isFullLokasi = counting > 0 ? counting : 'Penuh';
+            let isFullDisable = counting > 0 ? false : true;
+
+
+
+            res.render('index', {
+                idBatch: idBatch,
+                batchDimulai: batchDimulai,
+                batchSelesai: batchSelesai,
+                pendaftaranOpen: pendaftaranOpen,
+                pendaftaranClose: pendaftaranClose,
+                countKuota: isFull,
+                isDisable: isFullDisable,
+                isFullLokasi
+            });
         });
     })
 }
@@ -218,15 +240,42 @@ exports.daftar = function (req, res) {
 
         }
 
+        var query = connection.query("select COUNT(*) AS tiketCount FROM pembeli", function (err, countKuota) {
 
-        res.render('user/daftar', {
-            idBatch: idBatch,
-            batchDimulai: batchDimulai,
-            batchSelesai: batchSelesai,
-            pendaftaranOpen: pendaftaranOpen,
-            pendaftaranClose: pendaftaranClose
+            console.log(15 - countKuota[0].tiketCount);
+
+            counting = 15 - countKuota[0].tiketCount;
+
+            if (counting === 0) {
+
+                res.render('user/pendaftaran-full', {
+                    idBatch: idBatch,
+                    batchDimulai: batchDimulai,
+                    batchSelesai: batchSelesai,
+                    pendaftaranOpen: pendaftaranOpen,
+                    pendaftaranClose: pendaftaranClose,
+                    countKuota: 15 - countKuota[0].tiketCount
+
+                });
+
+
+            } else {
+
+                res.render('user/daftar', {
+                    idBatch: idBatch,
+                    batchDimulai: batchDimulai,
+                    batchSelesai: batchSelesai,
+                    pendaftaranOpen: pendaftaranOpen,
+                    pendaftaranClose: pendaftaranClose,
+                    countKuota: 15 - countKuota[0].tiketCount
+
+                });
+
+            }
+
+
+
         });
-
 
 
     })
@@ -284,7 +333,7 @@ exports.mendaftar = function (req, res, next) {
         }
 
 
-        
+
 
         var hash = SHA256(req.body.email);
         var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(req.body.password), 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
@@ -446,15 +495,39 @@ exports.mendaftar = function (req, res, next) {
 
 
 exports.login = function (req, res, next) {
-    if (req.session.namaSession) {
 
-        res.redirect("profile");
 
-    } else {
+    var query = connection.query("select COUNT(*) AS tiketCount FROM pembeli", function (err, countKuota) {
 
-        res.render('user/login');
 
-    };
+        let counting = 15 - countKuota[0].tiketCount;
+
+        let htmlCountAvailable = `<label class="judul3 size" for="">Status Kuota Batch Tersisa ${counting} Peserta <i style="padding-left:8px; padding-top:5px;" class="fa fa-user-circle-o" aria-hidden="true"></i>`;
+
+        let htmlCountFull = '<label class="judul3 size" for="">Status Kuota Penuh <i style="padding-left:8px;" class="fa fa-user-circle-o" aria-hidden="true"></i>';
+
+
+
+        let isFull = counting > 0 ? htmlCountAvailable : htmlCountFull;
+        let isFullDisable = counting > 0 ? false : true;
+
+        if (req.session.namaSession) {
+
+            res.redirect("profile");
+
+        } else {
+
+            res.render('user/login', {
+                isDisable: isFullDisable
+
+
+            });
+
+        };
+    });
+
+
+
 };
 
 
@@ -473,31 +546,37 @@ exports.membuktikan = function (req, res, next) {
             return next("Mysql error, check your query");
         }
 
-        var bytes = CryptoJS.AES.decrypt(data[0].password, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
-        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        console.log(decryptedData);
+
 
         if (data.length < 1) {
 
             res.render('user/login', {
                 error: "has-error is-empty",
-                data: "<label class='control-label' id='error' >Data tidak ada didalam database</label>"
+                data: "Password anda salah"
             });
-
-        } else if ((req.body.email === data[0].email_pembeli) && (req.body.password === decryptedData)) {
-
-            req.session.namaSession = data[0].email_pembeli;
-            req.session.nomor_pembeli = data[0].id_pembeli;
-            req.session.namaPembeli = data[0].nm_pembeli;
-            res.redirect('profile');
-
 
         } else {
 
-            res.render('user/login', {
-                error: "has-error is-empty",
-                data: "<label class='control-label' id='error' >Password anda salah</label>"
-            });
+            var bytes = CryptoJS.AES.decrypt(data[0].password, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+            var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            console.log(decryptedData);
+
+            if ((req.body.email === data[0].email_pembeli) && (req.body.password === decryptedData)) {
+
+                req.session.namaSession = data[0].email_pembeli;
+                req.session.nomor_pembeli = data[0].id_pembeli;
+                req.session.namaPembeli = data[0].nm_pembeli;
+                res.redirect('profile');
+
+
+            } else {
+
+                res.render('user/login', {
+                    error: "has-error is-empty",
+                    data: "Password anda salah"
+                });
+
+            }
 
         }
 
@@ -1114,26 +1193,34 @@ exports.adminValidasi = function (req, res) {
 
         if (data.length < 1) {
 
-            res.render('user/admin/login-admin', {
+            res.render('user/login', {
                 error: "has-error is-empty",
-                data: "<label class='control-label' id='error' >Data tidak ada didalam database</label>"
+                data: "Password anda salah"
             });
-
-        } else if ((req.body.email === data[0].email_admin) && (req.body.password === data[0].pass_admin)) {
-
-            req.session.admin = true;
-            req.session.namaSession = data[0].email_admin;
-            req.session.nomor_pembeli = data[0].id_admin;
-            req.session.namaAdmin = data[0].nm_admin;
-            res.redirect('dashboard');
-
 
         } else {
 
-            res.render('user/admin/login-admin', {
-                error: "has-error is-empty",
-                data: "<label class='control-label' id='error' >Password anda salah</label>"
-            });
+            var bytes = CryptoJS.AES.decrypt(data[0].pass_admin, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+            var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            console.log(decryptedData);
+
+            if ((req.body.email === data[0].email_admin) && (req.body.password === decryptedData)) {
+
+                req.session.admin = true;
+                req.session.namaSession = data[0].email_admin;
+                req.session.nomor_pembeli = data[0].id_admin;
+                req.session.namaAdmin = data[0].nm_admin;
+                res.redirect('dashboard');
+
+
+            } else {
+
+                res.render('user/login', {
+                    error: "has-error is-empty",
+                    data: "Password anda salah"
+                });
+
+            }
 
         }
 
@@ -1527,7 +1614,7 @@ exports.sendEmailAct = function (req, res) {
         from: "node.bootcamp@gmail.com", // sender address
         to: req.body.emailTujuan,
         subject: req.body.subjek,
-        html:req.body.contents
+        html: req.body.contents
 
     };
 

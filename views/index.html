@@ -5,9 +5,11 @@
             <div id="judul2" class="preload col-md-12 col-md-offset-1 judul3">
                 <h1 class="judulSlider judul3">Pelatihan Bootcamp Node JS</h1>
                 <label class="judul3 size" for="">Dilatih secara intensif selama 4 minggu untuk dapat terjun kedunia kerja</label>                <br>
-                <label class="judul3 size" for="">Dengan Standar Ecmascript 2017</label> <br>
+                <label class="judul3 size" for="">Dengan Standar Ecmascript 2017</label> <br> {{{countKuota}}}
+                </label> <br>
                 <br>
-                <a class="btn btn-raised btn-info" href="/daftar">Daftar</a>
+                <a class="btn btn-raised btn-info" id="btnDaftar" href="/daftar">Daftar Sekarang <i style="padding-left:10px;" class="fa fa-paper-plane" aria-hidden="true"></i>
+                </a>
             </div>
             <div class="gear ">
                 <i class="fa fa-circle-o-notch judul3 fa-spin fa-4x fa-fw "></i>
@@ -64,14 +66,17 @@
                     <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Sekarang Termasuk Bootcamp  Batch Ke {{idBatch}}.
                         </label><br>
 
-                        <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp akan berlangsung dalam waktu 4 minggu.
-                      </label><br>
-                      <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Pendaftaran Dibuka dari tanggal  {{pendaftaranOpen}} s/d {{pendaftaranClose}}
-                        </label><br>
-                      <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp Ke {{idBatch}} dimulai pada  {{batchDimulai}} s/d {{batchSelesai}}
+                    <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Status Kuota Tersisa  {{isFullLokasi}}
                         </label><br>
 
-                 
+                    <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp akan berlangsung dalam waktu 4 minggu.
+                      </label><br>
+                    <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Pendaftaran Dibuka dari tanggal  {{pendaftaranOpen}} s/d {{pendaftaranClose}}
+                        </label><br>
+                    <i class="fa fa-angle-double-right  judul3" aria-hidden="true"></i><label class="judul3" id="listJadwalIndex">Bootcamp Ke {{idBatch}} dimulai pada  {{batchDimulai}} s/d {{batchSelesai}}
+                        </label><br>
+
+
 
                 </div>
 
@@ -126,7 +131,16 @@
     $(document).ready(function () {
 
 
+        //btnDaftar
+        let isDisable = `{{isDisable}}`;
 
+
+        if (isDisable === 'true') {
+            $("#btnDaftar").hide();
+        } else {
+            $("#btnDaftar").show();
+
+        }
 
         //    $('#preload2').fadeIn(7000);
 
@@ -155,7 +169,7 @@
         })
 
 
-            $("#lokasi").click(function () {
+        $("#lokasi").click(function () {
 
             $.fn.fullpage.moveTo(3, 0);
 
