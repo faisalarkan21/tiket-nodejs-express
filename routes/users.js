@@ -6,7 +6,7 @@ var CryptoJS = require("crypto-js");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'arkan14811',
     database: 'bootcamp_node',
 
 });
@@ -671,13 +671,18 @@ exports.validasi = function (req, res) {
             }
 
 
+            let isPaid = detail[0].uang_transfer;
+            console.log(isPaid);
+
+
             let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
             res.render("user/halamanUser/validasiUser", {
                 nama: req.session.namaSession,
                 emailUtama: pembeli[0],
                 detailPembeli: detail[0],
-                status
+                status,
+                isPaid
 
 
 
