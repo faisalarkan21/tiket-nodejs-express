@@ -19,6 +19,7 @@ body {
 
 /*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');*/
 
+code,
 form.daftar,
 h1.judul,
 h2.judul,
@@ -39,7 +40,7 @@ input,
 div,
 h3.panel-title,
 #judul {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Cabin', sans-serif !important;
 }
 
 #error {

@@ -10,8 +10,12 @@ var session = require('express-session');
 var fs = require('fs');
 var http = require('http');
 var util = require('util');
+
 var routes = require('./routes/index');
 var users = require('./routes/users')
+var mobile = require('./routes/mobile')
+
+
 var multer = require('multer');
 var handlebars = require("handlebars");
 var cookieSession = require('cookie-session')
@@ -133,7 +137,7 @@ app.use('/jquery-validation', express.static(__dirname + '/node_modules/jquery-v
 
 // buat session 
 app.use(cookieSession({
-    name:"session",
+    name:"sessionasasas",
     secret: 'somesecrettokenhere'
 }));
 
@@ -291,6 +295,15 @@ app.get('/user/validasi', pengamananUser, users.tiket);
 app.post('/user/validasi', pengamananUser, users.tiketPost);
 
 
+
+
+/*
+
+API Untuk Mobile 
+
+*/
+
+app.post('/mobile-login', mobile.loginMobile);
 
 
 
