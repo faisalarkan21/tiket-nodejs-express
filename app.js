@@ -65,11 +65,11 @@ var hbs = exphbs.create({
         tiket_user_utama: function (tiket_utama) {
 
 
-       
+
 
             if (tiket_utama == "TK01") {
 
-               return "TK01 - TIKET PREMIUM";
+                return "TK01 - TIKET PREMIUM";
 
             } else if (tiket_utama == "TK02") {
 
@@ -81,7 +81,7 @@ var hbs = exphbs.create({
 
             }
 
-          
+
 
         }
 
@@ -137,7 +137,7 @@ app.use('/jquery-validation', express.static(__dirname + '/node_modules/jquery-v
 
 // buat session 
 app.use(cookieSession({
-    name:"sessionasasas",
+    name: "sessionasasas",
     secret: 'somesecrettokenhere'
 }));
 
@@ -233,12 +233,12 @@ app.get('/admin/dashboard/waiting-list', pengamananAdmin, users.waitingList);
 //kotak validasi admin 
 
 // not implmented
-app.get('/admin/dashboard/rincian_bootcamp', pengamananAdmin, users.rincianBootcamp );
+app.get('/admin/dashboard/rincian_bootcamp', pengamananAdmin, users.rincianBootcamp);
 
 
-app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi );
-app.get('/admin/dashboard/jadwal/:id', pengamananAdmin,users.week);
-app.get('/admin/dashboard/add_trainer', pengamananAdmin,users.addTrainer);
+app.get('/admin/dashboard/kotak-validasi', pengamananAdmin, users.kotakValidasi);
+app.get('/admin/dashboard/jadwal/:id', pengamananAdmin, users.week);
+app.get('/admin/dashboard/add_trainer', pengamananAdmin, users.addTrainer);
 
 app.post('/admin/dashboard/add_trainer', pengamananAdmin, users.addTrainerPost);
 app.get('/admin/dashboard/list_trainer', pengamananAdmin, users.list_trainer);
@@ -248,7 +248,7 @@ app.post('/admin/dashboard/trainer/:id', pengamananAdmin, users.trainerDetailUpd
 app.post('/admin/dashboard/delete-trainer/:id', pengamananAdmin, users.trainerDetailDelete);
 
 //list_trainer
-app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi );
+app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi);
 
 
 app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
@@ -288,7 +288,7 @@ app.get('/user/data', pengamananUser, users.validasi);
 app.post('/user/data', pengamananUser, users.validasiPost);
 
 app.get('/user/ketentuan', pengamananUser, users.ketentuan);
-app.get('/user/dashboard/jadwal/:id', pengamananUser,users.weekUser);
+app.get('/user/dashboard/jadwal/:id', pengamananUser, users.weekUser);
 
 // validasi tiket
 app.get('/user/validasi', pengamananUser, users.tiket);
@@ -304,7 +304,11 @@ API Untuk Mobile
 */
 
 app.post('/mobile-login', mobile.loginMobile);
-
+app.get('/data-user/:id', mobile.dataUserMobile);
+app.post('/data-user/:id', mobile.dataUserMobilePost);
+app.get('/data-user-validasi/:id', mobile.tiketValidasi);
+app.post('/data-user-validasi/:id', mobile.tiketValidasiPost);
+app.get('/jadwal-ks/:id', mobile.jadwalKs);
 
 
 
@@ -319,23 +323,23 @@ app.post('/dev', users.cobaGet);
 // var api_key = 'key-fd687b0a68bc8505dfa4eb84605b9033';
 // var domain = 'sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org';
 // var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
- 
+
 // var data = {
 //   from: 'Node JS Bootcamp Team <postmaster@sandbox0e4ae9030dd64b0caaaa32721d188a83.mailgun.org>',
 //   to: 'faisalarkan21@gmail.com',
 //   subject: 'Hello',
 //   text: 'Testing some Mailgun awesomness!'
 // };
- 
+
 // mailgun.messages().send(data, function (error, body) {
 //   console.log(body);
 // });
 
-app.get('/favicon.ico', function(req, res) {
+app.get('/favicon.ico', function (req, res) {
     res.status(204);
 });
 
-app.get('/robots.txt', function(req, res) {
+app.get('/robots.txt', function (req, res) {
     res.status(204);
 });
 
@@ -349,10 +353,17 @@ app.use(function (req, res, next) {
 // error handlers
 app.set('port', (process.env.PORT || 3000));
 
-app.listen(app.get('port'),  () => {
-  console.log(`Server berjalan di port : http://localhost:${app.get('port')}/`)
-}) 
+app.listen = function () {
+    var server = http.createServer(this);
+    return server.listen.apply(server, arguments);
+};
 
+
+
+
+// var listener = app.listen(3000, function(){
+//     console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+// });
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
