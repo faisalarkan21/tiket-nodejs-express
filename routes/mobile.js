@@ -19,6 +19,17 @@ API Mobile
 */
 
 
+function toRp(angka) {
+    var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+    var rev2 = '';
+    for (var i = 0; i < rev.length; i++) {
+        rev2 += rev[i];
+        if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
+            rev2 += '.';
+        }
+    }
+    return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+}
 
 exports.loginMobile = function (req, res, next) {
 
@@ -110,11 +121,16 @@ exports.dataUserMobile = function (req, res) {
             console.log(isPaid);
 
 
+           
+            let hargaTiketRp = toRp(detail[0].harga_tiket);
+            
+
             let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
             let result = {
                 dataPembeli: pembeli[0],
                 detailPembeli: detail[0],
+                hargaTiketRp,
                 status,
                 isPaid
             }
@@ -195,9 +211,13 @@ exports.tiketValidasi = function (req, res) {
                     statusKirim = false;
                 }
 
+
+                let hargaTiketRp = toRp(detail[0].harga_tiket);
+
                 let result = {
                     dataPembeli: pembeli[0],
                     detailPembeli: detail[0],
+                    hargaTiketRp,
                     statusValidasi: statusKirim
                 }
                 console.log(result);
@@ -291,6 +311,8 @@ exports.jadwalKs = function (req, res) {
                     let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
                     let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
                     let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+
+                   
 
                     idBatch = 2;
                     batchDimulai = dimulaiKs;
