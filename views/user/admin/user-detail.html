@@ -281,13 +281,13 @@
             }
         });
 
-
+       
         $("#btnHapus").click(function () {
             var request = $.ajax({
-                url: "http://127.0.0.1:3000/admin/dashboard/delete-user/{{userDetail.id_pembeli}}",
+                url: `http://${window.location.hostname}:3000/admin/dashboard/delete-user/{{userDetail.id_pembeli}}`,
                 type: "POST",
                 success: window.location.replace(
-                    "http://127.0.0.1:3000/admin/dashboard/semua-user")
+                    `http://${window.location.hostname}:3000/admin/dashboard/semua-user`)
 
             });
         })
