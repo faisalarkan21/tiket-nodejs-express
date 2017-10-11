@@ -121,9 +121,9 @@ exports.dataUserMobile = function (req, res) {
             console.log(isPaid);
 
 
-           
+
             let hargaTiketRp = toRp(detail[0].harga_tiket);
-            
+
 
             let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
 
@@ -312,7 +312,7 @@ exports.jadwalKs = function (req, res) {
                     let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
                     let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
 
-                   
+
 
                     idBatch = 2;
                     batchDimulai = dimulaiKs;
@@ -376,4 +376,219 @@ exports.jadwalKs = function (req, res) {
             });
         });
     });
+}
+
+exports.mendaftarMobile = function (req, res, next) {
+    let success = false;
+    var today = new Date();
+    console.log(req.body);
+
+    var query = connection.query("select * from periode", function (err, dataJadwal) {
+
+
+
+        console.log(dataJadwal[1].tgl_daftar_selesai);
+        console.log((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai));
+
+
+        if (err) {
+            console.log(err);
+            return next("Mysql error, check your query");
+        }
+
+        var idBatch;
+
+        if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
+
+            idBatch = 1;
+            console.log("masuk minggu 1");
+
+        } else if ((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai)) {
+
+            idBatch = 2;
+            console.log("masuk minggu 2");
+
+        } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[2].tgl_daftar_selesai)) {
+
+            idBatch = 3;
+            console.log("masuk minggu 3");
+
+        } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[3].tgl_daftar_selesai)) {
+
+            idBatch = 4;
+            console.log("masuk minggu 4");
+
+        }
+
+
+
+
+        var hash = SHA256(req.body.email);
+        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(req.body.password), 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+
+        var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'node.bootcamp@gmail.com',
+                pass: 'arkan14811'
+            }
+        });
+
+        // Or using SMTP Pool if you need to send a large amount of emails
+
+        let host = "127.0.0.1";
+        // let host = "142.44.163.129";
+
+        var mailOptions = {
+            from: "node.bootcamp@gmail.com", // sender address
+            to: req.body.email,
+            subject: 'Konfirmasi Email Peserta Node Bootcamp',
+            text: `http://${host}:3000/verification/?token=${hash}`
+
+        };
+
+        console.log(mailOptions.text);
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                request.flash('success', 'Votre message à bien été envoyé.');
+                response.redirect('/contacter-printwithlove');
+            }
+        });
+
+
+
+        var insertPembeli = {
+
+            nm_pembeli: req.body.nama,
+            id_batch: idBatch,
+            email_pembeli: req.body.email,
+            password: ciphertext,
+            hp_pembeli: req.body.hp,
+            gd_pembeli: req.body.gd,
+            motivasi_pembeli: req.body.motivasi,
+            token_verification: hash
+
+
+        };
+
+
+
+        //masukin nama, hp,gender,email, password
+
+        var query = connection.query("INSERT INTO pembeli set ? ", insertPembeli, function (err, rows) {
+
+            if (err) {
+                console.log(err);
+                return next("Mysql error, check your query");
+            }
+
+
+
+        });
+
+        var waktu = new Date();
+
+        console.log(waktu);
+
+        //masukin date
+        var query = connection.query("INSERT INTO tgl_pesan set tgl_order = ?", waktu, function (err, rows) {
+
+            if (err) {
+                console.log(err);
+                return next("Mysql error, check your query");
+            }
+
+
+
+        });
+
+
+
+
+        var insertDetail = {
+
+
+
+            harga_tiket: 500000,
+            uang_transfer: 0,
+            pilihan_bank: req.body.bank,
+            status: "Belum Lunas",
+
+
+
+        };
+
+        /*
+                console.log(req.body.satuan);
+                console.log(namaTiket);
+                console.log(req.body.jmlTiket);
+                console.log(req.body.totalHarga);
+        
+                */
+
+        var query = connection.query("INSERT INTO detil_pesan_tiket set ?", insertDetail, function (err, rows) {
+
+            if (err) {
+                console.log(err);
+                return next("Mysql error, check your query");
+            }
+
+
+
+
+        });
+
+
+
+        var insertPembeliValidasi = {
+
+            nm_pembeli: req.body.nama,
+            email_pembeli: req.body.email,
+            hp_pembeli: req.body.hp,
+
+
+
+
+
+        };
+
+
+
+
+
+        var query = connection.query("INSERT INTO pembeli_validasi set ?", insertPembeliValidasi, function (err, rows) {
+
+            if (err) {
+                console.log(err);
+                return next("Mysql error, check your query");
+            }
+
+            success = true;
+
+            res.json({
+                success
+            })
+
+
+
+        });
+
+
+
+
+
+
+
+    });
+
+    
+
+   
+
+
+
+
 }

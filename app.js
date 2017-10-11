@@ -309,7 +309,7 @@ app.post('/data-user/:id', mobile.dataUserMobilePost);
 app.get('/data-user-validasi/:id', mobile.tiketValidasi);
 app.post('/data-user-validasi/:id', mobile.tiketValidasiPost);
 app.get('/jadwal-ks/:id', mobile.jadwalKs);
-
+app.post('/mobile-daftar',mobile.mendaftarMobile);
 
 
 //dev 
