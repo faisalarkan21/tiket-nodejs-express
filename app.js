@@ -294,7 +294,7 @@ app.get('/user/dashboard/jadwal/:id', pengamananUser, users.weekUser);
 app.get('/user/validasi', pengamananUser, users.tiket);
 app.post('/user/validasi', pengamananUser, users.tiketPost);
 
-
+app.post('/testing', users.testing);
 
 
 /*

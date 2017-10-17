@@ -1918,7 +1918,15 @@ exports.loginMobile = function (req, res, next) {
 
 
 
+exports.testing = function (req, res, next) {
+   
+let callback =  'Haiii ' + req.query.nama;
+    console.log(req.query);
+   res.json(callback);
 
+
+    
+};
 
 // nexmo.message.sendSms(
 //   "Node Bootcamp 2017", req.body.no_hp, 'COba',
