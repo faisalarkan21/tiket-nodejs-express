@@ -554,6 +554,7 @@ exports.membuktikan = function (req, res, next) {
 
             if ((req.body.email === data[0].email_pembeli) && (req.body.password === decryptedData)) {
 
+                console.log(data[0]);
                 req.session.namaSession = data[0].email_pembeli;
                 req.session.nomor_pembeli = data[0].id_pembeli;
                 req.session.namaPembeli = data[0].nm_pembeli;
