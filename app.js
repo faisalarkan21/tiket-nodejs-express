@@ -252,6 +252,7 @@ app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailVali
 
 
 app.get('/admin/dashboard/user-detail/:id', users.userDetail);
+app.get('/admin/dashboard/user-detail/test/:id', users.userDetailTest);
 app.post('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetailPost);
 app.get('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmail);
 app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct);
