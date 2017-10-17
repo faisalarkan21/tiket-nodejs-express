@@ -1929,6 +1929,34 @@ let callback =  'Haiii ' + req.query.nama;
     
 };
 
+exports.userDetailTest = function (req, res) {
+    
+        console.log(req.params.id);
+        var query = connection.query("select * FROM pembeli INNER JOIN detil_pesan_tiket on pembeli.id_pembeli=detil_pesan_tiket.id_pembeli INNER JOIN pembeli_validasi on detil_pesan_tiket.id_pembeli=pembeli_validasi.id_pembeli WHERE pembeli.id_pembeli = ?", req.params.id, function (err, userDetail) {
+    
+    
+    
+    
+    
+    
+            res.json({
+                userDetail: userDetail[0],
+                
+    
+    
+    
+    
+            });
+            // console.log(user_gold);
+    
+    
+    
+    
+    
+        });
+    }
+
+
 // nexmo.message.sendSms(
 //   "Node Bootcamp 2017", req.body.no_hp, 'COba',
 //     (err, responseData) => {
