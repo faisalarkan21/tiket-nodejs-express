@@ -251,7 +251,7 @@ app.post('/admin/dashboard/delete-trainer/:id', pengamananAdmin, users.trainerDe
 app.get('/admin/dashboard/kotak-validasi/:id', pengamananAdmin, users.detailValidasi);
 
 
-app.get('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetail);
+app.get('/admin/dashboard/user-detail/:id', users.userDetail);
 app.post('/admin/dashboard/user-detail/:id', pengamananAdmin, users.userDetailPost);
 app.get('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmail);
 app.post('/admin/dashboard/send-email/:id', pengamananAdmin, users.sendEmailAct);
