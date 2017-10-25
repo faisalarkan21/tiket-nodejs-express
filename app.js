@@ -219,7 +219,7 @@ var pengamananAdmin = function (req, res, next) {
 */
 
 app.get('/', users.index);
-app.get('/admin/login', users.adminLogin);
+app.get('/login-admin', users.adminLogin);
 app.post('/admin/login', users.adminValidasi);
 app.get('/admin/dashboard', pengamananAdmin, users.adminDashboard);
 
