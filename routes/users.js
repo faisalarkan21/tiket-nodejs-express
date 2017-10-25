@@ -507,9 +507,13 @@ exports.login = function (req, res, next) {
             ? false
             : true;
 
-        if (req.session.namaSession) {
+        if (!req.session.namaAdmin && req.session.namaSession !== undefined) {
 
             res.redirect("profile");
+
+        } else if (req.session.namaAdmin) {
+
+            res.redirect("admin/dashboard");
 
         } else {
 
@@ -646,9 +650,9 @@ exports.validasi = function (req, res) {
     });
     // akhir query lapis satu var query = connection.query("select * from
     // pembeli_sekunder where email_utama = ? ", req.session.namaSession, function
-    // (err, pembeliSekunder) {     if (err) {         console.log(err);
-    // return next("Error Query Level 1, Pembeli ");     }
-    // console.log(pembeliSekunder);  }); akhir dari select sekunder
+    // (err, pembeliSekunder) {     if (err) {         console.log(err); return
+    // next("Error Query Level 1, Pembeli ");     } console.log(pembeliSekunder);
+    // }); akhir dari select sekunder
 
 }
 
@@ -1133,7 +1137,19 @@ exports.cobaGet = function (req, res) {
 
 exports.adminLogin = function (req, res) {
 
-    res.render('user/admin/login-admin');
+    if (!req.session.namaAdmin && req.session.namaSession !== undefined) {
+
+        res.redirect("profile");
+
+    } else if (req.session.namaAdmin) {
+
+        res.redirect("admin/dashboard");
+
+    } else {
+
+        res.render('user/admin/login-admin');
+
+    }
 
 }
 
@@ -1829,6 +1845,6 @@ exports.userDetailTest = function (req, res) {
     });
 }
 
-// nexmo.message.sendSms(   "Node Bootcamp 2017", req.body.no_hp, 'COba',
-// (err, responseData) => {       if (err) {         console.log(err);       }
-// else {         console.dir(responseData);       }     }  );
+// nexmo.message.sendSms(   "Node Bootcamp 2017", req.body.no_hp, 'COba', (err,
+// responseData) => {       if (err) {         console.log(err);       } else {
+//      console.dir(responseData);       }     }  );
