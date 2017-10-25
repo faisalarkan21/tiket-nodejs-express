@@ -3,24 +3,20 @@ var nodemailer = require('nodemailer');
 var SHA256 = require("crypto-js/sha256");
 var CryptoJS = require("crypto-js");
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'arkan14811',
-    database: 'bootcamp_node',
-
-});
-
+var connection = mysql.createConnection({host: 'localhost', user: 'root', password: 'arkan14811', database: 'bootcamp_node'});
 
 /*
 
-API Mobile 
+API Mobile
 
 */
 
-
 function toRp(angka) {
-    var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+    var rev = parseInt(angka, 10)
+        .toString()
+        .split('')
+        .reverse()
+        .join('');
     var rev2 = '';
     for (var i = 0; i < rev.length; i++) {
         rev2 += rev[i];
@@ -28,7 +24,10 @@ function toRp(angka) {
             rev2 += '.';
         }
     }
-    return 'Rp. ' + rev2.split('').reverse().join('') + ',00';
+    return 'Rp. ' + rev2
+        .split('')
+        .reverse()
+        .join('') + ',00';
 }
 
 exports.loginMobile = function (req, res, next) {
@@ -44,56 +43,34 @@ exports.loginMobile = function (req, res, next) {
 
         if (data.length < 1) {
 
-            console.log({
-                status: 'Username Tidak ditemukan.'
-            });
+            console.log({status: 'Username Tidak ditemukan.'});
 
-            res.json({
-                id_pembeli: '',
-                nm_pembeli: '',
-                email_pembeli: '',
-                isValid: false,
-                statusAuth
-            });
+            res.json({id_pembeli: '', nm_pembeli: '', email_pembeli: '', isValid: false, statusAuth});
 
         } else {
 
-            var bytes = CryptoJS.AES.decrypt(data[0].password, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+            var bytes = CryptoJS
+                .AES
+                .decrypt(data[0].password, 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
             var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
             // console.log(decryptedData);
 
             if ((req.body.email === data[0].email_pembeli) && (req.body.password === decryptedData)) {
 
-                console.log({
-                    status: 'Login berhasil.'
-                });
+                console.log({status: 'Login berhasil.'});
 
-                res.json({
-                    id_pembeli: data[0].id_pembeli,
-                    nm_pembeli: data[0].nm_pembeli,
-                    email_pembeli: data[0].email_pembeli,
-                    isValid: true
-                });
+                res.json({id_pembeli: data[0].id_pembeli, nm_pembeli: data[0].nm_pembeli, email_pembeli: data[0].email_pembeli, isValid: true});
 
             } else {
 
-                console.log({
-                    status: 'Id / password salah.'
-                });
+                console.log({status: 'Id / password salah.'});
 
-                res.json({
-                    id_pembeli: '',
-                    nm_pembeli: '',
-                    email_pembeli: '',
-                    isValid: false
-                });
+                res.json({id_pembeli: '', nm_pembeli: '', email_pembeli: '', isValid: false});
 
             }
         }
     });
 };
-
-
 
 exports.dataUserMobile = function (req, res) {
 
@@ -110,22 +87,19 @@ exports.dataUserMobile = function (req, res) {
 
         var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", pembeli[0].id_pembeli, function (err, detail) {
 
-
             if (err) {
                 console.log(err);
                 return next("Error Query Level 2, Detail");
             }
 
-
             let isPaid = detail[0].uang_transfer;
             console.log(isPaid);
 
-
-
             let hargaTiketRp = toRp(detail[0].harga_tiket);
 
-
-            let status = pembeli[0].email_verification === 1 ? '' : 'Anda Belum Verifikasi Email.';
+            let status = pembeli[0].email_verification === 1
+                ? ''
+                : 'Anda Belum Verifikasi Email.';
 
             let result = {
                 dataPembeli: pembeli[0],
@@ -135,13 +109,10 @@ exports.dataUserMobile = function (req, res) {
                 isPaid
             }
 
-            res.json({
-                result
-            });
+            res.json({result});
         })
     });
 }
-
 
 exports.dataUserMobilePost = function (req, res) {
 
@@ -152,34 +123,29 @@ exports.dataUserMobilePost = function (req, res) {
         hp_pembeli: req.body.hp
     }
 
+    var query = connection.query("update pembeli set ? where id_pembeli =  ?", [
+        updateUser, req.params.id
+    ], function (err, rows) {
 
-    var query = connection.query("update pembeli set ? where id_pembeli =  ?", [updateUser, req.params.id], function (err, rows) {
+        var query = connection.query("update pembeli_validasi set ? where id_pembeli =  ?", [
+            updateUser, req.params.id
+        ], function (err, rows) {
 
-        let success = true;
+            let success = true;
 
-        if (err) {
-            console.log(err);
-            return res.json({
-                success: false
-            })
-        }
-        console.log({
-            success
+            if (err) {
+                console.log(err);
+                return res.json({success: false})
+            }
+            console.log({success});
+
+            res.json({success})
         });
-
-        res.json({
-            success
-        })
     });
-
-
-
 
 }
 
-
 exports.tiketValidasi = function (req, res) {
-
 
     var query = connection.query("select * from pembeli_validasi where id_pembeli =  ?", req.params.id, function (err, validasi) {
 
@@ -196,7 +162,6 @@ exports.tiketValidasi = function (req, res) {
                 return next("Error Query Level 1, Pembeli ");
             }
 
-
             var query2 = connection.query("select * from detil_pesan_tiket where id_pembeli = ?", req.params.id, function (err, detail) {
 
                 if (err) {
@@ -211,7 +176,6 @@ exports.tiketValidasi = function (req, res) {
                     statusKirim = false;
                 }
 
-
                 let hargaTiketRp = toRp(detail[0].harga_tiket);
 
                 let result = {
@@ -222,18 +186,14 @@ exports.tiketValidasi = function (req, res) {
                 }
                 console.log(result);
 
-                res.json({
-                    result
-                });
+                res.json({result});
 
             });
         });
 
     });
 
-
 }
-
 
 exports.tiketValidasiPost = function (req, res) {
 
@@ -243,19 +203,16 @@ exports.tiketValidasiPost = function (req, res) {
         pilihan_bank: req.body.pilihan_bank
     }
 
-    var query = connection.query("update pembeli_validasi set ?  where id_pembeli =  ?", [updateValidasi, req.params.id], function (err, data) {
+    var query = connection.query("update pembeli_validasi set ?  where id_pembeli =  ?", [
+        updateValidasi, req.params.id
+    ], function (err, data) {
         if (err) {
             console.log(err);
-            return res.json({
-                success: false
-            })
+            return res.json({success: false})
 
         }
 
-        res.json({
-            success
-        })
-
+        res.json({success})
 
     });
 }
@@ -275,7 +232,6 @@ exports.jadwalKs = function (req, res) {
 
             var query = connection.query("select * from periode", function (err, dataJadwal) {
 
-
                 if (err) {
                     console.log(err);
                     return next("Mysql error, check your query");
@@ -289,14 +245,23 @@ exports.jadwalKs = function (req, res) {
                 var batchDimulai;
                 var batchSelesai;
 
-
-
-
                 if ((today >= dataJadwal[0].tgl_daftar_mulai) && (today <= dataJadwal[0].tgl_daftar_selesai)) {
-                    let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let dimulaiKs = new Date(dataJadwal[0].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let selesaiKs = new Date(dataJadwal[0].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranBuka = new Date(dataJadwal[0].tgl_daftar_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[0].tgl_daftar_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[0].tgl_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[0].tgl_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
 
                     idBatch = 1;
                     batchDimulai = dimulaiKs;
@@ -307,12 +272,22 @@ exports.jadwalKs = function (req, res) {
 
                 } else if ((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai)) {
 
-                    let pendaftaranBuka = new Date(dataJadwal[1].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let dimulaiKs = new Date(dataJadwal[1].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let selesaiKs = new Date(dataJadwal[1].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-
-
+                    let pendaftaranBuka = new Date(dataJadwal[1].tgl_daftar_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[1].tgl_daftar_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[1].tgl_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[1].tgl_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
 
                     idBatch = 2;
                     batchDimulai = dimulaiKs;
@@ -321,16 +296,24 @@ exports.jadwalKs = function (req, res) {
                     pendaftaranClose = pendaftaranTutup;
                     console.log("masuk batch 2");
 
-
                 } else if ((today >= dataJadwal[2].tgl_daftar_mulai) && (today <= dataJadwal[2].tgl_daftar_selesai)) {
 
-
-
-
-                    let pendaftaranBuka = new Date(dataJadwal[2].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let pendaftaranTutup = new Date(dataJadwal[2].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let dimulaiKs = new Date(dataJadwal[2].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let selesaiKs = new Date(dataJadwal[2].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranBuka = new Date(dataJadwal[2].tgl_daftar_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[2].tgl_daftar_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[2].tgl_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[2].tgl_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
 
                     idBatch = 3;
                     batchDimulai = dimulaiKs;
@@ -341,10 +324,22 @@ exports.jadwalKs = function (req, res) {
 
                 } else if ((today >= dataJadwal[3].tgl_daftar_mulai) && (today <= dataJadwal[3].tgl_daftar_selesai)) {
 
-                    let pendaftaranBuka = new Date(dataJadwal[3].tgl_daftar_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let pendaftaranTutup = new Date(dataJadwal[3].tgl_daftar_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let dimulaiKs = new Date(dataJadwal[3].tgl_mulai).toLocaleDateString().slice(0, 10).replace('T', ' ');
-                    let selesaiKs = new Date(dataJadwal[3].tgl_selesai).toLocaleDateString().slice(0, 10).replace('T', ' ');
+                    let pendaftaranBuka = new Date(dataJadwal[3].tgl_daftar_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let pendaftaranTutup = new Date(dataJadwal[3].tgl_daftar_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let dimulaiKs = new Date(dataJadwal[3].tgl_mulai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
+                    let selesaiKs = new Date(dataJadwal[3].tgl_selesai)
+                        .toLocaleDateString()
+                        .slice(0, 10)
+                        .replace('T', ' ');
 
                     idBatch = 4;
                     batchDimulai = dimulaiKs;
@@ -355,8 +350,6 @@ exports.jadwalKs = function (req, res) {
 
                 }
 
-
-
                 let result = {
                     materi: kursus[0].materi_kursus,
                     minggu: kursus[0].id_kursus,
@@ -366,13 +359,9 @@ exports.jadwalKs = function (req, res) {
                     ksEnd: batchSelesai
                 }
 
-                console.log({
-                    result: result
-                });
+                console.log({result: result});
 
-                res.json({
-                    result
-                });
+                res.json({result});
             });
         });
     });
@@ -385,11 +374,8 @@ exports.mendaftarMobile = function (req, res, next) {
 
     var query = connection.query("select * from periode", function (err, dataJadwal) {
 
-
-
         console.log(dataJadwal[1].tgl_daftar_selesai);
         console.log((today >= dataJadwal[1].tgl_daftar_mulai) && (today <= dataJadwal[1].tgl_daftar_selesai));
-
 
         if (err) {
             console.log(err);
@@ -420,11 +406,10 @@ exports.mendaftarMobile = function (req, res, next) {
 
         }
 
-
-
-
         var hash = SHA256(req.body.email);
-        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(req.body.password), 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
+        var ciphertext = CryptoJS
+            .AES
+            .encrypt(JSON.stringify(req.body.password), 'aa38bf3e39f6f9d51c84b02d583eb7ca57e5a1b4ed22b54380c77b9e45f4671a');
 
         var transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -434,9 +419,8 @@ exports.mendaftarMobile = function (req, res, next) {
             }
         });
 
-        // Or using SMTP Pool if you need to send a large amount of emails
-
-        // let host = "127.0.0.1";
+        // Or using SMTP Pool if you need to send a large amount of emails let host =
+        // "127.0.0.1";
         let host = "142.44.163.129";
 
         var mailOptions = {
@@ -458,8 +442,6 @@ exports.mendaftarMobile = function (req, res, next) {
             }
         });
 
-
-
         var insertPembeli = {
 
             nm_pembeli: req.body.nama,
@@ -471,10 +453,7 @@ exports.mendaftarMobile = function (req, res, next) {
             motivasi_pembeli: req.body.motivasi,
             token_verification: hash
 
-
         };
-
-
 
         //masukin nama, hp,gender,email, password
 
@@ -484,8 +463,6 @@ exports.mendaftarMobile = function (req, res, next) {
                 console.log(err);
                 return next("Mysql error, check your query");
             }
-
-
 
         });
 
@@ -501,24 +478,14 @@ exports.mendaftarMobile = function (req, res, next) {
                 return next("Mysql error, check your query");
             }
 
-
-
         });
 
-
-
-
         var insertDetail = {
-
-
 
             harga_tiket: 500000,
             uang_transfer: 0,
             pilihan_bank: req.body.bank,
-            status: "Belum Lunas",
-
-
-
+            status: "Belum Lunas"
         };
 
         /*
@@ -526,7 +493,7 @@ exports.mendaftarMobile = function (req, res, next) {
                 console.log(namaTiket);
                 console.log(req.body.jmlTiket);
                 console.log(req.body.totalHarga);
-        
+
                 */
 
         var query = connection.query("INSERT INTO detil_pesan_tiket set ?", insertDetail, function (err, rows) {
@@ -536,28 +503,14 @@ exports.mendaftarMobile = function (req, res, next) {
                 return next("Mysql error, check your query");
             }
 
-
-
-
         });
-
-
 
         var insertPembeliValidasi = {
 
             nm_pembeli: req.body.nama,
             email_pembeli: req.body.email,
-            hp_pembeli: req.body.hp,
-
-
-
-
-
+            hp_pembeli: req.body.hp
         };
-
-
-
-
 
         var query = connection.query("INSERT INTO pembeli_validasi set ?", insertPembeliValidasi, function (err, rows) {
 
@@ -568,27 +521,10 @@ exports.mendaftarMobile = function (req, res, next) {
 
             success = true;
 
-            res.json({
-                success
-            })
-
-
+            res.json({success})
 
         });
 
-
-
-
-
-
-
     });
-
-    
-
-   
-
-
-
 
 }
