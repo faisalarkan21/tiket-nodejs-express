@@ -1415,6 +1415,14 @@ exports.userDetailPost = function (req, res) {
     }
 
     console.log('disni id ' + req.params.id);
+
+    var updateUser = {
+
+        nm_pembeli: req.body.nama,
+        email_pembeli: req.body.email,
+        hp_pembeli: req.body.hp
+    }
+
     updateDetail = {
 
         uang_transfer: convertToAngka(req.body.uangtf)
@@ -1422,18 +1430,27 @@ exports.userDetailPost = function (req, res) {
 
     console.log(updateDetail);
 
-    var query = connection.query("update detil_pesan_tiket set ?  where id_pembeli =  ?", [
-        updateDetail, req.params.id
-    ], function (err, data) {
-        if (err) {
-            console.log(err);
-            return next("Mysql error, check your query");
-        }
-        console.log("Data Masuk");
+    var query = connection.query("update pembeli set ? where id_pembeli =  ?", [
+        updateUser, req.params.id
+    ], function (err, rows) {
+
+        var query = connection.query("update pembeli_validasi set ? where id_pembeli =  ?", [
+            updateUser, req.params.id
+        ], function (err, rows) {
+
+            var query = connection.query("update detil_pesan_tiket set ?  where id_pembeli =  ?", [
+                updateDetail, req.params.id
+            ], function (err, data) {
+                if (err) {
+                    console.log(err);
+                    return next("Mysql error, check your query");
+                }
+                console.log("Data Masuk");
+            });
+
+            res.redirect('/admin/dashboard/semua-user');
+        });
     });
-
-    res.redirect('/admin/dashboard/semua-user');
-
 }
 
 exports.tiketPost = function (req, res) {
@@ -1847,4 +1864,4 @@ exports.userDetailTest = function (req, res) {
 
 // nexmo.message.sendSms(   "Node Bootcamp 2017", req.body.no_hp, 'COba', (err,
 // responseData) => {       if (err) {         console.log(err);       } else {
-//      console.dir(responseData);       }     }  );
+//    console.dir(responseData);       }     }  );
