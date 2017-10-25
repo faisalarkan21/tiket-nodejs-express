@@ -45,7 +45,7 @@ exports.loginMobile = function (req, res, next) {
 
             console.log({status: 'Username Tidak ditemukan.'});
 
-            res.json({id_pembeli: '', nm_pembeli: '', email_pembeli: '', isValid: false, statusAuth});
+            res.json({id_pembeli: '', nm_pembeli: '', email_pembeli: '', isValid: false});
 
         } else {
 
@@ -529,9 +529,6 @@ exports.mendaftarMobile = function (req, res, next) {
 
     });
 
-<<<<<<< HEAD
-}
-=======
     
 
    
@@ -540,4 +537,3 @@ exports.mendaftarMobile = function (req, res, next) {
 
 
 }
->>>>>>> 8fbbc3b10f0bdac6256b0c7e738432822ba6dc84
