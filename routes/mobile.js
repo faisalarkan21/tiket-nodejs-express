@@ -419,9 +419,11 @@ exports.mendaftarMobile = function (req, res, next) {
             }
         });
 
-        // Or using SMTP Pool if you need to send a large amount of emails let host =
-        // "127.0.0.1";
-        let host = "142.44.163.129";
+        // Or using SMTP Pool if you need to send a large amount of emails
+
+
+        // let host = "127.0.0.1";
+	    let host = "142.44.163.129";
 
         var mailOptions = {
             from: "node.bootcamp@gmail.com", // sender address
@@ -527,4 +529,15 @@ exports.mendaftarMobile = function (req, res, next) {
 
     });
 
+<<<<<<< HEAD
 }
+=======
+    
+
+   
+
+
+
+
+}
+>>>>>>> 8fbbc3b10f0bdac6256b0c7e738432822ba6dc84
