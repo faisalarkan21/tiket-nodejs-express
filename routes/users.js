@@ -382,8 +382,8 @@ exports.mendaftar = function (req, res, next) {
         });
 
         // Or using SMTP Pool if you need to send a large amount of emails let host =
-        // let host =  "127.0.0.1";
-        let host = "142.44.163.129";
+        let host =  "127.0.0.1";
+        // let host = "142.44.163.129";
 
         var mailOptions = {
             from: "node.bootcamp@gmail.com", // sender address
